@@ -62,6 +62,61 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-1_d" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/30/1_d/" class="article-date">
+  <time datetime="2019-10-30T14:59:13.952Z" itemprop="datePublished">2019-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/30/1_d/">萌新acm(1) D - Triangles</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<blockquote>
+<p>Takahashi has N sticks that are distinguishable from each other. The length of the i-th stick is Li.</p>
+</blockquote>
+<blockquote>
+<p>He is going to form a triangle using three of these sticks. Let a, b, and c be the lengths of the three sticks used. Here, all of the following conditions must be satisfied:</p>
+</blockquote>
+<blockquote>
+<p>a&lt;b+c<br>b&lt;c+a<br>c&lt;a+b</p>
+</blockquote>
+<blockquote>
+<p>How many different triangles can be formed? Two triangles are considered different when there is a stick used in only one of them.<br>Print the number of different triangles that can be formed.</p>
+</blockquote>
+<hr>
+<p> <strong>思路</strong><br> 只想出了复杂度O(n3)的解法，所以先用归并排序减少了循环次数，成功卡过</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">void merge(int *p, int n)</span><br><span class="line">&#123;</span><br><span class="line">    int *left = NULL;</span><br><span class="line">    int *right = NULL;</span><br><span class="line">    int i = 0;</span><br><span class="line">    if (n == 1)</span><br><span class="line">    &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        i = n / 2;</span><br><span class="line">        left = (int *)calloc(i, sizeof(int));</span><br><span class="line">        right = (int *)calloc(n-i, sizeof(int));</span><br><span class="line">        int k1 = 0, k2 = 0;</span><br><span class="line">        for (k1 = 0; k1 &lt; i; k1++)</span><br><span class="line">        &#123;</span><br><span class="line">            left[k1] = p[k1];</span><br><span class="line">        &#125;</span><br><span class="line">        for (k2 = i; k2 &lt; n; k2++)</span><br><span class="line">        &#123;</span><br><span class="line">            right[k2-i] = p[k2];</span><br><span class="line">        &#125;</span><br><span class="line">        merge(left, i);</span><br><span class="line">        merge(right, n-i);</span><br><span class="line">        k1 = 0;</span><br><span class="line">        k2 = 0;</span><br><span class="line">        int count = 0;</span><br><span class="line">        while (k1 &lt; i &amp;&amp; k2 &lt; n-i)</span><br><span class="line">        &#123;</span><br><span class="line">            if (left[k1] &gt; right[k2])</span><br><span class="line">            &#123;</span><br><span class="line">                p[count] = left[k1];</span><br><span class="line">                k1++;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                p[count] = right[k2];</span><br><span class="line">                k2++;</span><br><span class="line">            &#125;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        if (k1 == i)</span><br><span class="line">        &#123;</span><br><span class="line">            while (k2 &lt; n-i)</span><br><span class="line">            &#123;</span><br><span class="line">                p[count] = right[k2];</span><br><span class="line">                count++;</span><br><span class="line">                k2++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (k2 == n-i)</span><br><span class="line">        &#123;</span><br><span class="line">            while (k1 &lt; i)</span><br><span class="line">            &#123;</span><br><span class="line">                p[count] = left[k1];</span><br><span class="line">                count++;</span><br><span class="line">                k1++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        free(left);</span><br><span class="line">        free(right);</span><br><span class="line">    &#125;</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br><span class="line">int search(int *p, int n)</span><br><span class="line">&#123;</span><br><span class="line">    int i = 0, j = 0, k = 0, count = 0;</span><br><span class="line">    if (n &lt; 3) return 0;</span><br><span class="line">    if (p[0] &gt; p[1] + p[2]) return search(p+1, n-1);</span><br><span class="line">    if (p[n-1] + p[n-2] &lt; p[n-3]) return search(p, n-1);</span><br><span class="line">    for (i = 0; i &lt; n-2; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for (j = i+1; j &lt; n-1; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            for (k = n-1; k &gt; j; k--)</span><br><span class="line">            &#123;</span><br><span class="line">                if (p[j] + p[k] &gt; p[i])</span><br><span class="line">                &#123;</span><br><span class="line">                    count += k-j;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return count;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n = 0, sum = 0, i = 0;</span><br><span class="line">    int *p = NULL;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">    p = (int *)calloc(n, sizeof(int));</span><br><span class="line">    for(i = 0; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;p[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    merge(p, n);</span><br><span class="line">    sum = search(p, n);</span><br><span class="line">    free(p);</span><br><span class="line">    printf(&quot;%d&quot;, sum);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/10/30/1_d/" data-id="ck2deohon0004t054x0e8z12r" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-1_c" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/10/30/1_c/" class="article-date">
@@ -108,7 +163,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/30/1_c/" data-id="ck2cldh6i0003by54rssnaqca" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/30/1_c/" data-id="ck2deohoi0002t054esvmy4a1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -167,7 +222,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/30/1_b/" data-id="ck2cldh6c0001by54a69s4sjj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/30/1_b/" data-id="ck2deohof0001t054vaj95bho" class="article-share-link">Share</a>
       
       
     </footer>
@@ -219,7 +274,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/30/1_a/" data-id="ck2cldh660000by54l7bqndqv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/30/1_a/" data-id="ck2deoho90000t05484qpkjm1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -392,7 +447,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/14/彩虹社熟肉整理/" data-id="ck2cldh6f0002by54t6r33joz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/14/彩虹社熟肉整理/" data-id="ck2deohol0003t054s7kh6cex" class="article-share-link">Share</a>
       
       
     </footer>
@@ -431,6 +486,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/10/30/1_d/">萌新acm(1) D - Triangles</a>
+          </li>
         
           <li>
             <a href="/2019/10/30/1_c/">萌新acm(1) C - Slimes</a>
