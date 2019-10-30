@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="题面  It’s now the season of TAKOYAKI FESTIVAL!   This year, N takoyaki (a ball-shaped food with a piece of octopus inside) will be served. The deliciousness of the i-th takoyaki is di.   As is commonly">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-30T00:34:51.946Z">
+<meta property="og:updated_time" content="2019-10-30T00:37:39.774Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="萌新acm(1) B-TAKOYAKI FESTIVAL 2019">
 <meta name="twitter:description" content="题面  It’s now the season of TAKOYAKI FESTIVAL!   This year, N takoyaki (a ball-shaped food with a piece of octopus inside) will be served. The deliciousness of the i-th takoyaki is di.   As is commonly">
@@ -67,7 +67,7 @@
         <section id="main"><article id="post-1_b" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/10/30/1_b/" class="article-date">
-  <time datetime="2019-10-30T00:34:51.958Z" itemprop="datePublished">2019-10-30</time>
+  <time datetime="2019-10-30T00:37:39.786Z" itemprop="datePublished">2019-10-30</time>
 </a>
     
   </div>
@@ -104,14 +104,16 @@
 </blockquote>
 <hr>
 <p><strong>思路</strong></p>
-<h2 id="遍历每一个元素，计算每一个元素与其之后所有元素之和的乘积，再将所有乘积相加即是答案，复杂度O-n"><a href="#遍历每一个元素，计算每一个元素与其之后所有元素之和的乘积，再将所有乘积相加即是答案，复杂度O-n" class="headerlink" title="遍历每一个元素，计算每一个元素与其之后所有元素之和的乘积，再将所有乘积相加即是答案，复杂度O(n)"></a>遍历每一个元素，计算每一个元素与其之后所有元素之和的乘积，再将所有乘积相加即是答案，复杂度O(n)</h2><p><strong>AC代码</strong><br>语言：c</p>
+<p>遍历每一个元素，计算每一个元素与其之后所有元素之和的乘积，再将所有乘积相加即是答案，复杂度O(n)</p>
+<hr>
+<p><strong>AC代码</strong><br>语言：c</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n = 0, i = 0, sum = 0, result = 0;</span><br><span class="line">    int *p = NULL;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">    p = (int)calloc(n, sizeof(int));</span><br><span class="line">    for (i = 0; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;p[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    for (i = 0; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sum += p[i];</span><br><span class="line">    &#125;</span><br><span class="line">    for (i = 0; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sum -= p[i];</span><br><span class="line">        result += p[i] * sum;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d&quot;, result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/30/1_b/" data-id="ck2cjt8jq0002sv54sqse2spj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/30/1_b/" data-id="ck2cjwgio0000u454669kf6qh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -120,19 +122,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/10/30/1_a/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          萌新acm(1) A-curtain
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/09/14/彩虹社熟肉整理/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/10/30/1_a/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">彩虹社熟肉整理</div>
+      <div class="article-nav-title">萌新acm(1) A-curtain</div>
     </a>
   
 </nav>
@@ -169,11 +162,11 @@
       <ul>
         
           <li>
-            <a href="/2019/10/30/1_a/">萌新acm(1) A-curtain</a>
+            <a href="/2019/10/30/1_b/">萌新acm(1) B-TAKOYAKI FESTIVAL 2019</a>
           </li>
         
           <li>
-            <a href="/2019/10/30/1_b/">萌新acm(1) B-TAKOYAKI FESTIVAL 2019</a>
+            <a href="/2019/10/30/1_a/">萌新acm(1) A-curtain</a>
           </li>
         
           <li>
