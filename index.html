@@ -62,10 +62,66 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-1_c" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/30/1_c/" class="article-date">
+  <time datetime="2019-10-30T01:18:53.718Z" itemprop="datePublished">2019-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/30/1_c/">萌新acm(1) C - Slimes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<blockquote>
+<p>There are N slimes lining up from left to right. The colors of these slimes will be given as a string S of length N consisting of lowercase English letters. The i-th slime from the left has the color that corresponds to the i-th character of S.</p>
+</blockquote>
+<blockquote>
+<p>Adjacent slimes with the same color will fuse into one larger slime without changing the color. If there were a slime adjacent to this group of slimes before fusion, that slime is now adjacent to the new larger slime.</p>
+</blockquote>
+<blockquote>
+<p>Ultimately, how many slimes will be there?</p>
+</blockquote>
+<blockquote>
+<p>1≤N≤105<br>|S|=N<br>S consists of lowercase English letters.</p>
+</blockquote>
+<hr>
+<p><strong>思路</strong><br>遍历字符串，当一个元素与其后一个元素不同时count+1，count即是答案，复杂度O（n）</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<p>语言:c</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n = 0, count = 0;</span><br><span class="line">    char *p = NULL;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">    p = (char *)calloc(n+1, sizeof(char));</span><br><span class="line">    scanf(&quot;%s&quot;, p);</span><br><span class="line">    while (*p != &apos;\0&apos;)</span><br><span class="line">    &#123;</span><br><span class="line">        if (*p != *(p+1))</span><br><span class="line">        &#123;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        p++;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d&quot;, count);</span><br><span class="line">    free(p);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/10/30/1_c/" data-id="ck2cldh6i0003by54rssnaqca" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-1_b" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/10/30/1_b/" class="article-date">
-  <time datetime="2019-10-30T00:37:39.786Z" itemprop="datePublished">2019-10-30</time>
+  <time datetime="2019-10-30T01:18:27.670Z" itemprop="datePublished">2019-10-30</time>
 </a>
     
   </div>
@@ -105,13 +161,13 @@
 <p>遍历每一个元素，计算每一个元素与其之后所有元素之和的乘积，再将所有乘积相加即是答案，复杂度O(n)</p>
 <hr>
 <p><strong>AC代码</strong><br>语言：c</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n = 0, i = 0, sum = 0, result = 0;</span><br><span class="line">    int *p = NULL;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">    p = (int)calloc(n, sizeof(int));</span><br><span class="line">    for (i = 0; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;p[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    for (i = 0; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sum += p[i];</span><br><span class="line">    &#125;</span><br><span class="line">    for (i = 0; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sum -= p[i];</span><br><span class="line">        result += p[i] * sum;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d&quot;, result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n = 0, i = 0, sum = 0, result = 0;</span><br><span class="line">    int *p = NULL;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">    p = (int *)calloc(n, sizeof(int));</span><br><span class="line">    for (i = 0; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;p[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    for (i = 0; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sum += p[i];</span><br><span class="line">    &#125;</span><br><span class="line">    for (i = 0; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sum -= p[i];</span><br><span class="line">        result += p[i] * sum;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d&quot;, result);</span><br><span class="line">    free(p);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/30/1_b/" data-id="ck2cjwgio0000u454669kf6qh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/30/1_b/" data-id="ck2cldh6c0001by54a69s4sjj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -124,7 +180,7 @@
     <article id="post-1_a" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/10/30/1_a/" class="article-date">
-  <time datetime="2019-10-30T00:36:47.670Z" itemprop="datePublished">2019-10-30</time>
+  <time datetime="2019-10-30T01:17:49.134Z" itemprop="datePublished">2019-10-30</time>
 </a>
     
   </div>
@@ -163,7 +219,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/30/1_a/" data-id="ck2cjwgiv0001u454q9lf4osz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/30/1_a/" data-id="ck2cldh660000by54l7bqndqv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -336,7 +392,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/14/彩虹社熟肉整理/" data-id="ck2cjwgiy0002u454iozt1iv2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/14/彩虹社熟肉整理/" data-id="ck2cldh6f0002by54t6r33joz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -375,6 +431,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/10/30/1_c/">萌新acm(1) C - Slimes</a>
+          </li>
         
           <li>
             <a href="/2019/10/30/1_b/">萌新acm(1) B-TAKOYAKI FESTIVAL 2019</a>

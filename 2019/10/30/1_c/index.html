@@ -5,19 +5,19 @@
   
 
   
-  <title>萌新acm(1) A-curtain | Hexo</title>
+  <title>萌新acm(1) C - Slimes | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题面  The window of Takahashi’s room has a width of A. There are two curtains hung over the window, each of which has a horizontal length of B. (Vertically, the curtains are long enough to cover the who">
+  <meta name="description" content="题面  There are N slimes lining up from left to right. The colors of these slimes will be given as a string S of length N consisting of lowercase English letters. The i-th slime from the left has the co">
 <meta property="og:type" content="article">
-<meta property="og:title" content="萌新acm(1) A-curtain">
-<meta property="og:url" content="http://yoursite.com/2019/10/30/1_a/index.html">
+<meta property="og:title" content="萌新acm(1) C - Slimes">
+<meta property="og:url" content="http://yoursite.com/2019/10/30/1_c/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题面  The window of Takahashi’s room has a width of A. There are two curtains hung over the window, each of which has a horizontal length of B. (Vertically, the curtains are long enough to cover the who">
+<meta property="og:description" content="题面  There are N slimes lining up from left to right. The colors of these slimes will be given as a string S of length N consisting of lowercase English letters. The i-th slime from the left has the co">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-30T01:17:49.130Z">
+<meta property="og:updated_time" content="2019-10-30T01:18:53.706Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="萌新acm(1) A-curtain">
-<meta name="twitter:description" content="题面  The window of Takahashi’s room has a width of A. There are two curtains hung over the window, each of which has a horizontal length of B. (Vertically, the curtains are long enough to cover the who">
+<meta name="twitter:title" content="萌新acm(1) C - Slimes">
+<meta name="twitter:description" content="题面  There are N slimes lining up from left to right. The colors of these slimes will be given as a string S of length N consisting of lowercase English letters. The i-th slime from the left has the co">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -64,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-1_a" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-1_c" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/10/30/1_a/" class="article-date">
-  <time datetime="2019-10-30T01:17:49.134Z" itemprop="datePublished">2019-10-30</time>
+    <a href="/2019/10/30/1_c/" class="article-date">
+  <time datetime="2019-10-30T01:18:53.718Z" itemprop="datePublished">2019-10-30</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      萌新acm(1) A-curtain
+      萌新acm(1) C - Slimes
     </h1>
   
 
@@ -88,25 +88,29 @@
       
         <p><strong>题面</strong></p>
 <blockquote>
-<p>The window of Takahashi’s room has a width of A. There are two curtains hung over the window, each of which has a horizontal length of B. (Vertically, the curtains are long enough to cover the whole window.)</p>
+<p>There are N slimes lining up from left to right. The colors of these slimes will be given as a string S of length N consisting of lowercase English letters. The i-th slime from the left has the color that corresponds to the i-th character of S.</p>
 </blockquote>
 <blockquote>
-<p>We will close the window so as to minimize the total horizontal length of the uncovered part of the window. Find the total horizontal length of the uncovered parts of the window then.</p>
+<p>Adjacent slimes with the same color will fuse into one larger slime without changing the color. If there were a slime adjacent to this group of slimes before fusion, that slime is now adjacent to the new larger slime.</p>
 </blockquote>
 <blockquote>
-<p>1≤A≤100<br>1≤B≤100<br>A and B are integers.</p>
+<p>Ultimately, how many slimes will be there?</p>
+</blockquote>
+<blockquote>
+<p>1≤N≤105<br>|S|=N<br>S consists of lowercase English letters.</p>
 </blockquote>
 <hr>
-<p><strong>思路</strong><br>看得懂英文就行</p>
+<p><strong>思路</strong><br>遍历字符串，当一个元素与其后一个元素不同时count+1，count即是答案，复杂度O（n）</p>
 <hr>
-<p><strong>AC代码</strong><br>语言：c</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int a = 0, b = 0, con = 0;</span><br><span class="line">    scanf(&quot;%d %d&quot;, &amp;a, &amp;b);</span><br><span class="line">    con = a - 2 * b;</span><br><span class="line">    if (con &lt; 0)</span><br><span class="line">    &#123;</span><br><span class="line">        con = 0;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d&quot;, con);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>AC代码</strong></p>
+<p>语言:c</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n = 0, count = 0;</span><br><span class="line">    char *p = NULL;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">    p = (char *)calloc(n+1, sizeof(char));</span><br><span class="line">    scanf(&quot;%s&quot;, p);</span><br><span class="line">    while (*p != &apos;\0&apos;)</span><br><span class="line">    &#123;</span><br><span class="line">        if (*p != *(p+1))</span><br><span class="line">        &#123;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        p++;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d&quot;, count);</span><br><span class="line">    free(p);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/30/1_a/" data-id="ck2cldh660000by54l7bqndqv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/30/1_c/" data-id="ck2cldh6i0003by54rssnaqca" class="article-share-link">Share</a>
       
       
     </footer>
@@ -115,19 +119,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/10/30/1_b/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          萌新acm(1) B-TAKOYAKI FESTIVAL 2019
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/09/14/彩虹社熟肉整理/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/10/30/1_b/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">彩虹社熟肉整理</div>
+      <div class="article-nav-title">萌新acm(1) B-TAKOYAKI FESTIVAL 2019</div>
     </a>
   
 </nav>
