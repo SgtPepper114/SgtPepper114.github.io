@@ -64,8 +64,8 @@
   
     <article id="post-1_a" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/10/29/1_a/" class="article-date">
-  <time datetime="2019-10-29T14:20:38.129Z" itemprop="datePublished">2019-10-29</time>
+    <a href="/2019/10/30/1_a/" class="article-date">
+  <time datetime="2019-10-30T00:35:09.362Z" itemprop="datePublished">2019-10-30</time>
 </a>
     
   </div>
@@ -76,7 +76,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/29/1_a/">萌新acm(1) A-curtain</a>
+      <a class="article-title" href="/2019/10/30/1_a/">萌新acm(1) A-curtain</a>
     </h1>
   
 
@@ -104,7 +104,64 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/29/1_a/" data-id="ck2cj2qw80001fg54o2vjntko" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/30/1_a/" data-id="ck2cjt8jm0001sv54vzovjju1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-1_b" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/30/1_b/" class="article-date">
+  <time datetime="2019-10-30T00:34:51.958Z" itemprop="datePublished">2019-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/30/1_b/">萌新acm(1) B-TAKOYAKI FESTIVAL 2019</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<blockquote>
+<p>It’s now the season of TAKOYAKI FESTIVAL!</p>
+</blockquote>
+<blockquote>
+<p>This year, N takoyaki (a ball-shaped food with a piece of octopus inside) will be served. The deliciousness of the i-th takoyaki is di.</p>
+</blockquote>
+<blockquote>
+<p>As is commonly known, when you eat two takoyaki of deliciousness x and y together, you restore x×y health points.</p>
+</blockquote>
+<blockquote>
+<p>There are  N×(N−1)    2  ways to choose two from the N takoyaki served in the festival. For each of these choices, find the health points restored from eating the two takoyaki, then compute the sum of these  N×(N−1)    2  values.</p>
+</blockquote>
+<blockquote>
+<p>All values in input are integers.<br>2≤N≤50<br>0≤di≤100</p>
+</blockquote>
+<hr>
+<p><strong>思路</strong></p>
+<h2 id="遍历每一个元素，计算每一个元素与其之后所有元素之和的乘积，再将所有乘积相加即是答案，复杂度O-n"><a href="#遍历每一个元素，计算每一个元素与其之后所有元素之和的乘积，再将所有乘积相加即是答案，复杂度O-n" class="headerlink" title="遍历每一个元素，计算每一个元素与其之后所有元素之和的乘积，再将所有乘积相加即是答案，复杂度O(n)"></a>遍历每一个元素，计算每一个元素与其之后所有元素之和的乘积，再将所有乘积相加即是答案，复杂度O(n)</h2><p><strong>AC代码</strong><br>语言：c</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n = 0, i = 0, sum = 0, result = 0;</span><br><span class="line">    int *p = NULL;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">    p = (int)calloc(n, sizeof(int));</span><br><span class="line">    for (i = 0; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;p[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    for (i = 0; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sum += p[i];</span><br><span class="line">    &#125;</span><br><span class="line">    for (i = 0; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sum -= p[i];</span><br><span class="line">        result += p[i] * sum;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d&quot;, result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/10/30/1_b/" data-id="ck2cjt8jq0002sv54sqse2spj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -277,7 +334,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/14/彩虹社熟肉整理/" data-id="ck2cj2qw10000fg54qzsiqrl9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/14/彩虹社熟肉整理/" data-id="ck2cjt8jf0000sv542l7ktjt2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -318,7 +375,11 @@
       <ul>
         
           <li>
-            <a href="/2019/10/29/1_a/">萌新acm(1) A-curtain</a>
+            <a href="/2019/10/30/1_a/">萌新acm(1) A-curtain</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/30/1_b/">萌新acm(1) B-TAKOYAKI FESTIVAL 2019</a>
           </li>
         
           <li>
