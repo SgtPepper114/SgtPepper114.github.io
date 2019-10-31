@@ -5,19 +5,19 @@
   
 
   
-  <title>萌新acm(1) A-curtain | Hexo</title>
+  <title>萌新acm(1) E - Odds of Oddness | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题面  The window of Takahashi’s room has a width of A. There are two curtains hung over the window, each of which has a horizontal length of B. (Vertically, the curtains are long enough to cover the who">
+  <meta name="description" content="题面  Given is an integer N.   Takahashi chooses an integer a from the positive integers not greater than N with equal probability.   Find the probability that a is odd.   1≤N≤100   思路 看得懂英文就行  AC代码 语言:">
 <meta property="og:type" content="article">
-<meta property="og:title" content="萌新acm(1) A-curtain">
-<meta property="og:url" content="http://yoursite.com/2019/10/30/1_a/index.html">
+<meta property="og:title" content="萌新acm(1) E - Odds of Oddness">
+<meta property="og:url" content="http://yoursite.com/2019/10/31/1_e/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题面  The window of Takahashi’s room has a width of A. There are two curtains hung over the window, each of which has a horizontal length of B. (Vertically, the curtains are long enough to cover the who">
+<meta property="og:description" content="题面  Given is an integer N.   Takahashi chooses an integer a from the positive integers not greater than N with equal probability.   Find the probability that a is odd.   1≤N≤100   思路 看得懂英文就行  AC代码 语言:">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-30T15:02:08.128Z">
+<meta property="og:updated_time" content="2019-10-31T03:03:55.503Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="萌新acm(1) A-curtain">
-<meta name="twitter:description" content="题面  The window of Takahashi’s room has a width of A. There are two curtains hung over the window, each of which has a horizontal length of B. (Vertically, the curtains are long enough to cover the who">
+<meta name="twitter:title" content="萌新acm(1) E - Odds of Oddness">
+<meta name="twitter:description" content="题面  Given is an integer N.   Takahashi chooses an integer a from the positive integers not greater than N with equal probability.   Find the probability that a is odd.   1≤N≤100   思路 看得懂英文就行  AC代码 语言:">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -64,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-1_a" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-1_e" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/10/30/1_a/" class="article-date">
-  <time datetime="2019-10-30T15:02:08.128Z" itemprop="datePublished">2019-10-30</time>
+    <a href="/2019/10/31/1_e/" class="article-date">
+  <time datetime="2019-10-31T03:03:55.503Z" itemprop="datePublished">2019-10-31</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      萌新acm(1) A-curtain
+      萌新acm(1) E - Odds of Oddness
     </h1>
   
 
@@ -88,25 +88,30 @@
       
         <p><strong>题面</strong></p>
 <blockquote>
-<p>The window of Takahashi’s room has a width of A. There are two curtains hung over the window, each of which has a horizontal length of B. (Vertically, the curtains are long enough to cover the whole window.)</p>
+<p>Given is an integer N.</p>
 </blockquote>
 <blockquote>
-<p>We will close the window so as to minimize the total horizontal length of the uncovered part of the window. Find the total horizontal length of the uncovered parts of the window then.</p>
+<p>Takahashi chooses an integer a from the positive integers not greater than N with equal probability.</p>
 </blockquote>
 <blockquote>
-<p>1≤A≤100<br>1≤B≤100<br>A and B are integers.</p>
+<p>Find the probability that a is odd.</p>
+</blockquote>
+<blockquote>
+<p>1≤N≤100</p>
 </blockquote>
 <hr>
-<p><strong>思路</strong><br>看得懂英文就行</p>
+<p><strong>思路</strong></p>
+<p>看得懂英文就行</p>
 <hr>
-<p><strong>AC代码</strong><br>语言：c</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">0</span>, b = <span class="number">0</span>, con = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;a, &amp;b);</span><br><span class="line">    con = a - <span class="number">2</span> * b;</span><br><span class="line">    <span class="keyword">if</span> (con &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        con = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>, con);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>AC代码</strong></p>
+<p>语言:c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">double</span> pro = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">0</span>) pro = <span class="number">0.5</span>;</span><br><span class="line">    <span class="keyword">else</span> pro =(n+<span class="number">1</span>) / (<span class="keyword">double</span>)(<span class="number">2</span>*n);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%.10lf"</span>, pro);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/30/1_a/" data-id="ck2e8bixv0000l4541bieex62" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/31/1_e/" data-id="ck2e8biy90004l454qppnz2c7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -115,19 +120,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/10/30/1_b/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          萌新acm(1) B-TAKOYAKI FESTIVAL 2019
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/09/14/彩虹社熟肉整理/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/10/31/1_f/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">彩虹社熟肉整理</div>
+      <div class="article-nav-title">萌新acm(1) F - Roller Coaster</div>
     </a>
   
 </nav>
