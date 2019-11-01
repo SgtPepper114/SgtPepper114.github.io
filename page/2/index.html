@@ -62,6 +62,65 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-1_b" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/31/1_b/" class="article-date">
+  <time datetime="2019-10-31T05:02:29.747Z" itemprop="datePublished">2019-10-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/31/1_b/">萌新acm(1) B-TAKOYAKI FESTIVAL 2019</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<blockquote>
+<p>It’s now the season of TAKOYAKI FESTIVAL!</p>
+</blockquote>
+<blockquote>
+<p>This year, N takoyaki (a ball-shaped food with a piece of octopus inside) will be served. The deliciousness of the i-th takoyaki is di.</p>
+</blockquote>
+<blockquote>
+<p>As is commonly known, when you eat two takoyaki of deliciousness x and y together, you restore x×y health points.</p>
+</blockquote>
+<blockquote>
+<p>There are  N×(N−1)    2  ways to choose two from the N takoyaki served in the festival. For each of these choices, find the health points restored from eating the two takoyaki, then compute the sum of these  N×(N−1)    2  values.</p>
+</blockquote>
+<blockquote>
+<p>All values in input are integers.<br>2≤N≤50<br>0≤di≤100</p>
+</blockquote>
+<hr>
+<p><strong>思路</strong></p>
+<p>遍历每一个元素，计算每一个元素与其之后所有元素之和的乘积，再将所有乘积相加即是答案，复杂度O(n)</p>
+<hr>
+<p><strong>AC代码</strong><br>语言：c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">0</span>, i = <span class="number">0</span>, sum = <span class="number">0</span>, result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> *p = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    p = (<span class="keyword">int</span> *)<span class="built_in">calloc</span>(n, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;p[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sum += p[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sum -= p[i];</span><br><span class="line">        result += p[i] * sum;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>, result);</span><br><span class="line">    <span class="built_in">free</span>(p);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/10/31/1_b/" data-id="ck2g90rsc0001zk5435fn4zdf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-1_a" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/10/31/1_a/" class="article-date">
@@ -104,7 +163,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/31/1_a/" data-id="ck2g5wvdk0000p154mfoh93kg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/31/1_a/" data-id="ck2g90rs60000zk54ivgt04ub" class="article-share-link">Share</a>
       
       
     </footer>
@@ -277,7 +336,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/14/彩虹社熟肉整理/" data-id="ck2g5wvec000bp15430929ibx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/14/彩虹社熟肉整理/" data-id="ck2g90rsz000czk54w9nuhxzr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -323,6 +382,10 @@
       <ul>
         
           <li>
+            <a href="/2019/11/01/1_l/">萌新acm(1) L - Powerful Discount Tickets</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/01/1_k/">萌新acm(1) K - Attack Survival</a>
           </li>
         
@@ -336,10 +399,6 @@
         
           <li>
             <a href="/2019/11/01/1_h/">萌新acm(1) H - Disjoint Set of Common Divisors</a>
-          </li>
-        
-          <li>
-            <a href="/2019/10/31/1_e/">萌新acm(1) E - Odds of Oddness</a>
           </li>
         
       </ul>

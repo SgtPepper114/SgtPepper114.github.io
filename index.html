@@ -62,6 +62,69 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-1_l" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/01/1_l/" class="article-date">
+  <time datetime="2019-11-01T14:39:44.572Z" itemprop="datePublished">2019-11-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/01/1_l/">萌新acm(1) L - Powerful Discount Tickets</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<blockquote>
+<p>Takahashi is going to buy N items one by one.</p>
+</blockquote>
+<blockquote>
+<p>The price of the i-th item he buys is Ai yen (the currency of Japan).</p>
+</blockquote>
+<blockquote>
+<p>He has M discount tickets, and he can use any number of them when buying an item.</p>
+</blockquote>
+<blockquote>
+<p>If Y tickets are used when buying an item priced X yen, he can get the item for  X    2Y  (rounded down to the nearest integer) yen.</p>
+</blockquote>
+<blockquote>
+<p>What is the minimum amount of money required to buy all the items?</p>
+</blockquote>
+<blockquote>
+<p>All values in input are integers.<br>1≤N,M≤105<br>1≤Ai≤109</p>
+</blockquote>
+<hr>
+<p><strong>思路</strong></p>
+<p>优先数列，c语言给我写吐了，现学c++</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<p>语言:c++</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	priority_queue&lt;<span class="keyword">int</span>&gt;q;</span><br><span class="line">	<span class="keyword">int</span> n = <span class="number">0</span>, m = <span class="number">0</span>, i = <span class="number">0</span>, a = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;n, &amp;m);</span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a);</span><br><span class="line">		q.push(a);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">1</span>;i &lt;= m; i++)&#123;</span><br><span class="line">		a = q.top();</span><br><span class="line">		q.pop();</span><br><span class="line">		a /= <span class="number">2</span>;</span><br><span class="line">		q.push(a);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(!q.empty())</span><br><span class="line">    &#123;</span><br><span class="line">		a=q.top();</span><br><span class="line">		q.pop();</span><br><span class="line">		sum += a;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, sum);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/01/1_l/" data-id="ck2g90rsx000bzk54yr02izqy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-1_k" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/01/1_k/" class="article-date">
@@ -115,7 +178,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/01/1_k/" data-id="ck2g5wve60008p154vbkt3jlt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/01/1_k/" data-id="ck2g90rsu000azk54yxqx3hq0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -172,7 +235,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/01/1_j/" data-id="ck2g5wve80009p154evem8dqf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/01/1_j/" data-id="ck2g90rss0009zk54w7ejuf4b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -226,7 +289,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/01/1_i/" data-id="ck2g5wve50007p154miai8gjk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/01/1_i/" data-id="ck2g90rsr0008zk545xjxyb72" class="article-share-link">Share</a>
       
       
     </footer>
@@ -296,7 +359,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/01/1_h/" data-id="ck2g5wve30006p1545b5evop0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/01/1_h/" data-id="ck2g90rsp0007zk54nhuokma5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -353,7 +416,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/31/1_e/" data-id="ck2g5wvdz0004p154daf4ujvg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/31/1_e/" data-id="ck2g90rsi0003zk54itqbpgt5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -412,7 +475,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/31/1_f/" data-id="ck2g5wvdx0003p154ovilq37f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/31/1_f/" data-id="ck2g90rsl0005zk54i5wpk47e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -475,7 +538,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/31/1_g/" data-id="ck2g5wve10005p154pi3w3mfv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/31/1_g/" data-id="ck2g90rsn0006zk54flemcqfb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -531,7 +594,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/31/1_d/" data-id="ck2g5wve9000ap154fg04071o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/31/1_d/" data-id="ck2g90rsk0004zk54n8s4mocj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -587,66 +650,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/31/1_c/" data-id="ck2g5wvdv0002p154ybzite9m" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-1_b" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/10/31/1_b/" class="article-date">
-  <time datetime="2019-10-31T05:02:29.747Z" itemprop="datePublished">2019-10-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/31/1_b/">萌新acm(1) B-TAKOYAKI FESTIVAL 2019</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong></p>
-<blockquote>
-<p>It’s now the season of TAKOYAKI FESTIVAL!</p>
-</blockquote>
-<blockquote>
-<p>This year, N takoyaki (a ball-shaped food with a piece of octopus inside) will be served. The deliciousness of the i-th takoyaki is di.</p>
-</blockquote>
-<blockquote>
-<p>As is commonly known, when you eat two takoyaki of deliciousness x and y together, you restore x×y health points.</p>
-</blockquote>
-<blockquote>
-<p>There are  N×(N−1)    2  ways to choose two from the N takoyaki served in the festival. For each of these choices, find the health points restored from eating the two takoyaki, then compute the sum of these  N×(N−1)    2  values.</p>
-</blockquote>
-<blockquote>
-<p>All values in input are integers.<br>2≤N≤50<br>0≤di≤100</p>
-</blockquote>
-<hr>
-<p><strong>思路</strong></p>
-<p>遍历每一个元素，计算每一个元素与其之后所有元素之和的乘积，再将所有乘积相加即是答案，复杂度O(n)</p>
-<hr>
-<p><strong>AC代码</strong><br>语言：c</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">0</span>, i = <span class="number">0</span>, sum = <span class="number">0</span>, result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> *p = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    p = (<span class="keyword">int</span> *)<span class="built_in">calloc</span>(n, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;p[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sum += p[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sum -= p[i];</span><br><span class="line">        result += p[i] * sum;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>, result);</span><br><span class="line">    <span class="built_in">free</span>(p);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/31/1_b/" data-id="ck2g5wvdr0001p154yvdxbpp7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/31/1_c/" data-id="ck2g90rsf0002zk54pmc1uaql" class="article-share-link">Share</a>
       
       
     </footer>
@@ -692,6 +696,10 @@
       <ul>
         
           <li>
+            <a href="/2019/11/01/1_l/">萌新acm(1) L - Powerful Discount Tickets</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/01/1_k/">萌新acm(1) K - Attack Survival</a>
           </li>
         
@@ -705,10 +713,6 @@
         
           <li>
             <a href="/2019/11/01/1_h/">萌新acm(1) H - Disjoint Set of Common Divisors</a>
-          </li>
-        
-          <li>
-            <a href="/2019/10/31/1_e/">萌新acm(1) E - Odds of Oddness</a>
           </li>
         
       </ul>
