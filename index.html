@@ -62,6 +62,128 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2_bc" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/05/2_bc/" class="article-date">
+  <time datetime="2019-11-05T10:30:48.545Z" itemprop="datePublished">2019-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>title:萌新acm(2) B&amp;C - Social Network</p>
+<hr>
+<p><strong>题面</strong></p>
+<blockquote>
+<p>The only difference between easy and hard versions are constraints on n and k.</p>
+</blockquote>
+<blockquote>
+<p>You are messaging in one of the popular social networks via your smartphone. Your smartphone can show at most k most recent conversations with your friends. Initially, the screen is empty (i.e. the number of displayed conversations equals 0).</p>
+</blockquote>
+<blockquote>
+<p>Each conversation is between you and some of your friends. There is at most one conversation with any of your friends. So each conversation is uniquely defined by your friend.</p>
+</blockquote>
+<blockquote>
+<p>You (suddenly!) have the ability to see the future. You know that during the day you will receive n messages, the i-th message will be received from the friend with ID idi (1≤idi≤109).</p>
+</blockquote>
+<blockquote>
+<p>If you receive a message from idi in the conversation which is currently displayed on the smartphone then nothing happens: the conversations of the screen do not change and do not change their order, you read the message and continue waiting for new messages.</p>
+</blockquote>
+<blockquote>
+<p>Otherwise (i.e. if there is no conversation with idi on the screen):</p>
+</blockquote>
+<blockquote>
+<p>Firstly, if the number of conversations displayed on the screen is k, the last conversation (which has the position k) is removed from the screen.<br>Now the number of conversations on the screen is guaranteed to be less than k and the conversation with the friend idi is not displayed on the screen.<br>The conversation with the friend idi appears on the first (the topmost) position on the screen and all the other displayed conversations are shifted one position down.<br>Your task is to find the list of conversations (in the order they are displayed on the screen) after processing all n messages.</p>
+</blockquote>
+<hr>
+<p><strong>思路</strong></p>
+<p>用队列储存数据,用布尔型向量的第i个元素表示数i是否在队列中</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<p>语言:c++</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> n = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">long</span> k = <span class="number">0</span>, i = <span class="number">0</span>, s = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">long</span> temp = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld %ld"</span>, &amp;n, &amp;k);</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; p(<span class="number">1e+9</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">long</span>&gt; q0(k, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">long</span>&gt; q;</span><br><span class="line">    <span class="keyword">while</span>(n &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        n--;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%ld"</span>, &amp;temp);</span><br><span class="line">        <span class="keyword">if</span>(p[temp]) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">if</span> (q.size() == k)</span><br><span class="line">        &#123;</span><br><span class="line">            p[q.front()] = <span class="literal">false</span>;</span><br><span class="line">            q.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        p[temp] = <span class="literal">true</span>;</span><br><span class="line">        q.push(temp);</span><br><span class="line">    &#125;</span><br><span class="line">    s = q.size();</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; s &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">for</span>(i = s<span class="number">-1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        q0[i] = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; s; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%ld "</span>, q0[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/05/2_bc/" data-id="ck2lq0vue000c3454cq1eij9z" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2_a" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/05/2_a/" class="article-date">
+  <time datetime="2019-11-05T00:51:54.494Z" itemprop="datePublished">2019-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/05/2_a/">萌新acm(2) A - Equalize Prices Again</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<blockquote>
+<p>You are both a shop keeper and a shop assistant at a small nearby shop. You have n goods, the i-th good costs ai coins.</p>
+</blockquote>
+<blockquote>
+<p>You got tired of remembering the price of each product when customers ask for it, thus you decided to simplify your life. More precisely you decided to set the same price for all n goods you have.</p>
+</blockquote>
+<blockquote>
+<p>However, you don’t want to lose any money so you want to choose the price in such a way that the sum of new prices is not less than the sum of the initial prices. It means that if you sell all n goods for the new price, you will receive at least the same (or greater) amount of money as if you sell them for their initial prices.</p>
+</blockquote>
+<blockquote>
+<p>On the other hand, you don’t want to lose customers because of big prices so among all prices you can choose you need to choose the minimum one.</p>
+</blockquote>
+<blockquote>
+<p>So you need to find the minimum possible equal price of all n goods so if you sell them for this price, you will receive at least the same (or greater) amount of money as if you sell them for their initial prices.</p>
+</blockquote>
+<blockquote>
+<p>You have to answer q independent queries.</p>
+</blockquote>
+<hr>
+<p><strong>思路</strong></p>
+<p>无</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<p>语言:c++</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">0</span>, q = <span class="number">0</span>, i = <span class="number">0</span>, x = <span class="number">0</span>, ave = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;q);</span><br><span class="line">    <span class="keyword">while</span>(q &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        q--;</span><br><span class="line">        ave = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;x);</span><br><span class="line">            ave += x;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(ave % n != <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            ave = ave / n + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            ave /= n;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ave);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/05/2_a/" data-id="ck2lq0vu800093454xe5q2gl0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-1_l" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/01/1_l/" class="article-date">
@@ -115,7 +237,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/01/1_l/" data-id="ck2g90rsx000bzk54yr02izqy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/01/1_l/" data-id="ck2lq0vui000d3454ssxb4uat" class="article-share-link">Share</a>
       
       
     </footer>
@@ -178,7 +300,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/01/1_k/" data-id="ck2g90rsu000azk54yxqx3hq0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/01/1_k/" data-id="ck2lq0vuc000b3454clx9po8m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -235,7 +357,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/01/1_j/" data-id="ck2g90rss0009zk54w7ejuf4b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/01/1_j/" data-id="ck2lq0vu9000a34541ahldeok" class="article-share-link">Share</a>
       
       
     </footer>
@@ -289,7 +411,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/01/1_i/" data-id="ck2g90rsr0008zk545xjxyb72" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/01/1_i/" data-id="ck2lq0vu500073454pb66usmu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -359,7 +481,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/01/1_h/" data-id="ck2g90rsp0007zk54nhuokma5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/01/1_h/" data-id="ck2lq0vu6000834546wqhfu5b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -416,7 +538,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/31/1_e/" data-id="ck2g90rsi0003zk54itqbpgt5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/31/1_e/" data-id="ck2lq0vu000043454fei6xrrx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -475,7 +597,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/31/1_f/" data-id="ck2g90rsl0005zk54i5wpk47e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/31/1_f/" data-id="ck2lq0vu300063454l272ikut" class="article-share-link">Share</a>
       
       
     </footer>
@@ -538,119 +660,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/31/1_g/" data-id="ck2g90rsn0006zk54flemcqfb" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-1_d" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/10/31/1_d/" class="article-date">
-  <time datetime="2019-10-31T05:03:19.199Z" itemprop="datePublished">2019-10-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/31/1_d/">萌新acm(1) D - Triangles</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong></p>
-<blockquote>
-<p>Takahashi has N sticks that are distinguishable from each other. The length of the i-th stick is Li.</p>
-</blockquote>
-<blockquote>
-<p>He is going to form a triangle using three of these sticks. Let a, b, and c be the lengths of the three sticks used. Here, all of the following conditions must be satisfied:</p>
-</blockquote>
-<blockquote>
-<p>a&lt;b+c<br>b&lt;c+a<br>c&lt;a+b</p>
-</blockquote>
-<blockquote>
-<p>How many different triangles can be formed? Two triangles are considered different when there is a stick used in only one of them.<br>Print the number of different triangles that can be formed.</p>
-</blockquote>
-<hr>
-<p> <strong>思路</strong><br> 只想出了复杂度O(n3)的解法，所以先用归并排序减少了循环次数，成功卡过</p>
-<hr>
-<p><strong>AC代码</strong></p>
-<p>语言:c</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> *p, <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> *left = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">int</span> *right = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        i = n / <span class="number">2</span>;</span><br><span class="line">        left = (<span class="keyword">int</span> *)<span class="built_in">calloc</span>(i, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">        right = (<span class="keyword">int</span> *)<span class="built_in">calloc</span>(n-i, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">        <span class="keyword">int</span> k1 = <span class="number">0</span>, k2 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (k1 = <span class="number">0</span>; k1 &lt; i; k1++)</span><br><span class="line">        &#123;</span><br><span class="line">            left[k1] = p[k1];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (k2 = i; k2 &lt; n; k2++)</span><br><span class="line">        &#123;</span><br><span class="line">            right[k2-i] = p[k2];</span><br><span class="line">        &#125;</span><br><span class="line">        merge(left, i);</span><br><span class="line">        merge(right, n-i);</span><br><span class="line">        k1 = <span class="number">0</span>;</span><br><span class="line">        k2 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (k1 &lt; i &amp;&amp; k2 &lt; n-i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (left[k1] &gt; right[k2])</span><br><span class="line">            &#123;</span><br><span class="line">                p[count] = left[k1];</span><br><span class="line">                k1++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                p[count] = right[k2];</span><br><span class="line">                k2++;</span><br><span class="line">            &#125;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (k1 == i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">while</span> (k2 &lt; n-i)</span><br><span class="line">            &#123;</span><br><span class="line">                p[count] = right[k2];</span><br><span class="line">                count++;</span><br><span class="line">                k2++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (k2 == n-i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">while</span> (k1 &lt; i)</span><br><span class="line">            &#123;</span><br><span class="line">                p[count] = left[k1];</span><br><span class="line">                count++;</span><br><span class="line">                k1++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">free</span>(left);</span><br><span class="line">        <span class="built_in">free</span>(right);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">search</span><span class="params">(<span class="keyword">int</span> *p, <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>, k = <span class="number">0</span>, count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">3</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (p[<span class="number">0</span>] &gt; p[<span class="number">1</span>] + p[<span class="number">2</span>]) <span class="keyword">return</span> search(p+<span class="number">1</span>, n<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">if</span> (p[n<span class="number">-1</span>] + p[n<span class="number">-2</span>] &lt; p[n<span class="number">-3</span>]) <span class="keyword">return</span> search(p, n<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n<span class="number">-2</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (j = i+<span class="number">1</span>; j &lt; n<span class="number">-1</span>; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span> (k = n<span class="number">-1</span>; k &gt; j; k--)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (p[j] + p[k] &gt; p[i])</span><br><span class="line">                &#123;</span><br><span class="line">                    count += k-j;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">0</span>, sum = <span class="number">0</span>, i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> *p = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    p = (<span class="keyword">int</span> *)<span class="built_in">calloc</span>(n, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;p[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    merge(p, n);</span><br><span class="line">    sum = search(p, n);</span><br><span class="line">    <span class="built_in">free</span>(p);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>, sum);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/31/1_d/" data-id="ck2g90rsk0004zk54n8s4mocj" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-1_c" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/10/31/1_c/" class="article-date">
-  <time datetime="2019-10-31T05:02:56.223Z" itemprop="datePublished">2019-10-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/31/1_c/">萌新acm(1) C - Slimes</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong></p>
-<blockquote>
-<p>There are N slimes lining up from left to right. The colors of these slimes will be given as a string S of length N consisting of lowercase English letters. The i-th slime from the left has the color that corresponds to the i-th character of S.</p>
-</blockquote>
-<blockquote>
-<p>Adjacent slimes with the same color will fuse into one larger slime without changing the color. If there were a slime adjacent to this group of slimes before fusion, that slime is now adjacent to the new larger slime.</p>
-</blockquote>
-<blockquote>
-<p>Ultimately, how many slimes will be there?</p>
-</blockquote>
-<blockquote>
-<p>1≤N≤105<br>|S|=N<br>S consists of lowercase English letters.</p>
-</blockquote>
-<hr>
-<p><strong>思路</strong><br>遍历字符串，当一个元素与其后一个元素不同时count+1，count即是答案，复杂度O（n）</p>
-<hr>
-<p><strong>AC代码</strong></p>
-<p>语言:c</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">0</span>, count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> *p = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    p = (<span class="keyword">char</span> *)<span class="built_in">calloc</span>(n+<span class="number">1</span>, <span class="keyword">sizeof</span>(<span class="keyword">char</span>));</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>, p);</span><br><span class="line">    <span class="keyword">while</span> (*p != <span class="string">'\0'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (*p != *(p+<span class="number">1</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        p++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>, count);</span><br><span class="line">    <span class="built_in">free</span>(p);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/31/1_c/" data-id="ck2g90rsf0002zk54pmc1uaql" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/31/1_g/" data-id="ck2lq0vu100053454ys6fixdh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -696,6 +706,14 @@
       <ul>
         
           <li>
+            <a href="/2019/11/05/2_bc/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/05/2_a/">萌新acm(2) A - Equalize Prices Again</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/01/1_l/">萌新acm(1) L - Powerful Discount Tickets</a>
           </li>
         
@@ -705,14 +723,6 @@
         
           <li>
             <a href="/2019/11/01/1_j/">萌新acm(1) J - Tap Dance</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/01/1_i/">萌新acm(1) I - Weather Prediction</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/01/1_h/">萌新acm(1) H - Disjoint Set of Common Divisors</a>
           </li>
         
       </ul>
