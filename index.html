@@ -62,6 +62,65 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2_d" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/07/2_d/" class="article-date">
+  <time datetime="2019-11-07T13:30:59.984Z" itemprop="datePublished">2019-11-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/07/2_d/">萌新acm(2) D - Pipes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<blockquote>
+<p>You are given a system of pipes. It consists of two rows, each row consists of n pipes. The top left pipe has the coordinates (1,1) and the bottom right — (2,n).</p>
+</blockquote>
+<blockquote>
+<p>There are six types of pipes: two types of straight pipes and four types of curved pipes. Here are the examples of all six types:<br>![Types of pipes]<a href="https://vj.z180.cn/8013a29865dfd84f943080c025bb1d7b?v=1572731637" target="_blank" rel="noopener">1</a><br>You can turn each of the given pipes 90 degrees clockwise or counterclockwise arbitrary (possibly, zero) number of times (so the types 1 and 2 can become each other and types 3,4,5,6 can become each other).</p>
+</blockquote>
+<blockquote>
+<p>You want to turn some pipes in a way that the water flow can start at (1,0) (to the left of the top left pipe), move to the pipe at (1,1), flow somehow by connected pipes to the pipe at (2,n) and flow right to (2,n+1).</p>
+</blockquote>
+<blockquote>
+<p>Pipes are connected if they are adjacent in the system and their ends are connected. Here are examples of connected pipes:<br>![Examples of connected pipes]<a href="https://vj.z180.cn/3d3f37b8e6c60e6601a4edc78fbbf205?v=1572731637" target="_blank" rel="noopener">2</a><br>Let’s describe the problem using some example:<br>![The first example input]<a href="https://vj.z180.cn/ea8dba156764f5a4fd1b09a2f5120d25?v=1572731637" target="_blank" rel="noopener">3</a><br>And its solution is below:<br>![The first example answer]<a href="https://vj.z180.cn/965a92240411f85bfbdf8a5aeecab2c6?v=1572731637" target="_blank" rel="noopener">4</a><br>As you can see, the water flow is the poorly drawn blue line. To obtain the answer, we need to turn the pipe at (1,2) 90 degrees clockwise, the pipe at (2,3) 90 degrees, the pipe at (1,6) 90 degrees, the pipe at (1,7) 180 degrees and the pipe at (2,7) 180 degrees. Then the flow of water can reach (2,n+1) from (1,0).</p>
+</blockquote>
+<blockquote>
+<p>You have to answer q independent queries.</p>
+</blockquote>
+<hr>
+<p><strong>思路</strong><br>由k个直管道连接n个上下都为弯曲的管道（简称此组合为w），当左方有奇数个w时直管道必在下方，反之必在上方，且最终n为偶数时成立</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<p>语言：c++</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> q = <span class="number">0</span>, x = <span class="number">0</span>, y = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">string</span> k1, k2;</span><br><span class="line">    <span class="keyword">long</span> n = <span class="number">0</span>, cou = <span class="number">0</span>, i = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; q;</span><br><span class="line">    <span class="keyword">while</span>(q &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        q--;</span><br><span class="line">        cou = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; k1;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; k2;</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(k1[i] == <span class="string">'1'</span> || k1[i] == <span class="string">'2'</span>) k1[i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> k1[i] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span>(k2[i] == <span class="string">'1'</span> || k2[i] == <span class="string">'2'</span>) k2[i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> k2[i] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span>(!k1[i] &amp;&amp; !k2[i])</span><br><span class="line">            &#123;</span><br><span class="line">                cou++;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(k1[i] &amp;&amp; (!(cou%<span class="number">2</span>))) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span>(k2[i] &amp;&amp; (cou%<span class="number">2</span>)) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>((i==n) &amp;&amp; (cou%<span class="number">2</span>)) <span class="built_in">cout</span> &lt;&lt; <span class="string">"YES"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; <span class="string">"NO"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/07/2_d/" data-id="ck2or3wr3000etj54pkmxuscv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2_e" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/06/2_e/" class="article-date">
@@ -108,7 +167,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/06/2_e/" data-id="ck2nb5xda000din54xy7tppas" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/06/2_e/" data-id="ck2or3wr4000ftj54ybmzm07x" class="article-share-link">Share</a>
       
       
     </footer>
@@ -174,7 +233,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/05/2_bc/" data-id="ck2nb5xd7000bin54xzzveijq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/05/2_bc/" data-id="ck2or3wr2000dtj54333o38dx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -237,7 +296,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/05/2_a/" data-id="ck2nb5xdc000ein5432lxbxtu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/05/2_a/" data-id="ck2or3wr0000ctj54tgpnhhkk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -300,7 +359,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/01/1_l/" data-id="ck2nb5xd9000cin54kv9glzdt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/01/1_l/" data-id="ck2or3wqz000btj54hgh93myd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -363,7 +422,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/01/1_k/" data-id="ck2nb5xd5000ain54r68tb2uk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/01/1_k/" data-id="ck2or3wqw000atj54ion9rib0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -420,7 +479,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/01/1_j/" data-id="ck2nb5xd30009in54puc6rw9o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/01/1_j/" data-id="ck2or3wqv0009tj54toeqm00o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -474,7 +533,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/01/1_i/" data-id="ck2nb5xd20008in54i8d4j0hb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/01/1_i/" data-id="ck2or3wqt0008tj54uwm153c0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -544,7 +603,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/01/1_h/" data-id="ck2nb5xd00007in54imzfeqxx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/01/1_h/" data-id="ck2or3wqs0007tj54hcvei5rf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -601,66 +660,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/31/1_e/" data-id="ck2nb5xcv0004in54gay3mfk3" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-1_f" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/10/31/1_f/" class="article-date">
-  <time datetime="2019-10-31T06:31:10.695Z" itemprop="datePublished">2019-10-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/31/1_f/">萌新acm(1) F - Roller Coaster</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong></p>
-<blockquote>
-<p>N friends of Takahashi has come to a theme park.</p>
-</blockquote>
-<blockquote>
-<p>To ride the most popular roller coaster in the park, you must be at least K centimeters tall.</p>
-</blockquote>
-<blockquote>
-<p>The i-th friend is hi centimeters tall.</p>
-</blockquote>
-<blockquote>
-<p>How many of the Takahashi’s friends can ride the roller coaster?</p>
-</blockquote>
-<blockquote>
-<p>1[le]N[le]105<br>1[le]K[le]500<br>1[le]hi[le]500<br>All values in input are integers.</p>
-</blockquote>
-<hr>
-<p><strong>思路</strong></p>
-<p>直接穷举复杂度O(n),注意不要爆int即可</p>
-<hr>
-<p><strong>AC代码</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">long</span> n = <span class="number">0</span>, count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>, x = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%ld %d"</span>, &amp;n, &amp;k);</span><br><span class="line">    <span class="keyword">while</span> (n &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        n--;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;x);</span><br><span class="line">        <span class="keyword">if</span> (x &gt;= k) count++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%ld"</span>, count);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/31/1_f/" data-id="ck2nb5xcz0006in54ihit5owy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/31/1_e/" data-id="ck2or3wqn0004tj54nvrkfwac" class="article-share-link">Share</a>
       
       
     </footer>
@@ -706,6 +706,10 @@
       <ul>
         
           <li>
+            <a href="/2019/11/07/2_d/">萌新acm(2) D - Pipes</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/06/2_e/">萌新acm(2) E - Distinct Characters Queries</a>
           </li>
         
@@ -719,10 +723,6 @@
         
           <li>
             <a href="/2019/11/01/1_l/">萌新acm(1) L - Powerful Discount Tickets</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/01/1_k/">萌新acm(1) K - Attack Survival</a>
           </li>
         
       </ul>

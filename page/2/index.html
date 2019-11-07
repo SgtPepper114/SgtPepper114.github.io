@@ -62,6 +62,65 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-1_f" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/31/1_f/" class="article-date">
+  <time datetime="2019-10-31T06:31:10.695Z" itemprop="datePublished">2019-10-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/31/1_f/">萌新acm(1) F - Roller Coaster</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<blockquote>
+<p>N friends of Takahashi has come to a theme park.</p>
+</blockquote>
+<blockquote>
+<p>To ride the most popular roller coaster in the park, you must be at least K centimeters tall.</p>
+</blockquote>
+<blockquote>
+<p>The i-th friend is hi centimeters tall.</p>
+</blockquote>
+<blockquote>
+<p>How many of the Takahashi’s friends can ride the roller coaster?</p>
+</blockquote>
+<blockquote>
+<p>1[le]N[le]105<br>1[le]K[le]500<br>1[le]hi[le]500<br>All values in input are integers.</p>
+</blockquote>
+<hr>
+<p><strong>思路</strong></p>
+<p>直接穷举复杂度O(n),注意不要爆int即可</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">long</span> n = <span class="number">0</span>, count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>, x = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%ld %d"</span>, &amp;n, &amp;k);</span><br><span class="line">    <span class="keyword">while</span> (n &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        n--;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;x);</span><br><span class="line">        <span class="keyword">if</span> (x &gt;= k) count++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%ld"</span>, count);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/10/31/1_f/" data-id="ck2or3wqo0005tj54sakxg8od" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-1_g" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/10/31/1_g/" class="article-date">
@@ -115,7 +174,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/31/1_g/" data-id="ck2nb5xcx0005in54jnpfgop6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/31/1_g/" data-id="ck2or3wqq0006tj547t5jrqri" class="article-share-link">Share</a>
       
       
     </footer>
@@ -171,7 +230,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/31/1_d/" data-id="ck2nb5xct0003in54o3giihkz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/31/1_d/" data-id="ck2or3wql0003tj54c9tneq0h" class="article-share-link">Share</a>
       
       
     </footer>
@@ -227,7 +286,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/31/1_c/" data-id="ck2nb5xci0001in54h28joein" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/31/1_c/" data-id="ck2or3wqi0002tj54hw87c3ho" class="article-share-link">Share</a>
       
       
     </footer>
@@ -286,7 +345,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/31/1_b/" data-id="ck2nb5xcq0002in5481ipmmqm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/31/1_b/" data-id="ck2or3wqf0001tj54klwsplh0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -338,7 +397,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/31/1_a/" data-id="ck2nb5xcc0000in54y4lbp4cv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/31/1_a/" data-id="ck2or3wq90000tj54kbayjn1n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -511,7 +570,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/14/彩虹社熟肉整理/" data-id="ck2nb5xdd000fin54ehp51t0q" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/14/彩虹社熟肉整理/" data-id="ck2or3wr6000gtj543t7uhgy7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -557,6 +616,10 @@
       <ul>
         
           <li>
+            <a href="/2019/11/07/2_d/">萌新acm(2) D - Pipes</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/06/2_e/">萌新acm(2) E - Distinct Characters Queries</a>
           </li>
         
@@ -570,10 +633,6 @@
         
           <li>
             <a href="/2019/11/01/1_l/">萌新acm(1) L - Powerful Discount Tickets</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/01/1_k/">萌新acm(1) K - Attack Survival</a>
           </li>
         
       </ul>
