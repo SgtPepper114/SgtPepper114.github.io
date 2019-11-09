@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="题面  The only difference between easy and hard versions is the maximum value of n.   You are given a positive integer number n. You really love good numbers so you want to find the smallest good number">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-09T06:10:06.760Z">
+<meta property="og:updated_time" content="2019-11-09T06:11:45.420Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="萌新acm(2) J&amp;K - Good Numbers">
 <meta name="twitter:description" content="题面  The only difference between easy and hard versions is the maximum value of n.   You are given a positive integer number n. You really love good numbers so you want to find the smallest good number">
@@ -67,7 +67,7 @@
         <section id="main"><article id="post-2_jk" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/09/2_jk/" class="article-date">
-  <time datetime="2019-11-09T06:10:06.760Z" itemprop="datePublished">2019-11-09</time>
+  <time datetime="2019-11-09T06:11:45.420Z" itemprop="datePublished">2019-11-09</time>
 </a>
     
   </div>
@@ -116,7 +116,7 @@
 </blockquote>
 <hr>
 <p><strong>思路</strong></p>
-<p>对于一个数n，若(3^k-1)/2 &lt; n &lt; 3^k，则大于这个数的最小good number即为3^k,将n减去3^k;若n &lt; (3^k - 1)/2, 则将n减去3^(k-1)，继续对n求good number直到n等于0，将所有减去的数累加即为要求的good number</p>
+<p>对于一个数n，若(3^k-1)/2 &lt; n &lt; 3^k，则大于这个数的最小good number即为3^k,将n置零;若n &lt; (3^k - 1)/2, 则将n减去3^(k-1)，继续对n求good number直到n等于0，将所有减去的数累加即为要求的good number</p>
 <hr>
 <p><strong>AC代码</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt; p;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; <span class="number">39</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        p.insert(<span class="built_in">pow</span>(<span class="number">3</span>, i));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> q;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> n;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; q;</span><br><span class="line">    <span class="keyword">while</span>(q &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        q--;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">        <span class="built_in">set</span>&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt;::iterator ptr = p.lower_bound(n);</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(n &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(n &gt; (*ptr<span class="number">-1</span>)/<span class="number">2</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum += *ptr;</span><br><span class="line">                n = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                n -= *ptr/<span class="number">3</span>;</span><br><span class="line">                sum += *ptr/<span class="number">3</span>;</span><br><span class="line">                ptr = p.lower_bound(n);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -125,7 +125,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/09/2_jk/" data-id="ck2r66k1h000gbz54bi56s2ky" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/2_jk/" data-id="ck2r68kzy000idh54tdc5xnuk" class="article-share-link">Share</a>
       
       
     </footer>
