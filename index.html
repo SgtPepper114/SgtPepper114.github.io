@@ -65,7 +65,7 @@
     <article id="post-2_jk" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/09/2_jk/" class="article-date">
-  <time datetime="2019-11-09T06:11:45.420Z" itemprop="datePublished">2019-11-09</time>
+  <time datetime="2019-11-09T06:26:10.516Z" itemprop="datePublished">2019-11-09</time>
 </a>
     
   </div>
@@ -85,33 +85,15 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>题面</strong></p>
-<blockquote>
 <p>The only difference between easy and hard versions is the maximum value of n.</p>
-</blockquote>
-<blockquote>
 <p>You are given a positive integer number n. You really love good numbers so you want to find the smallest good number greater than or equal to n.</p>
-</blockquote>
-<blockquote>
 <p>The positive integer is called good if it can be represented as a sum of distinct powers of 3 (i.e. no duplicates of powers of 3 are allowed).</p>
-</blockquote>
-<blockquote>
 <p>For example:</p>
-</blockquote>
-<blockquote>
 <p>30 is a good number: 30=33+31,<br>1 is a good number: 1=30,<br>12 is a good number: 12=32+31,<br>but 2 is not a good number: you can’t represent it as a sum of distinct powers of 3 (2=30+30),<br>19 is not a good number: you can’t represent it as a sum of distinct powers of 3 (for example, the representations 19=32+32+30=32+31+31+31+30 are invalid),<br>20 is also not a good number: you can’t represent it as a sum of distinct powers of 3 (for example, the representation 20=32+32+30+30 is invalid).<br>Note, that there exist other representations of 19 and 20 as sums of powers of 3 but none of them consists of distinct powers of 3.</p>
-</blockquote>
-<blockquote>
 <p>For the given positive integer n find such smallest m (n≤m) that m is a good number.</p>
-</blockquote>
-<blockquote>
 <p>You have to answer q independent queries.</p>
-</blockquote>
-<blockquote>
 <p>Input<br>The first line of the input contains one integer q (1≤q≤500) — the number of queries. Then q queries follow.</p>
-</blockquote>
-<blockquote>
 <p>The only line of the query contains one integer n (1≤n≤1018).</p>
-</blockquote>
 <hr>
 <p><strong>思路</strong></p>
 <p>对于一个数n，若(3^k-1)/2 &lt; n &lt; 3^k，则大于这个数的最小good number即为3^k,将n置零;若n &lt; (3^k - 1)/2, 则将n减去3^(k-1)，继续对n求good number直到n等于0，将所有减去的数累加即为要求的good number</p>
@@ -123,7 +105,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/09/2_jk/" data-id="ck2r68kzy000idh54tdc5xnuk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/2_jk/" data-id="ck2r6r6zq000hq05436zogmu2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -135,8 +117,8 @@
   
     <article id="post-2_hi" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/11/08/2_hi/" class="article-date">
-  <time datetime="2019-11-08T14:10:38.418Z" itemprop="datePublished">2019-11-08</time>
+    <a href="/2019/11/09/2_hi/" class="article-date">
+  <time datetime="2019-11-09T06:25:47.824Z" itemprop="datePublished">2019-11-09</time>
 </a>
     
   </div>
@@ -147,7 +129,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/08/2_hi/">萌新acm(2) H&amp;I - Books Exchange</a>
+      <a class="article-title" href="/2019/11/09/2_hi/">萌新acm(2) H&amp;I - Books Exchange</a>
     </h1>
   
 
@@ -156,27 +138,13 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>题面</strong></p>
-<blockquote>
 <p>The only difference between easy and hard versions is constraints.</p>
-</blockquote>
-<blockquote>
 <p>There are n kids, each of them is reading a unique book. At the end of any day, the i-th kid will give his book to the pi-th kid (in case of i=pi the kid will give his book to himself). It is guaranteed that all values of pi are distinct integers from 1 to n (i.e. p is a permutation). The sequence p doesn’t change from day to day, it is fixed.</p>
-</blockquote>
-<blockquote>
 <p>For example, if n=6 and p=[4,6,1,3,5,2] then at the end of the first day the book of the 1-st kid will belong to the 4-th kid, the 2-nd kid will belong to the 6-th kid and so on. At the end of the second day the book of the 1-st kid will belong to the 3-th kid, the 2-nd kid will belong to the 2-th kid and so on.</p>
-</blockquote>
-<blockquote>
 <p>Your task is to determine the number of the day the book of the i-th child is returned back to him for the first time for every i from 1 to n.</p>
-</blockquote>
-<blockquote>
 <p>Consider the following example: p=[5,1,2,4,3]. The book of the 1-st kid will be passed to the following kids:</p>
-</blockquote>
-<blockquote>
 <p>after the 1-st day it will belong to the 5-th kid,<br>after the 2-nd day it will belong to the 3-rd kid,<br>after the 3-rd day it will belong to the 2-nd kid,<br>after the 4-th day it will belong to the 1-st kid.<br>So after the fourth day, the book of the first kid will return to its owner. The book of the fourth kid will return to him for the first time after exactly one day.</p>
-</blockquote>
-<blockquote>
 <p>You have to answer q independent queries.</p>
-</blockquote>
 <hr>
 <p><strong>思路</strong></p>
 <p>若一本书经过n步回到初始位置，则这本书经过的n个人的an都为n</p>
@@ -188,7 +156,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/08/2_hi/" data-id="ck2r68kzv000fdh5496t5zlus" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/2_hi/" data-id="ck2r6r6zp000gq054nefmy9lv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -200,8 +168,8 @@
   
     <article id="post-2_g" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/11/08/2_g/" class="article-date">
-  <time datetime="2019-11-08T13:36:31.746Z" itemprop="datePublished">2019-11-08</time>
+    <a href="/2019/11/09/2_g/" class="article-date">
+  <time datetime="2019-11-09T06:25:30.500Z" itemprop="datePublished">2019-11-09</time>
 </a>
     
   </div>
@@ -212,7 +180,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/08/2_g/">萌新acm(2) G - Yet Another Dividing into Teams</a>
+      <a class="article-title" href="/2019/11/09/2_g/">萌新acm(2) G - Yet Another Dividing into Teams</a>
     </h1>
   
 
@@ -221,12 +189,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>题面</strong></p>
-<blockquote>
 <p>You are a coach of a group consisting of n students. The i-th student has programming skill ai. All students have distinct programming skills. You want to divide them into teams in such a way that:</p>
-</blockquote>
-<blockquote>
 <p>No two students i and j such that |ai−aj|=1 belong to the same team (i.e. skills of each pair of students in the same team have the difference strictly greater than 1);<br>the number of teams is the minimum possible.<br>You have to answer q independent queries.</p>
-</blockquote>
 <hr>
 <p><strong>思路</strong></p>
 <p>无连续数是只有一队，有连续数时有两队</p>
@@ -239,66 +203,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/08/2_g/" data-id="ck2r68kzw000gdh54dc3d7y47" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2_d" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/07/2_d/" class="article-date">
-  <time datetime="2019-11-07T13:30:59.984Z" itemprop="datePublished">2019-11-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/07/2_d/">萌新acm(2) D - Pipes</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong></p>
-<blockquote>
-<p>You are given a system of pipes. It consists of two rows, each row consists of n pipes. The top left pipe has the coordinates (1,1) and the bottom right — (2,n).</p>
-</blockquote>
-<blockquote>
-<p>There are six types of pipes: two types of straight pipes and four types of curved pipes. Here are the examples of all six types:<br>![Types of pipes]<a href="https://vj.z180.cn/8013a29865dfd84f943080c025bb1d7b?v=1572731637" target="_blank" rel="noopener">1</a><br>You can turn each of the given pipes 90 degrees clockwise or counterclockwise arbitrary (possibly, zero) number of times (so the types 1 and 2 can become each other and types 3,4,5,6 can become each other).</p>
-</blockquote>
-<blockquote>
-<p>You want to turn some pipes in a way that the water flow can start at (1,0) (to the left of the top left pipe), move to the pipe at (1,1), flow somehow by connected pipes to the pipe at (2,n) and flow right to (2,n+1).</p>
-</blockquote>
-<blockquote>
-<p>Pipes are connected if they are adjacent in the system and their ends are connected. Here are examples of connected pipes:<br>![Examples of connected pipes]<a href="https://vj.z180.cn/3d3f37b8e6c60e6601a4edc78fbbf205?v=1572731637" target="_blank" rel="noopener">2</a><br>Let’s describe the problem using some example:<br>![The first example input]<a href="https://vj.z180.cn/ea8dba156764f5a4fd1b09a2f5120d25?v=1572731637" target="_blank" rel="noopener">3</a><br>And its solution is below:<br>![The first example answer]<a href="https://vj.z180.cn/965a92240411f85bfbdf8a5aeecab2c6?v=1572731637" target="_blank" rel="noopener">4</a><br>As you can see, the water flow is the poorly drawn blue line. To obtain the answer, we need to turn the pipe at (1,2) 90 degrees clockwise, the pipe at (2,3) 90 degrees, the pipe at (1,6) 90 degrees, the pipe at (1,7) 180 degrees and the pipe at (2,7) 180 degrees. Then the flow of water can reach (2,n+1) from (1,0).</p>
-</blockquote>
-<blockquote>
-<p>You have to answer q independent queries.</p>
-</blockquote>
-<hr>
-<p><strong>思路</strong><br>由k个直管道连接n个上下都为弯曲的管道（简称此组合为w），当左方有奇数个w时直管道必在下方，反之必在上方，且最终n为偶数时成立</p>
-<hr>
-<p><strong>AC代码</strong></p>
-<p>语言：c++</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> q = <span class="number">0</span>, x = <span class="number">0</span>, y = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">string</span> k1, k2;</span><br><span class="line">    <span class="keyword">long</span> n = <span class="number">0</span>, cou = <span class="number">0</span>, i = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; q;</span><br><span class="line">    <span class="keyword">while</span>(q &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        q--;</span><br><span class="line">        cou = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; k1;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; k2;</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(k1[i] == <span class="string">'1'</span> || k1[i] == <span class="string">'2'</span>) k1[i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> k1[i] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span>(k2[i] == <span class="string">'1'</span> || k2[i] == <span class="string">'2'</span>) k2[i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> k2[i] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span>(!k1[i] &amp;&amp; !k2[i])</span><br><span class="line">            &#123;</span><br><span class="line">                cou++;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(k1[i] &amp;&amp; (!(cou%<span class="number">2</span>))) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span>(k2[i] &amp;&amp; (cou%<span class="number">2</span>)) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>((i==n) &amp;&amp; (cou%<span class="number">2</span>)) <span class="built_in">cout</span> &lt;&lt; <span class="string">"YES"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; <span class="string">"NO"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/07/2_d/" data-id="ck2r68kzq000cdh546i077tac" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/2_g/" data-id="ck2r6r6zr000iq054frgkg0ow" class="article-share-link">Share</a>
       
       
     </footer>
@@ -310,8 +215,8 @@
   
     <article id="post-2_e" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/11/06/2_e/" class="article-date">
-  <time datetime="2019-11-06T13:18:34.522Z" itemprop="datePublished">2019-11-06</time>
+    <a href="/2019/11/09/2_e/" class="article-date">
+  <time datetime="2019-11-09T06:25:17.248Z" itemprop="datePublished">2019-11-09</time>
 </a>
     
   </div>
@@ -322,7 +227,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/06/2_e/">萌新acm(2) E - Distinct Characters Queries</a>
+      <a class="article-title" href="/2019/11/09/2_e/">萌新acm(2) E - Distinct Characters Queries</a>
     </h1>
   
 
@@ -331,18 +236,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>题面</strong></p>
-<blockquote>
 <p>You are given a string s consisting of lowercase Latin letters and q queries for this string.</p>
-</blockquote>
-<blockquote>
 <p>Recall that the substring s[l;r] of the string s is the string slsl+1…sr. For example, the substrings of “codeforces” are “code”, “force”, “f”, “for”, but not “coder” and “top”.</p>
-</blockquote>
-<blockquote>
 <p>There are two types of queries:</p>
-</blockquote>
-<blockquote>
 <p>1 pos c (1≤pos≤|s|, c is lowercase Latin letter): replace spos with c (set spos:=c);<br>2 l r (1≤l≤r≤|s|): calculate the number of distinct characters in the substring s[l;r].</p>
-</blockquote>
 <hr>
 <p><strong>思路</strong><br>用set存下标，最后对每个字母遍历是否有在范围内的下表</p>
 <hr>
@@ -354,7 +251,56 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/06/2_e/" data-id="ck2r68kzu000edh5464d7j7gc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/2_e/" data-id="ck2r6r6zo000fq054bdy7vuok" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2_d" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/09/2_d/" class="article-date">
+  <time datetime="2019-11-09T06:25:05.008Z" itemprop="datePublished">2019-11-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/09/2_d/">萌新acm(2) D - Pipes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>You are given a system of pipes. It consists of two rows, each row consists of n pipes. The top left pipe has the coordinates (1,1) and the bottom right — (2,n).</p>
+<p>There are six types of pipes: two types of straight pipes and four types of curved pipes. Here are the examples of all six types:<br>![Types of pipes]<a href="https://vj.z180.cn/8013a29865dfd84f943080c025bb1d7b?v=1572731637" target="_blank" rel="noopener">1</a><br>You can turn each of the given pipes 90 degrees clockwise or counterclockwise arbitrary (possibly, zero) number of times (so the types 1 and 2 can become each other and types 3,4,5,6 can become each other).</p>
+<p>You want to turn some pipes in a way that the water flow can start at (1,0) (to the left of the top left pipe), move to the pipe at (1,1), flow somehow by connected pipes to the pipe at (2,n) and flow right to (2,n+1).</p>
+<p>Pipes are connected if they are adjacent in the system and their ends are connected. Here are examples of connected pipes:<br>![Examples of connected pipes]<a href="https://vj.z180.cn/3d3f37b8e6c60e6601a4edc78fbbf205?v=1572731637" target="_blank" rel="noopener">2</a><br>Let’s describe the problem using some example:<br>![The first example input]<a href="https://vj.z180.cn/ea8dba156764f5a4fd1b09a2f5120d25?v=1572731637" target="_blank" rel="noopener">3</a><br>And its solution is below:<br>![The first example answer]<a href="https://vj.z180.cn/965a92240411f85bfbdf8a5aeecab2c6?v=1572731637" target="_blank" rel="noopener">4</a><br>As you can see, the water flow is the poorly drawn blue line. To obtain the answer, we need to turn the pipe at (1,2) 90 degrees clockwise, the pipe at (2,3) 90 degrees, the pipe at (1,6) 90 degrees, the pipe at (1,7) 180 degrees and the pipe at (2,7) 180 degrees. Then the flow of water can reach (2,n+1) from (1,0).</p>
+<p>You have to answer q independent queries.</p>
+<hr>
+<p><strong>思路</strong><br>由k个直管道连接n个上下都为弯曲的管道（简称此组合为w），当左方有奇数个w时直管道必在下方，反之必在上方，且最终n为偶数时成立</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<p>语言：c++</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> q = <span class="number">0</span>, x = <span class="number">0</span>, y = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">string</span> k1, k2;</span><br><span class="line">    <span class="keyword">long</span> n = <span class="number">0</span>, cou = <span class="number">0</span>, i = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; q;</span><br><span class="line">    <span class="keyword">while</span>(q &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        q--;</span><br><span class="line">        cou = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; k1;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; k2;</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(k1[i] == <span class="string">'1'</span> || k1[i] == <span class="string">'2'</span>) k1[i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> k1[i] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span>(k2[i] == <span class="string">'1'</span> || k2[i] == <span class="string">'2'</span>) k2[i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> k2[i] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span>(!k1[i] &amp;&amp; !k2[i])</span><br><span class="line">            &#123;</span><br><span class="line">                cou++;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(k1[i] &amp;&amp; (!(cou%<span class="number">2</span>))) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span>(k2[i] &amp;&amp; (cou%<span class="number">2</span>)) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>((i==n) &amp;&amp; (cou%<span class="number">2</span>)) <span class="built_in">cout</span> &lt;&lt; <span class="string">"YES"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; <span class="string">"NO"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/09/2_d/" data-id="ck2r6r6zm000eq054we9y8270" class="article-share-link">Share</a>
       
       
     </footer>
@@ -366,8 +312,8 @@
   
     <article id="post-2_bc" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/11/05/2_bc/" class="article-date">
-  <time datetime="2019-11-05T12:52:45.664Z" itemprop="datePublished">2019-11-05</time>
+    <a href="/2019/11/09/2_bc/" class="article-date">
+  <time datetime="2019-11-09T06:24:42.008Z" itemprop="datePublished">2019-11-09</time>
 </a>
     
   </div>
@@ -378,7 +324,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/05/2_bc/">萌新acm(2) B&amp;C - Social Network</a>
+      <a class="article-title" href="/2019/11/09/2_bc/">萌新acm(2) B&amp;C - Social Network</a>
     </h1>
   
 
@@ -387,27 +333,13 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>题面</strong></p>
-<blockquote>
 <p>The only difference between easy and hard versions are constraints on n and k.</p>
-</blockquote>
-<blockquote>
 <p>You are messaging in one of the popular social networks via your smartphone. Your smartphone can show at most k most recent conversations with your friends. Initially, the screen is empty (i.e. the number of displayed conversations equals 0).</p>
-</blockquote>
-<blockquote>
 <p>Each conversation is between you and some of your friends. There is at most one conversation with any of your friends. So each conversation is uniquely defined by your friend.</p>
-</blockquote>
-<blockquote>
 <p>You (suddenly!) have the ability to see the future. You know that during the day you will receive n messages, the i-th message will be received from the friend with ID idi (1≤idi≤109).</p>
-</blockquote>
-<blockquote>
 <p>If you receive a message from idi in the conversation which is currently displayed on the smartphone then nothing happens: the conversations of the screen do not change and do not change their order, you read the message and continue waiting for new messages.</p>
-</blockquote>
-<blockquote>
 <p>Otherwise (i.e. if there is no conversation with idi on the screen):</p>
-</blockquote>
-<blockquote>
 <p>Firstly, if the number of conversations displayed on the screen is k, the last conversation (which has the position k) is removed from the screen.<br>Now the number of conversations on the screen is guaranteed to be less than k and the conversation with the friend idi is not displayed on the screen.<br>The conversation with the friend idi appears on the first (the topmost) position on the screen and all the other displayed conversations are shifted one position down.<br>Your task is to find the list of conversations (in the order they are displayed on the screen) after processing all n messages.</p>
-</blockquote>
 <hr>
 <p><strong>思路</strong></p>
 <p>用队列储存数据,用布尔型向量的第i个元素表示数i是否在队列中</p>
@@ -420,7 +352,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/05/2_bc/" data-id="ck2r68kzs000ddh54yagv2uec" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/2_bc/" data-id="ck2r6r6zj000dq054lu4f2g88" class="article-share-link">Share</a>
       
       
     </footer>
@@ -432,8 +364,8 @@
   
     <article id="post-2_a" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/11/05/2_a/" class="article-date">
-  <time datetime="2019-11-05T00:51:54.494Z" itemprop="datePublished">2019-11-05</time>
+    <a href="/2019/11/09/2_a/" class="article-date">
+  <time datetime="2019-11-09T06:24:10.932Z" itemprop="datePublished">2019-11-09</time>
 </a>
     
   </div>
@@ -444,7 +376,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/05/2_a/">萌新acm(2) A - Equalize Prices Again</a>
+      <a class="article-title" href="/2019/11/09/2_a/">萌新acm(2) A - Equalize Prices Again</a>
     </h1>
   
 
@@ -453,24 +385,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>题面</strong></p>
-<blockquote>
 <p>You are both a shop keeper and a shop assistant at a small nearby shop. You have n goods, the i-th good costs ai coins.</p>
-</blockquote>
-<blockquote>
 <p>You got tired of remembering the price of each product when customers ask for it, thus you decided to simplify your life. More precisely you decided to set the same price for all n goods you have.</p>
-</blockquote>
-<blockquote>
 <p>However, you don’t want to lose any money so you want to choose the price in such a way that the sum of new prices is not less than the sum of the initial prices. It means that if you sell all n goods for the new price, you will receive at least the same (or greater) amount of money as if you sell them for their initial prices.</p>
-</blockquote>
-<blockquote>
 <p>On the other hand, you don’t want to lose customers because of big prices so among all prices you can choose you need to choose the minimum one.</p>
-</blockquote>
-<blockquote>
 <p>So you need to find the minimum possible equal price of all n goods so if you sell them for this price, you will receive at least the same (or greater) amount of money as if you sell them for their initial prices.</p>
-</blockquote>
-<blockquote>
 <p>You have to answer q independent queries.</p>
-</blockquote>
 <hr>
 <p><strong>思路</strong></p>
 <p>无</p>
@@ -483,7 +403,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/05/2_a/" data-id="ck2r68l00000jdh542uhm7keu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/2_a/" data-id="ck2r6r6zh000cq054zve0y3t4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -495,8 +415,8 @@
   
     <article id="post-1_l" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/11/01/1_l/" class="article-date">
-  <time datetime="2019-11-01T14:39:44.572Z" itemprop="datePublished">2019-11-01</time>
+    <a href="/2019/11/09/1_l/" class="article-date">
+  <time datetime="2019-11-09T06:23:53.412Z" itemprop="datePublished">2019-11-09</time>
 </a>
     
   </div>
@@ -507,7 +427,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/01/1_l/">萌新acm(1) L - Powerful Discount Tickets</a>
+      <a class="article-title" href="/2019/11/09/1_l/">萌新acm(1) L - Powerful Discount Tickets</a>
     </h1>
   
 
@@ -516,24 +436,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>题面</strong></p>
-<blockquote>
 <p>Takahashi is going to buy N items one by one.</p>
-</blockquote>
-<blockquote>
 <p>The price of the i-th item he buys is Ai yen (the currency of Japan).</p>
-</blockquote>
-<blockquote>
 <p>He has M discount tickets, and he can use any number of them when buying an item.</p>
-</blockquote>
-<blockquote>
 <p>If Y tickets are used when buying an item priced X yen, he can get the item for  X    2Y  (rounded down to the nearest integer) yen.</p>
-</blockquote>
-<blockquote>
 <p>What is the minimum amount of money required to buy all the items?</p>
-</blockquote>
-<blockquote>
 <p>All values in input are integers.<br>1≤N,M≤105<br>1≤Ai≤109</p>
-</blockquote>
 <hr>
 <p><strong>思路</strong></p>
 <p>优先数列，c语言给我写吐了，现学c++</p>
@@ -546,7 +454,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/01/1_l/" data-id="ck2r68kzp000bdh54gmx3jp80" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/1_l/" data-id="ck2r6r6zg000bq0544fudsg30" class="article-share-link">Share</a>
       
       
     </footer>
@@ -558,8 +466,8 @@
   
     <article id="post-1_k" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/11/01/1_k/" class="article-date">
-  <time datetime="2019-11-01T08:09:34.494Z" itemprop="datePublished">2019-11-01</time>
+    <a href="/2019/11/09/1_k/" class="article-date">
+  <time datetime="2019-11-09T06:23:30.516Z" itemprop="datePublished">2019-11-09</time>
 </a>
     
   </div>
@@ -570,7 +478,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/01/1_k/">萌新acm(1) K - Attack Survival</a>
+      <a class="article-title" href="/2019/11/09/1_k/">萌新acm(1) K - Attack Survival</a>
     </h1>
   
 
@@ -579,24 +487,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>题面</strong></p>
-<blockquote>
 <p>Takahashi has decided to hold fastest-finger-fast quiz games. Kizahashi, who is in charge of making the scoreboard, is struggling to write the program that manages the players’ scores in a game, which proceeds as follows.</p>
-</blockquote>
-<blockquote>
 <p>A game is played by N players, numbered 1 to N. At the beginning of a game, each player has K points.</p>
-</blockquote>
-<blockquote>
 <p>When a player correctly answers a question, each of the other N−1 players receives minus one (−1) point. There is no other factor that affects the players’ scores.</p>
-</blockquote>
-<blockquote>
 <p>At the end of a game, the players with 0 points or lower are eliminated, and the remaining players survive.</p>
-</blockquote>
-<blockquote>
 <p>In the last game, the players gave a total of Q correct answers, the i-th of which was given by Player Ai. For Kizahashi, write a program that determines whether each of the N players survived this game.</p>
-</blockquote>
-<blockquote>
 <p>All values in input are integers.<br>2≤N≤105<br>1≤K≤109<br>1≤Q≤105<br>1≤Ai≤N (1≤i≤Q)</p>
-</blockquote>
 <hr>
 <p><strong>思路</strong></p>
 <p>一人答出一题其余人扣一分，则只有答出题数大于q-k的选手能够survive,将所有人的初始分设为k-q,答出题则答出者加一分，最后分数大于零这survive</p>
@@ -609,7 +505,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/01/1_k/" data-id="ck2r68kzm0009dh54xgd2amhx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/1_k/" data-id="ck2r6r6zc0009q054ozyckoxt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -621,8 +517,8 @@
   
     <article id="post-1_j" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/11/01/1_j/" class="article-date">
-  <time datetime="2019-11-01T05:19:20.706Z" itemprop="datePublished">2019-11-01</time>
+    <a href="/2019/11/09/1_j/" class="article-date">
+  <time datetime="2019-11-09T06:23:14.052Z" itemprop="datePublished">2019-11-09</time>
 </a>
     
   </div>
@@ -633,7 +529,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/01/1_j/">萌新acm(1) J - Tap Dance</a>
+      <a class="article-title" href="/2019/11/09/1_j/">萌新acm(1) J - Tap Dance</a>
     </h1>
   
 
@@ -642,18 +538,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>题面</strong></p>
-<blockquote>
 <p>Takahashi will do a tap dance. The dance is described by a string S where each character is L, R, U, or D. These characters indicate the positions on which Takahashi should step. He will follow these instructions one by one in order, starting with the first character.</p>
-</blockquote>
-<blockquote>
 <p>S is said to be easily playable if and only if it satisfies both of the following conditions:</p>
-</blockquote>
-<blockquote>
 <p>Every character in an odd position (1-st, 3-rd, 5-th, \ldots) is R, U, or D.<br>Every character in an even position (2-nd, 4-th, 6-th, \ldots) is L, U, or D.<br>Your task is to print Yes if S is easily playable, and No otherwise.</p>
-</blockquote>
-<blockquote>
 <p>S is a string of length between 1 and 100 (inclusive).<br>Each character of S is L, R, U, or D.</p>
-</blockquote>
 <hr>
 <p><strong>思路</strong></p>
 <p>看懂题就行</p>
@@ -666,7 +554,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/01/1_j/" data-id="ck2r68kzn000adh54xspqmtxn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/1_j/" data-id="ck2r6r6zd000aq054tdqyvhqn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -699,7 +587,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
     </div>
   </div>
 
@@ -716,19 +604,19 @@
           </li>
         
           <li>
-            <a href="/2019/11/08/2_hi/">萌新acm(2) H&amp;I - Books Exchange</a>
+            <a href="/2019/11/09/2_hi/">萌新acm(2) H&amp;I - Books Exchange</a>
           </li>
         
           <li>
-            <a href="/2019/11/08/2_g/">萌新acm(2) G - Yet Another Dividing into Teams</a>
+            <a href="/2019/11/09/2_g/">萌新acm(2) G - Yet Another Dividing into Teams</a>
           </li>
         
           <li>
-            <a href="/2019/11/07/2_d/">萌新acm(2) D - Pipes</a>
+            <a href="/2019/11/09/2_e/">萌新acm(2) E - Distinct Characters Queries</a>
           </li>
         
           <li>
-            <a href="/2019/11/06/2_e/">萌新acm(2) E - Distinct Characters Queries</a>
+            <a href="/2019/11/09/2_d/">萌新acm(2) D - Pipes</a>
           </li>
         
       </ul>

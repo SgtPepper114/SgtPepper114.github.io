@@ -7,17 +7,17 @@
   
   <title>萌新acm(2) J&amp;K - Good Numbers | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题面  The only difference between easy and hard versions is the maximum value of n.   You are given a positive integer number n. You really love good numbers so you want to find the smallest good number">
+  <meta name="description" content="题面 The only difference between easy and hard versions is the maximum value of n. You are given a positive integer number n. You really love good numbers so you want to find the smallest good number gr">
 <meta property="og:type" content="article">
 <meta property="og:title" content="萌新acm(2) J&amp;K - Good Numbers">
 <meta property="og:url" content="http://yoursite.com/2019/11/09/2_jk/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题面  The only difference between easy and hard versions is the maximum value of n.   You are given a positive integer number n. You really love good numbers so you want to find the smallest good number">
+<meta property="og:description" content="题面 The only difference between easy and hard versions is the maximum value of n. You are given a positive integer number n. You really love good numbers so you want to find the smallest good number gr">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-09T06:11:45.420Z">
+<meta property="og:updated_time" content="2019-11-09T06:26:10.500Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="萌新acm(2) J&amp;K - Good Numbers">
-<meta name="twitter:description" content="题面  The only difference between easy and hard versions is the maximum value of n.   You are given a positive integer number n. You really love good numbers so you want to find the smallest good number">
+<meta name="twitter:description" content="题面 The only difference between easy and hard versions is the maximum value of n. You are given a positive integer number n. You really love good numbers so you want to find the smallest good number gr">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -67,7 +67,7 @@
         <section id="main"><article id="post-2_jk" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/09/2_jk/" class="article-date">
-  <time datetime="2019-11-09T06:11:45.420Z" itemprop="datePublished">2019-11-09</time>
+  <time datetime="2019-11-09T06:26:10.516Z" itemprop="datePublished">2019-11-09</time>
 </a>
     
   </div>
@@ -87,33 +87,15 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>题面</strong></p>
-<blockquote>
 <p>The only difference between easy and hard versions is the maximum value of n.</p>
-</blockquote>
-<blockquote>
 <p>You are given a positive integer number n. You really love good numbers so you want to find the smallest good number greater than or equal to n.</p>
-</blockquote>
-<blockquote>
 <p>The positive integer is called good if it can be represented as a sum of distinct powers of 3 (i.e. no duplicates of powers of 3 are allowed).</p>
-</blockquote>
-<blockquote>
 <p>For example:</p>
-</blockquote>
-<blockquote>
 <p>30 is a good number: 30=33+31,<br>1 is a good number: 1=30,<br>12 is a good number: 12=32+31,<br>but 2 is not a good number: you can’t represent it as a sum of distinct powers of 3 (2=30+30),<br>19 is not a good number: you can’t represent it as a sum of distinct powers of 3 (for example, the representations 19=32+32+30=32+31+31+31+30 are invalid),<br>20 is also not a good number: you can’t represent it as a sum of distinct powers of 3 (for example, the representation 20=32+32+30+30 is invalid).<br>Note, that there exist other representations of 19 and 20 as sums of powers of 3 but none of them consists of distinct powers of 3.</p>
-</blockquote>
-<blockquote>
 <p>For the given positive integer n find such smallest m (n≤m) that m is a good number.</p>
-</blockquote>
-<blockquote>
 <p>You have to answer q independent queries.</p>
-</blockquote>
-<blockquote>
 <p>Input<br>The first line of the input contains one integer q (1≤q≤500) — the number of queries. Then q queries follow.</p>
-</blockquote>
-<blockquote>
 <p>The only line of the query contains one integer n (1≤n≤1018).</p>
-</blockquote>
 <hr>
 <p><strong>思路</strong></p>
 <p>对于一个数n，若(3^k-1)/2 &lt; n &lt; 3^k，则大于这个数的最小good number即为3^k,将n置零;若n &lt; (3^k - 1)/2, 则将n减去3^(k-1)，继续对n求good number直到n等于0，将所有减去的数累加即为要求的good number</p>
@@ -125,7 +107,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/09/2_jk/" data-id="ck2r68kzy000idh54tdc5xnuk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/2_jk/" data-id="ck2r6r6zq000hq05436zogmu2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -135,7 +117,7 @@
 <nav id="article-nav">
   
   
-    <a href="/2019/11/08/2_hi/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/11/09/2_hi/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">萌新acm(2) H&amp;I - Books Exchange</div>
     </a>
@@ -161,7 +143,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
     </div>
   </div>
 
@@ -178,19 +160,19 @@
           </li>
         
           <li>
-            <a href="/2019/11/08/2_hi/">萌新acm(2) H&amp;I - Books Exchange</a>
+            <a href="/2019/11/09/2_hi/">萌新acm(2) H&amp;I - Books Exchange</a>
           </li>
         
           <li>
-            <a href="/2019/11/08/2_g/">萌新acm(2) G - Yet Another Dividing into Teams</a>
+            <a href="/2019/11/09/2_g/">萌新acm(2) G - Yet Another Dividing into Teams</a>
           </li>
         
           <li>
-            <a href="/2019/11/07/2_d/">萌新acm(2) D - Pipes</a>
+            <a href="/2019/11/09/2_e/">萌新acm(2) E - Distinct Characters Queries</a>
           </li>
         
           <li>
-            <a href="/2019/11/06/2_e/">萌新acm(2) E - Distinct Characters Queries</a>
+            <a href="/2019/11/09/2_d/">萌新acm(2) D - Pipes</a>
           </li>
         
       </ul>
