@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>萌新acm(2) J&amp;K - Good Numbers | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="题面  The only difference between easy and hard versions is the maximum value of n.   You are given a positive integer number n. You really love good numbers so you want to find the smallest good number">
+<meta property="og:type" content="article">
+<meta property="og:title" content="萌新acm(2) J&amp;K - Good Numbers">
+<meta property="og:url" content="http://yoursite.com/2019/11/09/2_jk/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="题面  The only difference between easy and hard versions is the maximum value of n.   You are given a positive integer number n. You really love good numbers so you want to find the smallest good number">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-09T06:10:06.760Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="萌新acm(2) J&amp;K - Good Numbers">
+<meta name="twitter:description" content="题面  The only difference between easy and hard versions is the maximum value of n.   You are given a positive integer number n. You really love good numbers so you want to find the smallest good number">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2_jk" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/09/2_jk/" class="article-date">
+  <time datetime="2019-11-09T06:10:06.760Z" itemprop="datePublished">2019-11-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      萌新acm(2) J&amp;K - Good Numbers
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<blockquote>
+<p>The only difference between easy and hard versions is the maximum value of n.</p>
+</blockquote>
+<blockquote>
+<p>You are given a positive integer number n. You really love good numbers so you want to find the smallest good number greater than or equal to n.</p>
+</blockquote>
+<blockquote>
+<p>The positive integer is called good if it can be represented as a sum of distinct powers of 3 (i.e. no duplicates of powers of 3 are allowed).</p>
+</blockquote>
+<blockquote>
+<p>For example:</p>
+</blockquote>
+<blockquote>
+<p>30 is a good number: 30=33+31,<br>1 is a good number: 1=30,<br>12 is a good number: 12=32+31,<br>but 2 is not a good number: you can’t represent it as a sum of distinct powers of 3 (2=30+30),<br>19 is not a good number: you can’t represent it as a sum of distinct powers of 3 (for example, the representations 19=32+32+30=32+31+31+31+30 are invalid),<br>20 is also not a good number: you can’t represent it as a sum of distinct powers of 3 (for example, the representation 20=32+32+30+30 is invalid).<br>Note, that there exist other representations of 19 and 20 as sums of powers of 3 but none of them consists of distinct powers of 3.</p>
+</blockquote>
+<blockquote>
+<p>For the given positive integer n find such smallest m (n≤m) that m is a good number.</p>
+</blockquote>
+<blockquote>
+<p>You have to answer q independent queries.</p>
+</blockquote>
+<blockquote>
+<p>Input<br>The first line of the input contains one integer q (1≤q≤500) — the number of queries. Then q queries follow.</p>
+</blockquote>
+<blockquote>
+<p>The only line of the query contains one integer n (1≤n≤1018).</p>
+</blockquote>
+<hr>
+<p><strong>思路</strong></p>
+<p>对于一个数n，若(3^k-1)/2 &lt; n &lt; 3^k，则大于这个数的最小good number即为3^k,将n减去3^k;若n &lt; (3^k - 1)/2, 则将n减去3^(k-1)，继续对n求good number直到n等于0，将所有减去的数累加即为要求的good number</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt; p;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; <span class="number">39</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        p.insert(<span class="built_in">pow</span>(<span class="number">3</span>, i));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> q;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> n;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; q;</span><br><span class="line">    <span class="keyword">while</span>(q &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        q--;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">        <span class="built_in">set</span>&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt;::iterator ptr = p.lower_bound(n);</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(n &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(n &gt; (*ptr<span class="number">-1</span>)/<span class="number">2</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum += *ptr;</span><br><span class="line">                n = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                n -= *ptr/<span class="number">3</span>;</span><br><span class="line">                sum += *ptr/<span class="number">3</span>;</span><br><span class="line">                ptr = p.lower_bound(n);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/09/2_jk/" data-id="ck2r66k1h000gbz54bi56s2ky" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/08/2_hi/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">萌新acm(2) H&amp;I - Books Exchange</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/11/09/2_jk/">萌新acm(2) J&amp;K - Good Numbers</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/08/2_hi/">萌新acm(2) H&amp;I - Books Exchange</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/08/2_g/">萌新acm(2) G - Yet Another Dividing into Teams</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/07/2_d/">萌新acm(2) D - Pipes</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/06/2_e/">萌新acm(2) E - Distinct Characters Queries</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

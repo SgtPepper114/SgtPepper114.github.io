@@ -62,6 +62,77 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2_jk" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/09/2_jk/" class="article-date">
+  <time datetime="2019-11-09T06:10:06.760Z" itemprop="datePublished">2019-11-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/09/2_jk/">萌新acm(2) J&amp;K - Good Numbers</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<blockquote>
+<p>The only difference between easy and hard versions is the maximum value of n.</p>
+</blockquote>
+<blockquote>
+<p>You are given a positive integer number n. You really love good numbers so you want to find the smallest good number greater than or equal to n.</p>
+</blockquote>
+<blockquote>
+<p>The positive integer is called good if it can be represented as a sum of distinct powers of 3 (i.e. no duplicates of powers of 3 are allowed).</p>
+</blockquote>
+<blockquote>
+<p>For example:</p>
+</blockquote>
+<blockquote>
+<p>30 is a good number: 30=33+31,<br>1 is a good number: 1=30,<br>12 is a good number: 12=32+31,<br>but 2 is not a good number: you can’t represent it as a sum of distinct powers of 3 (2=30+30),<br>19 is not a good number: you can’t represent it as a sum of distinct powers of 3 (for example, the representations 19=32+32+30=32+31+31+31+30 are invalid),<br>20 is also not a good number: you can’t represent it as a sum of distinct powers of 3 (for example, the representation 20=32+32+30+30 is invalid).<br>Note, that there exist other representations of 19 and 20 as sums of powers of 3 but none of them consists of distinct powers of 3.</p>
+</blockquote>
+<blockquote>
+<p>For the given positive integer n find such smallest m (n≤m) that m is a good number.</p>
+</blockquote>
+<blockquote>
+<p>You have to answer q independent queries.</p>
+</blockquote>
+<blockquote>
+<p>Input<br>The first line of the input contains one integer q (1≤q≤500) — the number of queries. Then q queries follow.</p>
+</blockquote>
+<blockquote>
+<p>The only line of the query contains one integer n (1≤n≤1018).</p>
+</blockquote>
+<hr>
+<p><strong>思路</strong></p>
+<p>对于一个数n，若(3^k-1)/2 &lt; n &lt; 3^k，则大于这个数的最小good number即为3^k,将n减去3^k;若n &lt; (3^k - 1)/2, 则将n减去3^(k-1)，继续对n求good number直到n等于0，将所有减去的数累加即为要求的good number</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt; p;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; <span class="number">39</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        p.insert(<span class="built_in">pow</span>(<span class="number">3</span>, i));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> q;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> n;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; q;</span><br><span class="line">    <span class="keyword">while</span>(q &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        q--;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">        <span class="built_in">set</span>&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt;::iterator ptr = p.lower_bound(n);</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(n &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(n &gt; (*ptr<span class="number">-1</span>)/<span class="number">2</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum += *ptr;</span><br><span class="line">                n = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                n -= *ptr/<span class="number">3</span>;</span><br><span class="line">                sum += *ptr/<span class="number">3</span>;</span><br><span class="line">                ptr = p.lower_bound(n);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/09/2_jk/" data-id="ck2r66k1h000gbz54bi56s2ky" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2_hi" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/08/2_hi/" class="article-date">
@@ -117,7 +188,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/08/2_hi/" data-id="ck2q7xzev000h0y54secrh7qu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/08/2_hi/" data-id="ck2r66k22000jbz54vdcjnyow" class="article-share-link">Share</a>
       
       
     </footer>
@@ -168,7 +239,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/08/2_g/" data-id="ck2q7xzer000e0y545qmovwmm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/08/2_g/" data-id="ck2r66k1i000hbz5451cjcnf3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -227,7 +298,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/07/2_d/" data-id="ck2q7xzet000f0y54i5tvk58s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/07/2_d/" data-id="ck2r66k1c000cbz54reaqmd69" class="article-share-link">Share</a>
       
       
     </footer>
@@ -283,7 +354,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/06/2_e/" data-id="ck2q7xzex000i0y546tyibkce" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/06/2_e/" data-id="ck2r66k1g000fbz54wxf0p3vl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -349,7 +420,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/05/2_bc/" data-id="ck2q7xzeo000c0y54vggp56o5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/05/2_bc/" data-id="ck2r66k1d000dbz54qi7ep61d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -412,7 +483,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/05/2_a/" data-id="ck2q7xzen000b0y54y5t6i1zt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/05/2_a/" data-id="ck2r66k1f000ebz54pqc9msti" class="article-share-link">Share</a>
       
       
     </footer>
@@ -475,7 +546,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/01/1_l/" data-id="ck2q7xzeq000d0y54cohjir22" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/01/1_l/" data-id="ck2r66k1a000bbz54km2enkh1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -538,7 +609,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/01/1_k/" data-id="ck2q7xzek000a0y54sgwz0io3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/01/1_k/" data-id="ck2r66k16000abz54iclgcgal" class="article-share-link">Share</a>
       
       
     </footer>
@@ -595,61 +666,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/01/1_j/" data-id="ck2q7xzej00090y54mikzl0hy" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-1_i" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/01/1_i/" class="article-date">
-  <time datetime="2019-11-01T04:45:36.314Z" itemprop="datePublished">2019-11-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/01/1_i/">萌新acm(1) I - Weather Prediction</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong></p>
-<blockquote>
-<p>The weather in Takahashi’s town changes day by day, in the following cycle: Sunny, Cloudy, Rainy, Sunny, Cloudy, Rainy, …</p>
-</blockquote>
-<blockquote>
-<p>Given is a string S representing the weather in the town today. Predict the weather tomorrow.</p>
-</blockquote>
-<blockquote>
-<p>S is Sunny, Cloudy, or Rainy.</p>
-</blockquote>
-<hr>
-<p><strong>思路</strong></p>
-<p>有手就行</p>
-<hr>
-<p><strong>AC代码</strong></p>
-<p>语言:c</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> p[<span class="number">7</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>, p);</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">strcmp</span>(p, <span class="string">"Sunny"</span>) == <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">"Cloudy"</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">strcmp</span>(p, <span class="string">"Cloudy"</span>) == <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">"Rainy"</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"Sunny"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/01/1_i/" data-id="ck2q7xzeg00070y545yhzko8u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/01/1_j/" data-id="ck2r66k140009bz54h16zjjae" class="article-share-link">Share</a>
       
       
     </footer>
@@ -695,6 +712,10 @@
       <ul>
         
           <li>
+            <a href="/2019/11/09/2_jk/">萌新acm(2) J&amp;K - Good Numbers</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/08/2_hi/">萌新acm(2) H&amp;I - Books Exchange</a>
           </li>
         
@@ -708,10 +729,6 @@
         
           <li>
             <a href="/2019/11/06/2_e/">萌新acm(2) E - Distinct Characters Queries</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/05/2_bc/">萌新acm(2) B&amp;C - Social Network</a>
           </li>
         
       </ul>
