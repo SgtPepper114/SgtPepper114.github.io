@@ -62,6 +62,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2_f" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/10/2_f/" class="article-date">
+  <time datetime="2019-11-10T05:15:32.374Z" itemprop="datePublished">2019-11-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/10/2_f/">萌新acm(2) F - Special Permutations</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>Let’s define pi(n) as the following permutation: [i,1,2,…,i−1,i+1,…,n]. This means that the i-th permutation is almost identity (i.e. which maps every element to itself) permutation but the element i is on the first position. Examples:</p>
+<p>p1(4)=[1,2,3,4];<br>p2(4)=[2,1,3,4];<br>p3(4)=[3,1,2,4];<br>p4(4)=[4,1,2,3].<br>You are given an array x1,x2,…,xm (1≤xi≤n).</p>
+<p>Let pos(p,val) be the position of the element val in p. So, pos(p1(4),3)=3,pos(p2(4),2)=1,pos(p4(4),4)=1.</p>
+<p>Let’s define a function f(p)=∑i=1m−1|pos(p,xi)−pos(p,xi+1)|, where |val| is the absolute value of val. This function means the sum of distances between adjacent elements of x in p.</p>
+<p>Your task is to calculate f(p1(n)),f(p2(n)),…,f(pn(n)).</p>
+<hr>
+<p><strong>思路</strong></p>
+<p>数列p(n)中两个数x，y位置的变换与在给定的数列中使x，y = y，x等价。注意差值之和爆int</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> q, n;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; q &gt;&gt; n;</span><br><span class="line">    <span class="keyword">int</span> p[n];</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; con[q+<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> k;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; k;</span><br><span class="line">        con[k].push_back(i);</span><br><span class="line">        p[i] = k;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n<span class="number">-1</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sum += <span class="built_in">abs</span>(p[i] - p[i+<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">    <span class="keyword">int</span> bf, af, temp;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; q; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; con[i].size(); j++)</span><br><span class="line">        &#123;</span><br><span class="line">            temp = con[i][j];</span><br><span class="line">            <span class="keyword">if</span>(temp != <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum -= <span class="built_in">abs</span>(p[temp<span class="number">-1</span>] - p[temp]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(temp != n<span class="number">-1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum -= <span class="built_in">abs</span>(p[temp] - p[temp+<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            p[con[i][j]] = i+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(temp != <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum += <span class="built_in">abs</span>(p[temp<span class="number">-1</span>] - p[temp]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(temp != n<span class="number">-1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum += <span class="built_in">abs</span>(p[temp] - p[temp+<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; con[i+<span class="number">1</span>].size(); j++)</span><br><span class="line">        &#123;</span><br><span class="line">            temp = con[i+<span class="number">1</span>][j];</span><br><span class="line">            <span class="keyword">if</span>(temp != <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum -= <span class="built_in">abs</span>(p[temp<span class="number">-1</span>] - p[temp]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(temp != n<span class="number">-1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum -= <span class="built_in">abs</span>(p[temp] - p[temp+<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            p[con[i+<span class="number">1</span>][j]] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(temp != <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum += <span class="built_in">abs</span>(p[temp<span class="number">-1</span>] - p[temp]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(temp != n<span class="number">-1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum += <span class="built_in">abs</span>(p[temp] - p[temp+<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/10/2_f/" data-id="ck2sjo5qy000gg954m572iaz7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2_l" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/10/2_l/" class="article-date">
@@ -100,7 +149,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/2_l/" data-id="ck2se1h07000i9p543ylmgsdy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/2_l/" data-id="ck2sjo5r2000jg9544agolvme" class="article-share-link">Share</a>
       
       
     </footer>
@@ -153,7 +202,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/09/2_jk/" data-id="ck2se1h06000h9p54nevbik1t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/2_jk/" data-id="ck2sjo5r1000ig954hxup78qj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -204,7 +253,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/09/2_hi/" data-id="ck2se1h08000j9p54kmh5890f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/2_hi/" data-id="ck2sjo5r5000lg954jrulwb58" class="article-share-link">Share</a>
       
       
     </footer>
@@ -251,7 +300,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/09/2_g/" data-id="ck2se1h05000g9p54r3cwwm8p" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/2_g/" data-id="ck2sjo5r0000hg95401pyxtmi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -299,7 +348,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/09/2_e/" data-id="ck2se1h02000e9p54ltdi6p2x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/2_e/" data-id="ck2sjo5qx000fg9542zt0uo5f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -348,7 +397,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/09/2_d/" data-id="ck2se1h04000f9p54iko5d7hf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/2_d/" data-id="ck2sjo5qw000eg954c4xw115o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -400,7 +449,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/09/2_bc/" data-id="ck2se1h01000d9p54lladionz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/2_bc/" data-id="ck2sjo5qv000dg954lf2jleug" class="article-share-link">Share</a>
       
       
     </footer>
@@ -451,7 +500,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/09/2_a/" data-id="ck2se1gzz000c9p54eqqrpjca" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/2_a/" data-id="ck2sjo5qt000cg954af9g2p0f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -502,58 +551,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/09/1_l/" data-id="ck2se1gzy000b9p54jdgvsz3t" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-1_k" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/09/1_k/" class="article-date">
-  <time datetime="2019-11-09T06:23:30.516Z" itemprop="datePublished">2019-11-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/09/1_k/">萌新acm(1) K - Attack Survival</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong></p>
-<p>Takahashi has decided to hold fastest-finger-fast quiz games. Kizahashi, who is in charge of making the scoreboard, is struggling to write the program that manages the players’ scores in a game, which proceeds as follows.</p>
-<p>A game is played by N players, numbered 1 to N. At the beginning of a game, each player has K points.</p>
-<p>When a player correctly answers a question, each of the other N−1 players receives minus one (−1) point. There is no other factor that affects the players’ scores.</p>
-<p>At the end of a game, the players with 0 points or lower are eliminated, and the remaining players survive.</p>
-<p>In the last game, the players gave a total of Q correct answers, the i-th of which was given by Player Ai. For Kizahashi, write a program that determines whether each of the N players survived this game.</p>
-<p>All values in input are integers.<br>2≤N≤105<br>1≤K≤109<br>1≤Q≤105<br>1≤Ai≤N (1≤i≤Q)</p>
-<hr>
-<p><strong>思路</strong></p>
-<p>一人答出一题其余人扣一分，则只有答出题数大于q-k的选手能够survive,将所有人的初始分设为k-q,答出题则答出者加一分，最后分数大于零这survive</p>
-<hr>
-<p><strong>AC代码</strong></p>
-<p>语言:c</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">long</span> n = <span class="number">0</span>, k = <span class="number">0</span>, q = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">long</span> *p = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">long</span> a = <span class="number">0</span>, i = <span class="number">0</span>, min = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%ld %ld %ld"</span>, &amp;n, &amp;k, &amp;q);</span><br><span class="line">    p = (<span class="keyword">long</span> *)<span class="built_in">calloc</span>(n, <span class="keyword">sizeof</span>(<span class="keyword">long</span>));</span><br><span class="line">    min = k - q;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        p[i] = min;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (q &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        q--;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%ld"</span>, &amp;a);</span><br><span class="line">        p[a<span class="number">-1</span>]++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (p[i] &gt; <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">"Yes\n"</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"No\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(p);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/09/1_k/" data-id="ck2se1gzv000a9p54upqg2ht7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/1_l/" data-id="ck2sjo5qs000bg954qsr1iw2n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -599,6 +597,10 @@
       <ul>
         
           <li>
+            <a href="/2019/11/10/2_f/">萌新acm(2) F - Special Permutations</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/10/2_l/">萌新acm(2) L - Too Many Segments</a>
           </li>
         
@@ -612,10 +614,6 @@
         
           <li>
             <a href="/2019/11/09/2_g/">萌新acm(2) G - Yet Another Dividing into Teams</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/09/2_e/">萌新acm(2) E - Distinct Characters Queries</a>
           </li>
         
       </ul>

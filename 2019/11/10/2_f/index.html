@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>萌新acm(2) F - Special Permutations | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="题面 Let’s define pi(n) as the following permutation: [i,1,2,…,i−1,i+1,…,n]. This means that the i-th permutation is almost identity (i.e. which maps every element to itself) permutation but the element">
+<meta property="og:type" content="article">
+<meta property="og:title" content="萌新acm(2) F - Special Permutations">
+<meta property="og:url" content="http://yoursite.com/2019/11/10/2_f/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="题面 Let’s define pi(n) as the following permutation: [i,1,2,…,i−1,i+1,…,n]. This means that the i-th permutation is almost identity (i.e. which maps every element to itself) permutation but the element">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-10T05:15:32.374Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="萌新acm(2) F - Special Permutations">
+<meta name="twitter:description" content="题面 Let’s define pi(n) as the following permutation: [i,1,2,…,i−1,i+1,…,n]. This means that the i-th permutation is almost identity (i.e. which maps every element to itself) permutation but the element">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2_f" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/10/2_f/" class="article-date">
+  <time datetime="2019-11-10T05:15:32.374Z" itemprop="datePublished">2019-11-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      萌新acm(2) F - Special Permutations
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>Let’s define pi(n) as the following permutation: [i,1,2,…,i−1,i+1,…,n]. This means that the i-th permutation is almost identity (i.e. which maps every element to itself) permutation but the element i is on the first position. Examples:</p>
+<p>p1(4)=[1,2,3,4];<br>p2(4)=[2,1,3,4];<br>p3(4)=[3,1,2,4];<br>p4(4)=[4,1,2,3].<br>You are given an array x1,x2,…,xm (1≤xi≤n).</p>
+<p>Let pos(p,val) be the position of the element val in p. So, pos(p1(4),3)=3,pos(p2(4),2)=1,pos(p4(4),4)=1.</p>
+<p>Let’s define a function f(p)=∑i=1m−1|pos(p,xi)−pos(p,xi+1)|, where |val| is the absolute value of val. This function means the sum of distances between adjacent elements of x in p.</p>
+<p>Your task is to calculate f(p1(n)),f(p2(n)),…,f(pn(n)).</p>
+<hr>
+<p><strong>思路</strong></p>
+<p>数列p(n)中两个数x，y位置的变换与在给定的数列中使x，y = y，x等价。注意差值之和爆int</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> q, n;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; q &gt;&gt; n;</span><br><span class="line">    <span class="keyword">int</span> p[n];</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; con[q+<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> k;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; k;</span><br><span class="line">        con[k].push_back(i);</span><br><span class="line">        p[i] = k;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n<span class="number">-1</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sum += <span class="built_in">abs</span>(p[i] - p[i+<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">    <span class="keyword">int</span> bf, af, temp;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; q; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; con[i].size(); j++)</span><br><span class="line">        &#123;</span><br><span class="line">            temp = con[i][j];</span><br><span class="line">            <span class="keyword">if</span>(temp != <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum -= <span class="built_in">abs</span>(p[temp<span class="number">-1</span>] - p[temp]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(temp != n<span class="number">-1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum -= <span class="built_in">abs</span>(p[temp] - p[temp+<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            p[con[i][j]] = i+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(temp != <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum += <span class="built_in">abs</span>(p[temp<span class="number">-1</span>] - p[temp]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(temp != n<span class="number">-1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum += <span class="built_in">abs</span>(p[temp] - p[temp+<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; con[i+<span class="number">1</span>].size(); j++)</span><br><span class="line">        &#123;</span><br><span class="line">            temp = con[i+<span class="number">1</span>][j];</span><br><span class="line">            <span class="keyword">if</span>(temp != <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum -= <span class="built_in">abs</span>(p[temp<span class="number">-1</span>] - p[temp]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(temp != n<span class="number">-1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum -= <span class="built_in">abs</span>(p[temp] - p[temp+<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            p[con[i+<span class="number">1</span>][j]] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(temp != <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum += <span class="built_in">abs</span>(p[temp<span class="number">-1</span>] - p[temp]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(temp != n<span class="number">-1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum += <span class="built_in">abs</span>(p[temp] - p[temp+<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/10/2_f/" data-id="ck2sjo5qy000gg954m572iaz7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/10/2_l/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">萌新acm(2) L - Too Many Segments</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/11/10/2_f/">萌新acm(2) F - Special Permutations</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/10/2_l/">萌新acm(2) L - Too Many Segments</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/09/2_jk/">萌新acm(2) J&amp;K - Good Numbers</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/09/2_hi/">萌新acm(2) H&amp;I - Books Exchange</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/09/2_g/">萌新acm(2) G - Yet Another Dividing into Teams</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
