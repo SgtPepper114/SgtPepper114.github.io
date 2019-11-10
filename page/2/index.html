@@ -62,6 +62,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-1_j" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/09/1_j/" class="article-date">
+  <time datetime="2019-11-09T06:23:14.052Z" itemprop="datePublished">2019-11-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/09/1_j/">萌新acm(1) J - Tap Dance</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>Takahashi will do a tap dance. The dance is described by a string S where each character is L, R, U, or D. These characters indicate the positions on which Takahashi should step. He will follow these instructions one by one in order, starting with the first character.</p>
+<p>S is said to be easily playable if and only if it satisfies both of the following conditions:</p>
+<p>Every character in an odd position (1-st, 3-rd, 5-th, \ldots) is R, U, or D.<br>Every character in an even position (2-nd, 4-th, 6-th, \ldots) is L, U, or D.<br>Your task is to print Yes if S is easily playable, and No otherwise.</p>
+<p>S is a string of length between 1 and 100 (inclusive).<br>Each character of S is L, R, U, or D.</p>
+<hr>
+<p><strong>思路</strong></p>
+<p>看懂题就行</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<p>语言:c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> p[<span class="number">101</span>];</span><br><span class="line">    <span class="built_in">memset</span>(p, <span class="string">'\0'</span>, <span class="number">101</span>*<span class="keyword">sizeof</span>(<span class="keyword">char</span>));</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>, flag = <span class="number">1</span>, max = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>, p);</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; p[i] != <span class="number">0</span>; i += <span class="number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (p[i] == <span class="string">'L'</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            flag = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; p[i] != <span class="number">0</span>; i += <span class="number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (p[i] == <span class="string">'R'</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            flag = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (flag) <span class="built_in">printf</span>(<span class="string">"Yes"</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"No"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/09/1_j/" data-id="ck2sdxidc00097354k1z871i4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-1_i" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/09/1_i/" class="article-date">
@@ -100,7 +149,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/09/1_i/" data-id="ck2r6r6za0008q054mx2zzt6l" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/1_i/" data-id="ck2sdxicl00087354ivwkwvx4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -154,7 +203,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/09/1_h/" data-id="ck2r6r6z90007q054h5g5h73e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/1_h/" data-id="ck2sdxicd000773542hi43qg0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -205,7 +254,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/09/1_g/" data-id="ck2r6r6z60005q054y8qkvx93" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/1_g/" data-id="ck2sdxic50004735437sqer2k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -254,7 +303,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/09/1_f/" data-id="ck2r6r6z70006q054ld3l4l4k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/1_f/" data-id="ck2sdxicb00067354t1mxzn5n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -303,7 +352,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/09/1_e/" data-id="ck2r6r6z40004q054lmvek15v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/1_e/" data-id="ck2sdxic100027354v5253cz7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -350,7 +399,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/09/1_d/" data-id="ck2r6r6yx0003q054t6mnlyt9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/1_d/" data-id="ck2sdxic3000373548vt2tuet" class="article-share-link">Share</a>
       
       
     </footer>
@@ -397,7 +446,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/09/1_c/" data-id="ck2r6r6yo0000q0546jn112vf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/1_c/" data-id="ck2sdxibz00017354off07brz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -446,7 +495,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/09/1_b/" data-id="ck2r6r6yt0001q0543szh0em3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/1_b/" data-id="ck2sdxic700057354bm0scjxo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -491,180 +540,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/09/1_a/" data-id="ck2r6r6yv0002q054a5itq2i0" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-彩虹社熟肉整理" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/09/14/彩虹社熟肉整理/" class="article-date">
-  <time datetime="2019-09-14T06:00:00.000Z" itemprop="datePublished">2019-09-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/14/彩虹社熟肉整理/">彩虹社熟肉整理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://img-blog.csdnimg.cn/20190914140246536.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NndF9QZXBwZXJfeXVr,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h1 id="彩虹社熟肉整理"><a href="#彩虹社熟肉整理" class="headerlink" title="彩虹社熟肉整理"></a>彩虹社熟肉整理</h1><h2 id="彩虹MC"><a href="#彩虹MC" class="headerlink" title="彩虹MC"></a>彩虹MC</h2><h3 id="海牛大坟墓"><a href="#海牛大坟墓" class="headerlink" title="海牛大坟墓"></a>海牛大坟墓</h3><ul>
-<li><p><a href="http://www.bilibili.com/video/av34624920/" target="_blank" rel="noopener">海牛得到作案工具</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av41568847/" target="_blank" rel="noopener">大福单人游</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av39692192/" target="_blank" rel="noopener">反抗军（大福&amp;柴卡）</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av39176336/" target="_blank" rel="noopener">千寻&amp;静凛</a></p>
-</li>
-<li><p><a href="https://www.bilibili.com/video/av39089476/" target="_blank" rel="noopener">千寻&amp;绿仙</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av41555776/" target="_blank" rel="noopener">阿葵前篇</a><br><a href="http://www.bilibili.com/video/av39034712/" target="_blank" rel="noopener">阿葵本篇</a><br><a href="http://www.bilibili.com/video/av39854968/" target="_blank" rel="noopener">阿葵后篇</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av44586406/" target="_blank" rel="noopener">野人葛叶入城</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av41323375/" target="_blank" rel="noopener">中了岩浆陷阱的莫露露</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av40997954/" target="_blank" rel="noopener">海牛弑神（海牛&amp;龙妈）</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av41530921/" target="_blank" rel="noopener">谁叔前篇</a><br><a href="http://www.bilibili.com/video/av41715915/" target="_blank" rel="noopener">谁叔后篇</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av40718349/" target="_blank" rel="noopener">海牛大坟墓建造篇</a></p>
-</li>
-<li><p><a href="https://www.bilibili.com/video/av53305761/" target="_blank" rel="noopener">月之美兔，陨落于海牛大坟墓（JK组）</a></p>
-</li>
-<li><p><a href="https://www.bilibili.com/video/av62710987/" target="_blank" rel="noopener">从地狱闯入海牛大坟墓的安洁</a></p>
-</li>
-<li><p><a href="https://www.bilibili.com/video/av46476840/" target="_blank" rel="noopener">参观名胜的舞元</a></p>
-<h3 id="龙妈和女儿和MC"><a href="#龙妈和女儿和MC" class="headerlink" title="龙妈和女儿和MC"></a>龙妈和女儿和MC</h3></li>
-<li><p>大块熟肉<br><a href="http://www.bilibili.com/video/av30942850/" target="_blank" rel="noopener">Ｄｏｒａ带带我</a><br><a href="http://www.bilibili.com/video/av38201618/" target="_blank" rel="noopener">探险篇</a><br><a href="http://www.bilibili.com/video/av33384130/" target="_blank" rel="noopener">建筑篇</a><br><a href="http://www.bilibili.com/video/av40200314/" target="_blank" rel="noopener">牧场篇</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av38415640/" target="_blank" rel="noopener">阴阳相隔的母子</a></p>
-<h3 id="RKS的MC"><a href="#RKS的MC" class="headerlink" title="RKS的MC"></a>RKS的MC</h3></li>
-<li><p><a href="http://www.bilibili.com/video/av37725837/" target="_blank" rel="noopener">深夜三杰的MC之旅</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av40849560/" target="_blank" rel="noopener">在叶师眼里不管做什么都很恐怖的千寻</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av41410597/" target="_blank" rel="noopener">千哈糖</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av37087333/" target="_blank" rel="noopener">腹肌猎人参上，反抗军真正的leader究竟是？</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av37786120/" target="_blank" rel="noopener">炫耀冰霜行者的叶</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av41198173/" target="_blank" rel="noopener">在挂机凛面前演戏的叶</a></p>
-</li>
-<li><p><a href="https://www.bilibili.com/video/av47942359/" target="_blank" rel="noopener">叶的世界</a></p>
-</li>
-<li><p><a href="https://www.bilibili.com/video/av66640975/" target="_blank" rel="noopener">对大福施以水刑</a></p>
-</li>
-<li><p><a href="https://www.bilibili.com/video/av66951101/" target="_blank" rel="noopener">叶神父的娱乐</a></p>
-</li>
-<li><p><a href="https://www.bilibili.com/video/av66998116/" target="_blank" rel="noopener">调戏后辈的叶神父</a></p>
-<h3 id="彩虹黑暗面叶师"><a href="#彩虹黑暗面叶师" class="headerlink" title="彩虹黑暗面叶师"></a>彩虹黑暗面叶师</h3></li>
-<li><p><a href="http://www.bilibili.com/video/av39733770/" target="_blank" rel="noopener">记者哈哥揭露黑暗面惨遭毒手</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av39951582/" target="_blank" rel="noopener">漆黑的被捕食者</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av40825086/" target="_blank" rel="noopener">黑暗神父与纯洁修女共建教堂</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av40980436/" target="_blank" rel="noopener">与修女联动时暗中屠杀村民的神父</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av41129140/" target="_blank" rel="noopener">被叶师坑害的大小姐</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av41239739/" target="_blank" rel="noopener">隐身戏弄大小姐的叶</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av37452336/" target="_blank" rel="noopener">和叶师决斗惨遭背刺的大小姐</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av43235198/" target="_blank" rel="noopener">惨剧回避笹木咲</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av43545916/" target="_blank" rel="noopener">惹怒龙妈和阿葵生气的叶师</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av44292948/" target="_blank" rel="noopener">为迷途中的村民修建居所的神父</a></p>
-<h3 id="受迫害的大叔"><a href="#受迫害的大叔" class="headerlink" title="受迫害的大叔"></a>受迫害的大叔</h3></li>
-<li><p><a href="http://www.bilibili.com/video/av40870148/" target="_blank" rel="noopener">金憨憨的累累罪行</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av41143033/" target="_blank" rel="noopener">被熊猫人迫害的谁叔前篇</a><br><a href="http://www.bilibili.com/video/av41272694/" target="_blank" rel="noopener">被熊猫人迫害的谁叔后篇</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av41587980/" target="_blank" rel="noopener">被大福rion迫害的舞元</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av41502857/" target="_blank" rel="noopener">被阿葵迫害的舞元</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av41422053/" target="_blank" rel="noopener">被千寻迫害的舞元</a></p>
-</li>
-<li><p><a href="https://www.bilibili.com/video/av51883495/" target="_blank" rel="noopener">被大福迫害的舞元</a></p>
-</li>
-<li><p><a href="https://www.bilibili.com/video/av56667374/" target="_blank" rel="noopener">不被人当人看的舞元</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av40712728/" target="_blank" rel="noopener">反抗大小姐和德比的舞元</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av30361446/" target="_blank" rel="noopener">被龙妈教训的柴卡</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av41939591" target="_blank" rel="noopener">彩虹村不良二人组</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av41271943/" target="_blank" rel="noopener">贝叔的报恩</a></p>
-<h3 id="海贝联动"><a href="#海贝联动" class="headerlink" title="海贝联动"></a>海贝联动</h3></li>
-<li><p>全熟肉<br><a href="https://www.bilibili.com/video/av42042003/" target="_blank" rel="noopener">第一集</a><br><a href="https://www.bilibili.com/video/av42290184" target="_blank" rel="noopener">第二集</a><br><a href="https://www.bilibili.com/video/av42628847" target="_blank" rel="noopener">第三集</a><br><a href="https://www.bilibili.com/video/av43125111" target="_blank" rel="noopener">第四集</a><br><a href="https://www.bilibili.com/video/av43555881" target="_blank" rel="noopener">第五集</a><br><a href="https://www.bilibili.com/video/av44465150" target="_blank" rel="noopener">第六集</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av42618620/" target="_blank" rel="noopener">贝叔与巴迪</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av42609155/" target="_blank" rel="noopener">地底王的15分钟</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av41881995/" target="_blank" rel="noopener">捉弄谁叔的海牛</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av42583734/" target="_blank" rel="noopener">给海牛布置作业的谁叔</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av42777290/" target="_blank" rel="noopener">海贝拯救莫露露</a></p>
-<h3 id="洛克萨斯之死"><a href="#洛克萨斯之死" class="headerlink" title="洛克萨斯之死"></a>洛克萨斯之死</h3></li>
-<li><p><a href="https://www.bilibili.com/video/av56817588/" target="_blank" rel="noopener">杀死爱宠的熊猫人和嗤笑的大福</a></p>
-</li>
-<li><p><a href="https://www.bilibili.com/video/av57515133/" target="_blank" rel="noopener">与洛克萨斯重逢的熊猫人</a></p>
-</li>
-<li><p><a href="https://www.bilibili.com/video/av56897236/" target="_blank" rel="noopener">把洛克萨斯送给roa的熊猫人</a></p>
-</li>
-<li><p><a href="https://www.bilibili.com/video/av56910794/" target="_blank" rel="noopener">收到洛克萨斯的roa</a></p>
-</li>
-</ul>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
-<li><a href="https://www.bilibili.com/video/av59171147" target="_blank" rel="noopener">向皇女展示召唤术的熊猫人</a></li>
-<li><a href="https://www.bilibili.com/video/av54925813" target="_blank" rel="noopener">明那和爱美的第一次彩虹服联动</a></li>
-<li><a href="https://www.bilibili.com/video/av43919073" target="_blank" rel="noopener">社筑柴卡的龙妈召唤仪式</a></li>
-<li><a href="https://www.bilibili.com/video/av49554034/" target="_blank" rel="noopener">失手射死心爱的鸟后悲痛欲绝的熊猫人</a></li>
-<li><a href="https://www.bilibili.com/video/av67472130" target="_blank" rel="noopener">欺负安洁的熊猫人</a></li>
-<li><a href="https://www.bilibili.com/video/av63316572/" target="_blank" rel="noopener">抓不到熊猫开始屠杀动物的熊猫人</a></li>
-<li><a href="https://www.bilibili.com/video/av50103420/" target="_blank" rel="noopener">失去一切无能怒吼的熊猫人</a></li>
-<li><a href="https://www.bilibili.com/video/av49458281/" target="_blank" rel="noopener">中了两个月前谁叔和大福设的陷阱的熊猫人</a></li>
-<li><a href="https://www.bilibili.com/video/av65955161/" target="_blank" rel="noopener">和安洁进行对一对单挑的熊猫人</a></li>
-<li><a href="https://www.bilibili.com/video/av66652171/" target="_blank" rel="noopener">旋转木马梦破灭的熊猫人</a></li>
-<li><a href="https://www.bilibili.com/video/av67237575/" target="_blank" rel="noopener">熊猫人相遇熊猫</a></li>
-<li><a href="https://www.bilibili.com/video/av56358461/" target="_blank" rel="noopener">被大福诓骗炸掉JK屋的gibara</a></li>
-<li><a href="https://www.bilibili.com/video/av56100996/" target="_blank" rel="noopener">中了柴卡陷阱的大福和gibara</a></li>
-<li><a href="https://www.bilibili.com/video/av65570421" target="_blank" rel="noopener">和ars卡组对战的熊猫人</a></li>
-<li><a href="https://www.bilibili.com/video/av63767639" target="_blank" rel="noopener">和岩浆竞速的谁叔</a></li>
-<li><a href="https://www.bilibili.com/video/av64212853/" target="_blank" rel="noopener">彩虹服大残事</a></li>
-<li><a href="https://www.bilibili.com/video/av46481257" target="_blank" rel="noopener">三气绿仙</a></li>
-<li><a href="https://www.bilibili.com/video/av52712108" target="_blank" rel="noopener">连锁暴击卡组狙击柴卡</a><h2 id="雪山人狼（未施工）"><a href="#雪山人狼（未施工）" class="headerlink" title="雪山人狼（未施工）"></a>雪山人狼（未施工）</h2></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/14/彩虹社熟肉整理/" data-id="ck2r6r6zs000jq054a5d8d0xi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/1_a/" data-id="ck2sdxibt00007354es6a68r2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -678,7 +554,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -710,6 +586,10 @@
       <ul>
         
           <li>
+            <a href="/2019/11/10/2_l/">萌新acm(2) L - Too Many Segments</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/09/2_jk/">萌新acm(2) J&amp;K - Good Numbers</a>
           </li>
         
@@ -723,10 +603,6 @@
         
           <li>
             <a href="/2019/11/09/2_e/">萌新acm(2) E - Distinct Characters Queries</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/09/2_d/">萌新acm(2) D - Pipes</a>
           </li>
         
       </ul>
