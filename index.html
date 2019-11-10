@@ -65,7 +65,7 @@
     <article id="post-2_l" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/10/2_l/" class="article-date">
-  <time datetime="2019-11-10T02:34:49.370Z" itemprop="datePublished">2019-11-10</time>
+  <time datetime="2019-11-10T02:37:56.656Z" itemprop="datePublished">2019-11-10</time>
 </a>
     
   </div>
@@ -94,13 +94,13 @@
 <p>按右端点排序，按序遍历，保证没有bad point，未加入的segment就是要除去的</p>
 <hr>
 <p><strong>AC代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">seg</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> l;</span><br><span class="line">    <span class="keyword">int</span> r;</span><br><span class="line">    <span class="keyword">int</span> id;</span><br><span class="line">&#125;seg;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(seg x, seg y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x.r != y.r) <span class="keyword">return</span> x.r &lt; y.r;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> x.l &lt; y.l;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> q, n;</span><br><span class="line">    <span class="keyword">int</span> mi = <span class="number">0</span>, ma = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; q &gt;&gt; n;</span><br><span class="line">    seg p[q];</span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; con;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; q; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; p[i].l &gt;&gt; p[i].r;</span><br><span class="line">        mi = min(mi, p[i].l);</span><br><span class="line">        ma = max(ma, p[i].r);</span><br><span class="line">        p[i].id = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> num[ma-mi+<span class="number">1</span>];</span><br><span class="line">    <span class="built_in">memset</span>(num, <span class="number">0</span>, (ma-mi+<span class="number">1</span>)*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    sort(p, p+q, cmp);</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; q; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = p[i].l; j &lt;= p[i].r; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            num[j-mi]++;</span><br><span class="line">            <span class="keyword">if</span>(num[j] &gt; n)</span><br><span class="line">            &#123;</span><br><span class="line">                con.insert(p[i].id);</span><br><span class="line">                sum++;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt;::iterator ptr = con.begin();</span><br><span class="line">    <span class="keyword">while</span>(ptr != con.end())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; *ptr+<span class="number">1</span> &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">        ptr++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">seg</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> l;</span><br><span class="line">    <span class="keyword">int</span> r;</span><br><span class="line">    <span class="keyword">int</span> id;</span><br><span class="line">&#125;seg;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(seg x, seg y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x.r != y.r) <span class="keyword">return</span> x.r &lt; y.r;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> x.l &lt; y.l;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> q, n;</span><br><span class="line">    <span class="keyword">int</span> mi = <span class="number">0</span>, ma = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; q &gt;&gt; n;</span><br><span class="line">    seg p[q];</span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; con;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; q; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; p[i].l &gt;&gt; p[i].r;</span><br><span class="line">        mi = min(mi, p[i].l);</span><br><span class="line">        ma = max(ma, p[i].r);</span><br><span class="line">        p[i].id = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> num[ma-mi+<span class="number">1</span>];</span><br><span class="line">    <span class="built_in">memset</span>(num, <span class="number">0</span>, (ma-mi+<span class="number">1</span>)*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    sort(p, p+q, cmp);</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; q; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = p[i].l; j &lt;= p[i].r; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            num[j-mi]++;</span><br><span class="line">            <span class="keyword">if</span>(num[j] &gt; n)</span><br><span class="line">            &#123;</span><br><span class="line">                con.insert(p[i].id);</span><br><span class="line">                sum++;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt;::iterator ptr = con.begin();</span><br><span class="line">    <span class="keyword">while</span>(ptr != con.end())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; *ptr+<span class="number">1</span> &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">        ptr++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/2_l/" data-id="ck2sdxids000h7354uu5wl3vo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/2_l/" data-id="ck2se1h07000i9p543ylmgsdy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -153,7 +153,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/09/2_jk/" data-id="ck2sdxidu000j73547wdvuvm8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/2_jk/" data-id="ck2se1h06000h9p54nevbik1t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -204,7 +204,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/09/2_hi/" data-id="ck2sdxidt000i73543ubca5fb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/2_hi/" data-id="ck2se1h08000j9p54kmh5890f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -251,7 +251,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/09/2_g/" data-id="ck2sdxidp000f7354merb8usn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/2_g/" data-id="ck2se1h05000g9p54r3cwwm8p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -299,7 +299,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/09/2_e/" data-id="ck2sdxidr000g7354zlua4wcj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/2_e/" data-id="ck2se1h02000e9p54ltdi6p2x" class="article-share-link">Share</a>
       
       
     </footer>
@@ -348,7 +348,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/09/2_d/" data-id="ck2sdxido000e7354sq8rw47m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/2_d/" data-id="ck2se1h04000f9p54iko5d7hf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -400,7 +400,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/09/2_bc/" data-id="ck2sdxidh000b73540m2rmfxc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/2_bc/" data-id="ck2se1h01000d9p54lladionz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -451,7 +451,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/09/2_a/" data-id="ck2sdxidm000d7354r416x3z3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/2_a/" data-id="ck2se1gzz000c9p54eqqrpjca" class="article-share-link">Share</a>
       
       
     </footer>
@@ -502,7 +502,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/09/1_l/" data-id="ck2sdxidk000c7354jxjju67o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/1_l/" data-id="ck2se1gzy000b9p54jdgvsz3t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -553,7 +553,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/09/1_k/" data-id="ck2sdxide000a7354kot93az5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/09/1_k/" data-id="ck2se1gzv000a9p54upqg2ht7" class="article-share-link">Share</a>
       
       
     </footer>
