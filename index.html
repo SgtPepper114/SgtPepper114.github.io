@@ -62,6 +62,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-3_a" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/12/3_a/" class="article-date">
+  <time datetime="2019-11-12T04:33:15.231Z" itemprop="datePublished">2019-11-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/12/3_a/">萌新acm(3) B - Minimize the Permutation</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>You have a coins of value n and b coins of value 1. You always pay in exact change, so you want to know if there exist such x and y that if you take x (0≤x≤a) coins of value n and y (0≤y≤b) coins of value 1, then the total value of taken coins will be S.</p>
+<p>You have to answer q independent test cases.</p>
+<hr>
+<p><strong>思路</strong></p>
+<p>无</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> q;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; q;</span><br><span class="line">    <span class="keyword">while</span>(q &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        q--;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> s, a, b, n;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b &gt;&gt; n &gt;&gt; s;</span><br><span class="line">        <span class="keyword">if</span>(s &gt; n*a + b) <span class="built_in">cout</span> &lt;&lt; <span class="string">"NO"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(s % n &lt;= b) <span class="built_in">cout</span> &lt;&lt; <span class="string">"YES"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; <span class="string">"NO"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/12/3_a/" data-id="ck2vd1i93000i0g54m1prbw9e" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-1_l" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/10/1_l/" class="article-date">
@@ -103,7 +149,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_l/" data-id="ck2sjyfju000bhd54xojt644x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_l/" data-id="ck2vd1i8o000a0g54b290pnqr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -154,7 +200,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_k/" data-id="ck2sjyfjr000ahd54g3h0o077" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_k/" data-id="ck2vd1i8n00090g54c5h0ggov" class="article-share-link">Share</a>
       
       
     </footer>
@@ -203,7 +249,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_j/" data-id="ck2sjyfjq0009hd54f8sqdrv8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_j/" data-id="ck2vd1i8l00080g54iv974f2l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -251,7 +297,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_i/" data-id="ck2sjyfjo0008hd549wy71235" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_i/" data-id="ck2vd1i8i00060g54yw14k8m2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -305,7 +351,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_h/" data-id="ck2sjyfjn0007hd54s2ithfcd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_h/" data-id="ck2vd1i8r000b0g54zw94ow9r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -356,7 +402,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_g/" data-id="ck2sjyfjl0006hd54ul1n5j04" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_g/" data-id="ck2vd1i8k00070g54dgogs7tm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -405,7 +451,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_f/" data-id="ck2sjyfjj0005hd541mdaj7w6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_f/" data-id="ck2vd1i8h00050g54nyablkkf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -454,7 +500,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_e/" data-id="ck2sjyfji0004hd54pnx4alhm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_e/" data-id="ck2vd1i8f00040g54q7df6p9l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -501,52 +547,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_d/" data-id="ck2sjyfjg0003hd542a1w7u4q" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-1_a" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/10/1_a/" class="article-date">
-  <time datetime="2019-11-10T05:20:54.804Z" itemprop="datePublished">2019-11-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/10/1_a/">AtCoder 5251 - curtain</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong><br>The window of Takahashi’s room has a width of A. There are two curtains hung over the window, each of which has a horizontal length of B. (Vertically, the curtains are long enough to cover the whole window.)</p>
-<p>We will close the window so as to minimize the total horizontal length of the uncovered part of the window. Find the total horizontal length of the uncovered parts of the window then.</p>
-<p>1≤A≤100<br>1≤B≤100<br>A and B are integers.</p>
-<hr>
-<p><strong>思路</strong><br>看得懂英文就行</p>
-<hr>
-<p><strong>AC代码</strong><br>语言：c</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">0</span>, b = <span class="number">0</span>, con = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;a, &amp;b);</span><br><span class="line">    con = a - <span class="number">2</span> * b;</span><br><span class="line">    <span class="keyword">if</span> (con &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        con = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>, con);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_a/" data-id="ck2sjyfjc0001hd540gkgxzb7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_d/" data-id="ck2vd1i8e00030g5450twxcov" class="article-share-link">Share</a>
       
       
     </footer>
@@ -592,6 +593,10 @@
       <ul>
         
           <li>
+            <a href="/2019/11/12/3_a/">萌新acm(3) B - Minimize the Permutation</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/10/1_l/">AtCoder 4864 - Powerful Discount Tickets</a>
           </li>
         
@@ -605,10 +610,6 @@
         
           <li>
             <a href="/2019/11/10/1_i/">AtCoder 5223 - Weather Prediction</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/10/1_h/">AtCoder 4875 - Disjoint Set of Common Divisors</a>
           </li>
         
       </ul>
