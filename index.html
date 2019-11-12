@@ -65,7 +65,7 @@
     <article id="post-3_b" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/12/3_b/" class="article-date">
-  <time datetime="2019-11-12T14:32:49.164Z" itemprop="datePublished">2019-11-12</time>
+  <time datetime="2019-11-12T14:34:07.504Z" itemprop="datePublished">2019-11-12</time>
 </a>
     
   </div>
@@ -84,7 +84,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>思路</strong></p>
+        <p><strong>题面</strong></p>
+<p>You are given a permutation of length n. Recall that the permutation is an array consisting of n distinct integers from 1 to n in arbitrary order. For example, [2,3,1,5,4] is a permutation, but [1,2,2] is not a permutation (2 appears twice in the array) and [1,3,4] is also not a permutation (n=3 but there is 4 in the array).</p>
+<p>You can perform at most n−1 operations with the given permutation (it is possible that you don’t perform any operations at all). The i-th operation allows you to swap elements of the given permutation on positions i and i+1. Each operation can be performed at most once. The operations can be performed in arbitrary order.</p>
+<p>Your task is to find the lexicographically minimum possible permutation obtained by performing some of the given operations in some order.</p>
+<p>You can see the definition of the lexicographical order in the notes section.</p>
+<p>You have to answer q independent test cases.</p>
+<p>For example, let’s consider the permutation [5,4,1,3,2]. The minimum possible permutation we can obtain is [1,5,2,4,3] and we can do it in the following way:</p>
+<p>perform the second operation (swap the second and the third elements) and obtain the permutation [5,1,4,3,2];<br>perform the fourth operation (swap the fourth and the fifth elements) and obtain the permutation [5,1,4,2,3];<br>perform the third operation (swap the third and the fourth elements) and obtain the permutation [5,1,2,4,3].<br>perform the first operation (swap the first and the second elements) and obtain the permutation [1,5,2,4,3];<br>Another example is [1,2,4,3]. The minimum possible permutation we can obtain is [1,2,3,4] by performing the third operation (swap the third and the fourth elements).</p>
+<hr>
+<p><strong>思路</strong></p>
 <p>从后往前有条件的冒泡排序</p>
 <hr>
 <p><strong>AC代码</strong></p>
@@ -94,7 +103,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/3_b/" data-id="ck2vygnbv000m4i54yj660j9u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/3_b/" data-id="ck2vyi7v7000m5q54ppyesu0s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -142,7 +151,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_l/" data-id="ck2vygnbt000k4i54nxwhm8ek" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_l/" data-id="ck2vyi7v4000k5q54a7micf5g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -195,7 +204,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_jk/" data-id="ck2vygnbs000j4i5451e2knkm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_jk/" data-id="ck2vyi7v1000i5q54kf7dofzq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -246,7 +255,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_hi/" data-id="ck2vygnbr000i4i542w6ekd48" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_hi/" data-id="ck2vyi7v2000j5q5405cn2nmq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -293,7 +302,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_g/" data-id="ck2vygnbq000h4i5412hb7vmh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_g/" data-id="ck2vyi7ux000f5q54z2yvc8fy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -342,7 +351,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_f/" data-id="ck2vygnbp000g4i54nl3e0r9x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_f/" data-id="ck2vyi7v0000h5q545ohx5njj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -390,7 +399,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_e/" data-id="ck2vygnbo000f4i54wljks42z" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_e/" data-id="ck2vyi7uz000g5q54as17s5qb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -439,7 +448,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_d/" data-id="ck2vygnbm000e4i54z73j5s3a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_d/" data-id="ck2vyi7ut000c5q54i96lxqhk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -491,7 +500,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_bc/" data-id="ck2vygnbk000c4i54po9t4ael" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_bc/" data-id="ck2vyi7uw000e5q54e3k7ig2p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -542,7 +551,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_a/" data-id="ck2vygnbi000b4i54il0knv8f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_a/" data-id="ck2vyi7uv000d5q54fs6s3z39" class="article-share-link">Share</a>
       
       
     </footer>
