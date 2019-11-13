@@ -65,22 +65,42 @@
     <article id="post-3_d" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/13/3_d/" class="article-date">
-  <time datetime="2019-11-13T04:34:16.808Z" itemprop="datePublished">2019-11-13</time>
+  <time datetime="2019-11-13T07:39:21.414Z" itemprop="datePublished">2019-11-13</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/13/3_d/">D - Binary String Minimizing</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#include&lt;bits/stdc++.h&gt;<br>using namespace std;</p>
-<p>int main()<br>{<br>    ios::sync_with_stdio(false);<br>    int q;<br>    cin &gt;&gt; q;<br>    while(q–)<br>    {<br>        int n;<br>        long long k;<br>        cin &gt;&gt; n &gt;&gt; k;<br>        string p;<br>        cin &gt;&gt; p;<br>        int step = 0;<br>        for(int i = 0; i &lt; n; i++)<br>        {<br>            if(p[i] == ‘0’)<br>            {<br>                if(i &gt; step)<br>                {<br>                    if(k &gt;= i-step)<br>                    {<br>                        p[step] = ‘0’;<br>                        p[i] = ‘1’;<br>                        k -= i-step;<br>                    }<br>                    else<br>                    {<br>                        p[i-k] = ‘0’;<br>                        p[i] = ‘1’;<br>                        k = 0;<br>                    }<br>                    if(k == 0) break;<br>                }<br>                step++;<br>            }<br>        }<br>        cout &lt;&lt; p &lt;&lt; endl;<br>    }<br>    return 0;<br>}</p>
+        <p><strong>题面</strong></p>
+<p>You are given a binary string of length n (i. e. a string consisting of n characters ‘0’ and ‘1’).</p>
+<p>In one move you can swap two adjacent characters of the string. What is the lexicographically minimum possible string you can obtain from the given one if you can perform no more than k moves? It is possible that you do not perform any moves at all.</p>
+<p>Note that you can swap the same pair of adjacent characters with indices i and i+1 arbitrary (possibly, zero) number of times. Each such swap is considered a separate move.</p>
+<p>You have to answer q independent test cases.</p>
+<hr>
+<p><strong>思路</strong></p>
+<p>从前往后遍历，把所有0尽可能往前放</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> q;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; q;</span><br><span class="line">    <span class="keyword">while</span>(q--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> n;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> k;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; k;</span><br><span class="line">        <span class="built_in">string</span> p;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; p;</span><br><span class="line">        <span class="keyword">int</span> step = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(p[i] == <span class="string">'0'</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(i &gt; step)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(k &gt;= i-step)</span><br><span class="line">                    &#123;</span><br><span class="line">                        p[step] = <span class="string">'0'</span>;</span><br><span class="line">                        p[i] = <span class="string">'1'</span>;</span><br><span class="line">                        k -= i-step;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                    &#123;</span><br><span class="line">                        p[i-k] = <span class="string">'0'</span>;</span><br><span class="line">                        p[i] = <span class="string">'1'</span>;</span><br><span class="line">                        k = <span class="number">0</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span>(k == <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                step++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; p &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/13/3_d/" data-id="ck2wsiodk000ox4544nkgjn62" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/13/3_d/" data-id="ck2wz4pkp000oai54dzxvqlfg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -130,7 +150,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/13/3_c/" data-id="ck2wsiodi000nx454sgsclop5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/13/3_c/" data-id="ck2wz4pkk000mai541w0gb861" class="article-share-link">Share</a>
       
       
     </footer>
@@ -181,7 +201,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/3_b/" data-id="ck2wsiodh000mx454apvh0co4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/3_b/" data-id="ck2wz4pkm000nai5427ddk086" class="article-share-link">Share</a>
       
       
     </footer>
@@ -229,7 +249,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_l/" data-id="ck2wsiode000kx454sc74cgda" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_l/" data-id="ck2wz4pkf000kai54upue4i8q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -282,7 +302,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_jk/" data-id="ck2wsiodd000jx4544qwzka69" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_jk/" data-id="ck2wz4pkd000jai54vnigpexs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -333,7 +353,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_hi/" data-id="ck2wsiodb000hx454mrjwnthk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_hi/" data-id="ck2wz4pk9000hai54qv7mcnmh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -380,7 +400,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_g/" data-id="ck2wsiodc000ix454y7o6l73i" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_g/" data-id="ck2wz4pkb000iai54lhpcoz18" class="article-share-link">Share</a>
       
       
     </footer>
@@ -429,7 +449,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_f/" data-id="ck2wsiod9000fx454w5s34c0u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_f/" data-id="ck2wz4pk7000gai54qriqyzap" class="article-share-link">Share</a>
       
       
     </footer>
@@ -477,7 +497,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_e/" data-id="ck2wsiod8000ex454dgk7g7bz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_e/" data-id="ck2wz4pk5000fai54i1hj5i7p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -526,7 +546,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_d/" data-id="ck2wsioda000gx4542a5le3sq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_d/" data-id="ck2wz4pk1000dai54t2oz060q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -572,7 +592,7 @@
       <ul>
         
           <li>
-            <a href="/2019/11/13/3_d/">(no title)</a>
+            <a href="/2019/11/13/3_d/">D - Binary String Minimizing</a>
           </li>
         
           <li>
