@@ -62,6 +62,103 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2_e" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/12/2_e/" class="article-date">
+  <time datetime="2019-11-12T10:18:39.790Z" itemprop="datePublished">2019-11-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/12/2_e/">CodeForces 1234D - Distinct Characters Queries</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>You are given a string s consisting of lowercase Latin letters and q queries for this string.</p>
+<p>Recall that the substring s[l;r] of the string s is the string slsl+1…sr. For example, the substrings of “codeforces” are “code”, “force”, “f”, “for”, but not “coder” and “top”.</p>
+<p>There are two types of queries:</p>
+<p>1 pos c (1≤pos≤|s|, c is lowercase Latin letter): replace spos with c (set spos:=c);<br>2 l r (1≤l≤r≤|s|): calculate the number of distinct characters in the substring s[l;r].</p>
+<hr>
+<p><strong>思路</strong><br>用set存下标，最后对每个字母遍历是否有在范围内的下表</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<p>语言:c++</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> word[<span class="number">100000</span>];</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>, word);</span><br><span class="line">    <span class="keyword">int</span> q = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;q);</span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; st[<span class="number">26</span>];</span><br><span class="line">    <span class="keyword">int</span> length = <span class="built_in">strlen</span>(word);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        st[word[i]-<span class="string">'a'</span>].insert(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(q &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        q--;</span><br><span class="line">        <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;k);</span><br><span class="line">        <span class="keyword">if</span>(k == <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> n = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">char</span> s = <span class="number">0</span>;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d %c"</span>, &amp;n, &amp;s);</span><br><span class="line">            st[word[n<span class="number">-1</span>]-<span class="string">'a'</span>].erase(n<span class="number">-1</span>);</span><br><span class="line">            st[s-<span class="string">'a'</span>].insert(n<span class="number">-1</span>);</span><br><span class="line">            word[n<span class="number">-1</span>] = s;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>, sum = <span class="number">0</span>;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;i, &amp;j);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; <span class="number">26</span>; k++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt;::iterator p = st[k].lower_bound(i<span class="number">-1</span>);</span><br><span class="line">                <span class="keyword">if</span>(p != st[k].end() &amp;&amp; *p &lt;= j<span class="number">-1</span>) sum++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sum);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/12/2_e/" data-id="ck2x1s3tk000eoy54owtvu8hw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2_d" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/12/2_d/" class="article-date">
+  <time datetime="2019-11-12T10:18:23.530Z" itemprop="datePublished">2019-11-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/12/2_d/">CodeForces 1234C - Pipes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>You are given a system of pipes. It consists of two rows, each row consists of n pipes. The top left pipe has the coordinates (1,1) and the bottom right — (2,n).</p>
+<p>There are six types of pipes: two types of straight pipes and four types of curved pipes. Here are the examples of all six types:<br>![Types of pipes]<a href="https://vj.z180.cn/8013a29865dfd84f943080c025bb1d7b?v=1572731637" target="_blank" rel="noopener">1</a><br>You can turn each of the given pipes 90 degrees clockwise or counterclockwise arbitrary (possibly, zero) number of times (so the types 1 and 2 can become each other and types 3,4,5,6 can become each other).</p>
+<p>You want to turn some pipes in a way that the water flow can start at (1,0) (to the left of the top left pipe), move to the pipe at (1,1), flow somehow by connected pipes to the pipe at (2,n) and flow right to (2,n+1).</p>
+<p>Pipes are connected if they are adjacent in the system and their ends are connected. Here are examples of connected pipes:<br>![Examples of connected pipes]<a href="https://vj.z180.cn/3d3f37b8e6c60e6601a4edc78fbbf205?v=1572731637" target="_blank" rel="noopener">2</a><br>Let’s describe the problem using some example:<br>![The first example input]<a href="https://vj.z180.cn/ea8dba156764f5a4fd1b09a2f5120d25?v=1572731637" target="_blank" rel="noopener">3</a><br>And its solution is below:<br>![The first example answer]<a href="https://vj.z180.cn/965a92240411f85bfbdf8a5aeecab2c6?v=1572731637" target="_blank" rel="noopener">4</a><br>As you can see, the water flow is the poorly drawn blue line. To obtain the answer, we need to turn the pipe at (1,2) 90 degrees clockwise, the pipe at (2,3) 90 degrees, the pipe at (1,6) 90 degrees, the pipe at (1,7) 180 degrees and the pipe at (2,7) 180 degrees. Then the flow of water can reach (2,n+1) from (1,0).</p>
+<p>You have to answer q independent queries.</p>
+<hr>
+<p><strong>思路</strong><br>由k个直管道连接n个上下都为弯曲的管道（简称此组合为w），当左方有奇数个w时直管道必在下方，反之必在上方，且最终n为偶数时成立</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<p>语言：c++</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> q = <span class="number">0</span>, x = <span class="number">0</span>, y = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">string</span> k1, k2;</span><br><span class="line">    <span class="keyword">long</span> n = <span class="number">0</span>, cou = <span class="number">0</span>, i = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; q;</span><br><span class="line">    <span class="keyword">while</span>(q &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        q--;</span><br><span class="line">        cou = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; k1;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; k2;</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(k1[i] == <span class="string">'1'</span> || k1[i] == <span class="string">'2'</span>) k1[i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> k1[i] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span>(k2[i] == <span class="string">'1'</span> || k2[i] == <span class="string">'2'</span>) k2[i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> k2[i] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span>(!k1[i] &amp;&amp; !k2[i])</span><br><span class="line">            &#123;</span><br><span class="line">                cou++;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(k1[i] &amp;&amp; (!(cou%<span class="number">2</span>))) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span>(k2[i] &amp;&amp; (cou%<span class="number">2</span>)) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>((i==n) &amp;&amp; (cou%<span class="number">2</span>)) <span class="built_in">cout</span> &lt;&lt; <span class="string">"YES"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; <span class="string">"NO"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/12/2_d/" data-id="ck2x1s3ti000doy542ijryajv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2_bc" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/12/2_bc/" class="article-date">
@@ -104,7 +201,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_bc/" data-id="ck2wz4pk3000eai5459ppjdwv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_bc/" data-id="ck2x1s3th000coy54n34l205p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -155,7 +252,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_a/" data-id="ck2wz4pjz000cai547ooho6lp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_a/" data-id="ck2x1s3u6000moy541vj3zvou" class="article-share-link">Share</a>
       
       
     </footer>
@@ -201,7 +298,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/3_a/" data-id="ck2wz4pki000lai541avckck9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/3_a/" data-id="ck2x1s3u4000koy54a7uqi8gt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -252,7 +349,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_l/" data-id="ck2wz4pjv000bai546yjbu24n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_l/" data-id="ck2x1s3tf000boy54ibi4knbd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -303,7 +400,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_k/" data-id="ck2wz4pjr000aai54flyirgny" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_k/" data-id="ck2x1s3td000aoy54zn538xq3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -352,7 +449,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_j/" data-id="ck2wz4pjp0009ai54cfs9fwcz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_j/" data-id="ck2x1s3ta0008oy54vf6eq5cm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -400,7 +497,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_i/" data-id="ck2wz4pjm0008ai547ml3t43k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_i/" data-id="ck2x1s3t80007oy54lpip99fi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -454,107 +551,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_h/" data-id="ck2wz4pjk0007ai5498xr0l8s" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-1_g" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/10/1_g/" class="article-date">
-  <time datetime="2019-11-10T05:22:06.316Z" itemprop="datePublished">2019-11-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/10/1_g/">AtCoder 5224 - Go to School</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong></p>
-<p>Takahashi is a teacher responsible for a class of N students.</p>
-<p>The students are given distinct student numbers from 1 to N.</p>
-<p>Today, all the students entered the classroom at different times.</p>
-<p>According to Takahashi’s record, there were Ai students in the classroom when student number i entered the classroom (including student number i).</p>
-<p>From these records, reconstruct the order in which the students entered the classroom.</p>
-<p>1[le]N[le]105<br>1[le]Ai[le]N<br>Ai≠Aj (i≠j)<br>All values in input are integers.</p>
-<hr>
-<p><strong>思路</strong></p>
-<p>看懂题就行</p>
-<hr>
-<p><strong>AC代码</strong></p>
-<p>语言:c</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">0</span>, i = <span class="number">0</span>, k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> *p = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    p = (<span class="keyword">int</span> *)<span class="built_in">calloc</span>(n, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;k);</span><br><span class="line">        p[k<span class="number">-1</span>] = i+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, p[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(p);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_g/" data-id="ck2wz4pjh0006ai54htqwct7o" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-1_f" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/10/1_f/" class="article-date">
-  <time datetime="2019-11-10T05:21:49.256Z" itemprop="datePublished">2019-11-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/10/1_f/">AtCoder 5250 - Roller Coaster</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong></p>
-<p>N friends of Takahashi has come to a theme park.</p>
-<p>To ride the most popular roller coaster in the park, you must be at least K centimeters tall.</p>
-<p>The i-th friend is hi centimeters tall.</p>
-<p>How many of the Takahashi’s friends can ride the roller coaster?</p>
-<p>1[le]N[le]105<br>1[le]K[le]500<br>1[le]hi[le]500<br>All values in input are integers.</p>
-<hr>
-<p><strong>思路</strong></p>
-<p>直接穷举复杂度O(n),注意不要爆int即可</p>
-<hr>
-<p><strong>AC代码</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">long</span> n = <span class="number">0</span>, count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>, x = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%ld %d"</span>, &amp;n, &amp;k);</span><br><span class="line">    <span class="keyword">while</span> (n &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        n--;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;x);</span><br><span class="line">        <span class="keyword">if</span> (x &gt;= k) count++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%ld"</span>, count);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_f/" data-id="ck2wz4pje0005ai54qglv7ow9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_h/" data-id="ck2x1s3tb0009oy542wc3x726" class="article-share-link">Share</a>
       
       
     </footer>
@@ -600,6 +597,14 @@
       <ul>
         
           <li>
+            <a href="/2019/11/13/3_f/">F - Shooting</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/13/3_e/">E - Prefixes</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/13/3_d/">D - Binary String Minimizing</a>
           </li>
         
@@ -609,14 +614,6 @@
         
           <li>
             <a href="/2019/11/12/3_b/">萌新acm(3) B - Minimize the Permutation</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/12/2_l/">CodeForces 1249D - Too Many Segments</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/12/2_jk/">CodeForces 1249C - Good Numbers</a>
           </li>
         
       </ul>

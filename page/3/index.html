@@ -62,6 +62,106 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-1_g" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/10/1_g/" class="article-date">
+  <time datetime="2019-11-10T05:22:06.316Z" itemprop="datePublished">2019-11-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/10/1_g/">AtCoder 5224 - Go to School</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>Takahashi is a teacher responsible for a class of N students.</p>
+<p>The students are given distinct student numbers from 1 to N.</p>
+<p>Today, all the students entered the classroom at different times.</p>
+<p>According to Takahashi’s record, there were Ai students in the classroom when student number i entered the classroom (including student number i).</p>
+<p>From these records, reconstruct the order in which the students entered the classroom.</p>
+<p>1[le]N[le]105<br>1[le]Ai[le]N<br>Ai≠Aj (i≠j)<br>All values in input are integers.</p>
+<hr>
+<p><strong>思路</strong></p>
+<p>看懂题就行</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<p>语言:c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">0</span>, i = <span class="number">0</span>, k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> *p = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    p = (<span class="keyword">int</span> *)<span class="built_in">calloc</span>(n, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;k);</span><br><span class="line">        p[k<span class="number">-1</span>] = i+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, p[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(p);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/10/1_g/" data-id="ck2x1s3t60006oy54r7xmrry6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-1_f" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/10/1_f/" class="article-date">
+  <time datetime="2019-11-10T05:21:49.256Z" itemprop="datePublished">2019-11-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/10/1_f/">AtCoder 5250 - Roller Coaster</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>N friends of Takahashi has come to a theme park.</p>
+<p>To ride the most popular roller coaster in the park, you must be at least K centimeters tall.</p>
+<p>The i-th friend is hi centimeters tall.</p>
+<p>How many of the Takahashi’s friends can ride the roller coaster?</p>
+<p>1[le]N[le]105<br>1[le]K[le]500<br>1[le]hi[le]500<br>All values in input are integers.</p>
+<hr>
+<p><strong>思路</strong></p>
+<p>直接穷举复杂度O(n),注意不要爆int即可</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">long</span> n = <span class="number">0</span>, count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>, x = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%ld %d"</span>, &amp;n, &amp;k);</span><br><span class="line">    <span class="keyword">while</span> (n &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        n--;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;x);</span><br><span class="line">        <span class="keyword">if</span> (x &gt;= k) count++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%ld"</span>, count);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/10/1_f/" data-id="ck2x1s3t50005oy54ikfjv8fm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-1_e" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/10/1_e/" class="article-date">
@@ -101,7 +201,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_e/" data-id="ck2wz4pj90003ai54440x47yv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_e/" data-id="ck2x1s3t30004oy542kf1mghd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -148,7 +248,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_d/" data-id="ck2wz4pjc0004ai54ig54lo3k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_d/" data-id="ck2x1s3t10003oy540sn94g3h" class="article-share-link">Share</a>
       
       
     </footer>
@@ -193,7 +293,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_a/" data-id="ck2wz4pir0000ai54x781g6c9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_a/" data-id="ck2x1s3sq0000oy54dg9s25xn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -242,7 +342,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_b/" data-id="ck2wz4pj00001ai54mikvx8ft" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_b/" data-id="ck2x1s3sw0001oy54azh640wy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -289,7 +389,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_c/" data-id="ck2wz4pj50002ai54wtrx9l8v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_c/" data-id="ck2x1s3sz0002oy54gnrcnp78" class="article-share-link">Share</a>
       
       
     </footer>
@@ -462,7 +562,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/14/彩虹社熟肉整理/" data-id="ck2wz4pkr000pai54or8suzbu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/14/彩虹社熟肉整理/" data-id="ck2x1s3ud000roy54kk1aprmp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -508,6 +608,14 @@
       <ul>
         
           <li>
+            <a href="/2019/11/13/3_f/">F - Shooting</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/13/3_e/">E - Prefixes</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/13/3_d/">D - Binary String Minimizing</a>
           </li>
         
@@ -517,14 +625,6 @@
         
           <li>
             <a href="/2019/11/12/3_b/">萌新acm(3) B - Minimize the Permutation</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/12/2_l/">CodeForces 1249D - Too Many Segments</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/12/2_jk/">CodeForces 1249C - Good Numbers</a>
           </li>
         
       </ul>
