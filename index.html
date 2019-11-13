@@ -62,6 +62,56 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-3_c" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/13/3_c/" class="article-date">
+  <time datetime="2019-11-13T00:58:12.547Z" itemprop="datePublished">2019-11-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/13/3_c/">萌新acm(3) C - Platforms Jumping</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>There is a river of width n. The left bank of the river is cell 0 and the right bank is cell n+1 (more formally, the river can be represented as a sequence of n+2 cells numbered from 0 to n+1). There are also m wooden platforms on a river, the i-th platform has length ci (so the i-th platform takes ci consecutive cells of the river). It is guaranteed that the sum of lengths of platforms does not exceed n.</p>
+<p>You are standing at 0 and want to reach n+1 somehow. If you are standing at the position x, you can jump to any position in the range [x+1;x+d]. However you don’t really like the water so you can jump only to such cells that belong to some wooden platform. For example, if d=1, you can jump only to the next position (if it belongs to the wooden platform). You can assume that cells 0 and n+1 belong to wooden platforms.</p>
+<p>You want to know if it is possible to reach n+1 from 0 if you can move any platform to the left or to the right arbitrary number of times (possibly, zero) as long as they do not intersect each other (but two platforms can touch each other). It also means that you cannot change the relative order of platforms.</p>
+<p>Note that you should move platforms until you start jumping (in other words, you first move the platforms and then start jumping).</p>
+<p>For example, if n=7, m=3, d=2 and c=[1,2,1], the answer is [0,1,0,2,2,0,3]. The sequence of jumps you perform is 0→2→4→5→7→8.</p>
+<p>Input<br>7 3 2<br>1 2 1<br>Output<br>YES<br>0 1 0 2 2 0 3<br>Input<br>10 1 11<br>1<br>Output<br>YES<br>0 0 0 0 0 0 0 0 0 1<br>Input<br>10 1 5<br>2<br>Output<br>YES<br>0 0 0 0 1 1 0 0 0 0 </p>
+<hr>
+<p><strong>思路</strong></p>
+<p>先确定0的数量，从左向右遍历，保证每块木板左侧0尽可能多</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> n, m, sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> d;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m &gt;&gt; d;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> p[m];</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> num[n] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> *ptr = num;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">long</span> <span class="keyword">long</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> k;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; k;</span><br><span class="line">        sum += k;</span><br><span class="line">        p[i] = k;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>((d<span class="number">-1</span>)*(m+<span class="number">1</span>) + sum &lt; n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"NO"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> space = n - sum;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">long</span> <span class="keyword">long</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(space &gt;= d<span class="number">-1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                space -= d<span class="number">-1</span>;</span><br><span class="line">                ptr += d<span class="number">-1</span>;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">long</span> <span class="keyword">long</span> j = <span class="number">0</span>; j &lt; p[i]; j++)</span><br><span class="line">                &#123;</span><br><span class="line">                    *ptr = i+<span class="number">1</span>;</span><br><span class="line">                    ptr++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                ptr += space;</span><br><span class="line">                space = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">long</span> <span class="keyword">long</span> j = <span class="number">0</span>; j &lt; p[i]; j++)</span><br><span class="line">                &#123;</span><br><span class="line">                    *ptr = i+<span class="number">1</span>;</span><br><span class="line">                    ptr++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"YES"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">long</span> <span class="keyword">long</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; num[i] &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/13/3_c/" data-id="ck2wkssdx000nkc54557b4sgf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-3_b" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/12/3_b/" class="article-date">
@@ -103,7 +153,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/3_b/" data-id="ck2vyi7v7000m5q54ppyesu0s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/3_b/" data-id="ck2wkssdw000mkc54xd3z3uqa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -151,7 +201,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_l/" data-id="ck2vyi7v4000k5q54a7micf5g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_l/" data-id="ck2wkssdu000lkc546mej1ile" class="article-share-link">Share</a>
       
       
     </footer>
@@ -204,7 +254,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_jk/" data-id="ck2vyi7v1000i5q54kf7dofzq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_jk/" data-id="ck2wkssdr000jkc545am7sle4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -255,7 +305,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_hi/" data-id="ck2vyi7v2000j5q5405cn2nmq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_hi/" data-id="ck2wkssdp000hkc547iu1lwzu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -302,7 +352,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_g/" data-id="ck2vyi7ux000f5q54z2yvc8fy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_g/" data-id="ck2wkssdo000gkc5492zjvkmw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -351,7 +401,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_f/" data-id="ck2vyi7v0000h5q545ohx5njj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_f/" data-id="ck2wkssdq000ikc54fup8qkrv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -399,7 +449,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_e/" data-id="ck2vyi7uz000g5q54as17s5qb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_e/" data-id="ck2wkssdm000fkc54qzojav5n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -448,7 +498,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_d/" data-id="ck2vyi7ut000c5q54i96lxqhk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_d/" data-id="ck2wkssdl000ekc54onsx3bof" class="article-share-link">Share</a>
       
       
     </footer>
@@ -500,58 +550,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_bc/" data-id="ck2vyi7uw000e5q54e3k7ig2p" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2_a" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/12/2_a/" class="article-date">
-  <time datetime="2019-11-12T10:17:38.440Z" itemprop="datePublished">2019-11-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/12/2_a/">CodeForces 1234A - Equalize Prices Again</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong></p>
-<p>You are both a shop keeper and a shop assistant at a small nearby shop. You have n goods, the i-th good costs ai coins.</p>
-<p>You got tired of remembering the price of each product when customers ask for it, thus you decided to simplify your life. More precisely you decided to set the same price for all n goods you have.</p>
-<p>However, you don’t want to lose any money so you want to choose the price in such a way that the sum of new prices is not less than the sum of the initial prices. It means that if you sell all n goods for the new price, you will receive at least the same (or greater) amount of money as if you sell them for their initial prices.</p>
-<p>On the other hand, you don’t want to lose customers because of big prices so among all prices you can choose you need to choose the minimum one.</p>
-<p>So you need to find the minimum possible equal price of all n goods so if you sell them for this price, you will receive at least the same (or greater) amount of money as if you sell them for their initial prices.</p>
-<p>You have to answer q independent queries.</p>
-<hr>
-<p><strong>思路</strong></p>
-<p>无</p>
-<hr>
-<p><strong>AC代码</strong></p>
-<p>语言:c++</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">0</span>, q = <span class="number">0</span>, i = <span class="number">0</span>, x = <span class="number">0</span>, ave = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;q);</span><br><span class="line">    <span class="keyword">while</span>(q &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        q--;</span><br><span class="line">        ave = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;x);</span><br><span class="line">            ave += x;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(ave % n != <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            ave = ave / n + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            ave /= n;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ave);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_a/" data-id="ck2vyi7uv000d5q54fs6s3z39" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_bc/" data-id="ck2wkssdh000ckc544mbo2bl2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -597,6 +596,10 @@
       <ul>
         
           <li>
+            <a href="/2019/11/13/3_c/">萌新acm(3) C - Platforms Jumping</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/12/3_b/">萌新acm(3) B - Minimize the Permutation</a>
           </li>
         
@@ -610,10 +613,6 @@
         
           <li>
             <a href="/2019/11/12/2_hi/">CodeForces 1249B - Books Exchange</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/12/2_g/">CodeForces 1249A - Yet Another Dividing into Teams</a>
           </li>
         
       </ul>
