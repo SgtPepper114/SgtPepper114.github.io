@@ -62,6 +62,58 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2_bc" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/12/2_bc/" class="article-date">
+  <time datetime="2019-11-12T10:18:03.024Z" itemprop="datePublished">2019-11-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/12/2_bc/">CodeForces 1234B - Social Network</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>The only difference between easy and hard versions are constraints on n and k.</p>
+<p>You are messaging in one of the popular social networks via your smartphone. Your smartphone can show at most k most recent conversations with your friends. Initially, the screen is empty (i.e. the number of displayed conversations equals 0).</p>
+<p>Each conversation is between you and some of your friends. There is at most one conversation with any of your friends. So each conversation is uniquely defined by your friend.</p>
+<p>You (suddenly!) have the ability to see the future. You know that during the day you will receive n messages, the i-th message will be received from the friend with ID idi (1≤idi≤109).</p>
+<p>If you receive a message from idi in the conversation which is currently displayed on the smartphone then nothing happens: the conversations of the screen do not change and do not change their order, you read the message and continue waiting for new messages.</p>
+<p>Otherwise (i.e. if there is no conversation with idi on the screen):</p>
+<p>Firstly, if the number of conversations displayed on the screen is k, the last conversation (which has the position k) is removed from the screen.<br>Now the number of conversations on the screen is guaranteed to be less than k and the conversation with the friend idi is not displayed on the screen.<br>The conversation with the friend idi appears on the first (the topmost) position on the screen and all the other displayed conversations are shifted one position down.<br>Your task is to find the list of conversations (in the order they are displayed on the screen) after processing all n messages.</p>
+<hr>
+<p><strong>思路</strong></p>
+<p>用队列储存数据,用布尔型向量的第i个元素表示数i是否在队列中</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<p>语言:c++</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> n = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">long</span> k = <span class="number">0</span>, i = <span class="number">0</span>, s = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">long</span> temp = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld %ld"</span>, &amp;n, &amp;k);</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; p(<span class="number">1e+9</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">long</span>&gt; q0(k, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">long</span>&gt; q;</span><br><span class="line">    <span class="keyword">while</span>(n &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        n--;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%ld"</span>, &amp;temp);</span><br><span class="line">        <span class="keyword">if</span>(p[temp]) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">if</span> (q.size() == k)</span><br><span class="line">        &#123;</span><br><span class="line">            p[q.front()] = <span class="literal">false</span>;</span><br><span class="line">            q.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        p[temp] = <span class="literal">true</span>;</span><br><span class="line">        q.push(temp);</span><br><span class="line">    &#125;</span><br><span class="line">    s = q.size();</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; s &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">for</span>(i = s<span class="number">-1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        q0[i] = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; s; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%ld "</span>, q0[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/12/2_bc/" data-id="ck2wsiod6000dx454wcywk0ya" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2_a" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/12/2_a/" class="article-date">
@@ -103,7 +155,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_a/" data-id="ck2wkssdd000akc54oirvvzgy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_a/" data-id="ck2wsiod3000bx454wqybx95q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -149,7 +201,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/3_a/" data-id="ck2wkssdt000kkc545qca7wb8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/3_a/" data-id="ck2wsiodg000lx454on97e5ro" class="article-share-link">Share</a>
       
       
     </footer>
@@ -200,7 +252,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_l/" data-id="ck2wkssdg000bkc54l1muzfth" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_l/" data-id="ck2wsiod5000cx454oex2flt8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -251,7 +303,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_k/" data-id="ck2wkssdj000dkc543z0kvlld" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_k/" data-id="ck2wsiod1000ax454unngkxbg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -300,7 +352,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_j/" data-id="ck2wkssdb0009kc54axqhwgbe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_j/" data-id="ck2wsiocz0009x454pne01cw5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -348,7 +400,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_i/" data-id="ck2wkssd80007kc54h1qavoyx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_i/" data-id="ck2wsiocy0008x454lk8qf3ia" class="article-share-link">Share</a>
       
       
     </footer>
@@ -402,7 +454,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_h/" data-id="ck2wkssda0008kc54wc47jusl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_h/" data-id="ck2wsiocv0006x454mm5vukuc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -453,7 +505,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_g/" data-id="ck2wkssd60006kc54n678zdeu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_g/" data-id="ck2wsioct0005x454uutslbdz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -502,56 +554,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_f/" data-id="ck2wkssd40005kc54oain54fn" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-1_e" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/10/1_e/" class="article-date">
-  <time datetime="2019-11-10T05:21:32.335Z" itemprop="datePublished">2019-11-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/10/1_e/">AtCoder 5218 - Odds of Oddness</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong></p>
-<p>Given is an integer N.</p>
-<p>Takahashi chooses an integer a from the positive integers not greater than N with equal probability.</p>
-<p>Find the probability that a is odd.</p>
-<p>1≤N≤100</p>
-<hr>
-<p><strong>思路</strong></p>
-<p>看得懂英文就行</p>
-<hr>
-<p><strong>AC代码</strong></p>
-<p>语言:c</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">double</span> pro = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">0</span>) pro = <span class="number">0.5</span>;</span><br><span class="line">    <span class="keyword">else</span> pro =(n+<span class="number">1</span>) / (<span class="keyword">double</span>)(<span class="number">2</span>*n);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%.10lf"</span>, pro);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_e/" data-id="ck2wkssd10003kc54dctqv8c4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_f/" data-id="ck2wsiocr0004x454hedeytb2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -597,6 +600,10 @@
       <ul>
         
           <li>
+            <a href="/2019/11/13/3_d/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/13/3_c/">萌新acm(3) C - Platforms Jumping</a>
           </li>
         
@@ -610,10 +617,6 @@
         
           <li>
             <a href="/2019/11/12/2_jk/">CodeForces 1249C - Good Numbers</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/12/2_hi/">CodeForces 1249B - Books Exchange</a>
           </li>
         
       </ul>

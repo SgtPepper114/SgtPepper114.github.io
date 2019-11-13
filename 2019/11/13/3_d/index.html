@@ -5,15 +5,19 @@
   
 
   
-  <title>Archives: 2019/11 | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="#include&amp;lt;bits/stdc++.h&amp;gt;using namespace std; int main(){    ios::sync_with_stdio(false);    int q;    cin &amp;gt;&amp;gt; q;    while(q–)    {        int n;        long long k;        cin &amp;gt;&amp;gt; n &amp;gt">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2019/11/page/3/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/11/13/3_d/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="#include&amp;lt;bits/stdc++.h&amp;gt;using namespace std; int main(){    ios::sync_with_stdio(false);    int q;    cin &amp;gt;&amp;gt; q;    while(q–)    {        int n;        long long k;        cin &amp;gt;&amp;gt; n &amp;gt">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-13T04:34:16.808Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="#include&amp;lt;bits/stdc++.h&amp;gt;using namespace std; int main(){    ios::sync_with_stdio(false);    int q;    cin &amp;gt;&amp;gt; q;    while(q–)    {        int n;        long long k;        cin &amp;gt;&amp;gt; n &amp;gt">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,121 +64,43 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/11/10/1_e/" class="archive-article-date">
-  <time datetime="2019-11-10T05:21:32.335Z" itemprop="datePublished">Nov 10</time>
+        <section id="main"><article id="post-3_d" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/13/3_d/" class="article-date">
+  <time datetime="2019-11-13T04:34:16.808Z" itemprop="datePublished">2019-11-13</time>
 </a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/10/1_e/">AtCoder 5218 - Odds of Oddness</a>
-    </h1>
-  
-
-    </header>
+    
   </div>
-</article>
-  
+  <div class="article-inner">
     
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/11/10/1_d/" class="archive-article-date">
-  <time datetime="2019-11-10T05:21:13.234Z" itemprop="datePublished">Nov 10</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/10/1_d/">AtCoder 5252 - Triangles</a>
-    </h1>
-  
+        <p>#include&lt;bits/stdc++.h&gt;<br>using namespace std;</p>
+<p>int main()<br>{<br>    ios::sync_with_stdio(false);<br>    int q;<br>    cin &gt;&gt; q;<br>    while(q–)<br>    {<br>        int n;<br>        long long k;<br>        cin &gt;&gt; n &gt;&gt; k;<br>        string p;<br>        cin &gt;&gt; p;<br>        int step = 0;<br>        for(int i = 0; i &lt; n; i++)<br>        {<br>            if(p[i] == ‘0’)<br>            {<br>                if(i &gt; step)<br>                {<br>                    if(k &gt;= i-step)<br>                    {<br>                        p[step] = ‘0’;<br>                        p[i] = ‘1’;<br>                        k -= i-step;<br>                    }<br>                    else<br>                    {<br>                        p[i-k] = ‘0’;<br>                        p[i] = ‘1’;<br>                        k = 0;<br>                    }<br>                    if(k == 0) break;<br>                }<br>                step++;<br>            }<br>        }<br>        cout &lt;&lt; p &lt;&lt; endl;<br>    }<br>    return 0;<br>}</p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/11/10/1_a/" class="archive-article-date">
-  <time datetime="2019-11-10T05:20:54.804Z" itemprop="datePublished">Nov 10</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/10/1_a/">AtCoder 5251 - curtain</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/11/10/1_b/" class="archive-article-date">
-  <time datetime="2019-11-10T05:20:42.338Z" itemprop="datePublished">Nov 10</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/13/3_d/" data-id="ck2wsiodk000ox4544nkgjn62" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/10/1_b/">AtCoder 4797 - TAKOYAKI FESTIVAL 2019</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/11/10/1_c/" class="archive-article-date">
-  <time datetime="2019-11-10T05:20:29.892Z" itemprop="datePublished">Nov 10</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/10/1_c/">AtCoder 5219 - Slimes</a>
-    </h1>
-  
-
-    </header>
+    </footer>
   </div>
-</article>
   
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/archives/2019/11/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/2019/11/">1</a><a class="page-number" href="/archives/2019/11/page/2/">2</a><span class="page-number current">3</span>
-  </nav>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/13/3_c/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">萌新acm(3) C - Platforms Jumping</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         
