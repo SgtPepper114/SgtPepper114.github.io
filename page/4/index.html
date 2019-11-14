@@ -5,21 +5,15 @@
   
 
   
-  <title>彩虹社熟肉整理 | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="彩虹社熟肉整理彩虹MC海牛大坟墓 海牛得到作案工具  大福单人游  反抗军（大福&amp;amp;柴卡）  千寻&amp;amp;静凛  千寻&amp;amp;绿仙  阿葵前篇阿葵本篇阿葵后篇  野人葛叶入城  中了岩浆陷阱的莫露露  海牛弑神（海牛&amp;amp;龙妈）  谁叔前篇谁叔后篇  海牛大坟墓建造篇  月之美兔，陨落于海牛大坟墓（JK组）  从地狱闯入海牛大坟墓的安洁  参观名胜的舞元 龙妈和女儿和MC 大块熟肉">
-<meta property="og:type" content="article">
-<meta property="og:title" content="彩虹社熟肉整理">
-<meta property="og:url" content="http://yoursite.com/2019/09/14/彩虹社熟肉整理/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/4/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="彩虹社熟肉整理彩虹MC海牛大坟墓 海牛得到作案工具  大福单人游  反抗军（大福&amp;amp;柴卡）  千寻&amp;amp;静凛  千寻&amp;amp;绿仙  阿葵前篇阿葵本篇阿葵后篇  野人葛叶入城  中了岩浆陷阱的莫露露  海牛弑神（海牛&amp;amp;龙妈）  谁叔前篇谁叔后篇  海牛大坟墓建造篇  月之美兔，陨落于海牛大坟墓（JK组）  从地狱闯入海牛大坟墓的安洁  参观名胜的舞元 龙妈和女儿和MC 大块熟肉">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190914140246536.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NndF9QZXBwZXJfeXVr,size_16,color_FFFFFF,t_70">
-<meta property="og:updated_time" content="2019-11-07T13:28:59.536Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="彩虹社熟肉整理">
-<meta name="twitter:description" content="彩虹社熟肉整理彩虹MC海牛大坟墓 海牛得到作案工具  大福单人游  反抗军（大福&amp;amp;柴卡）  千寻&amp;amp;静凛  千寻&amp;amp;绿仙  阿葵前篇阿葵本篇阿葵后篇  野人葛叶入城  中了岩浆陷阱的莫露露  海牛弑神（海牛&amp;amp;龙妈）  谁叔前篇谁叔后篇  海牛大坟墓建造篇  月之美兔，陨落于海牛大坟墓（JK组）  从地狱闯入海牛大坟墓的安洁  参观名胜的舞元 龙妈和女儿和MC 大块熟肉">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190914140246536.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NndF9QZXBwZXJfeXVr,size_16,color_FFFFFF,t_70">
+<meta name="twitter:title" content="Hexo">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -66,7 +60,105 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-彩虹社熟肉整理" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main">
+  
+    <article id="post-1_b" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/10/1_b/" class="article-date">
+  <time datetime="2019-11-10T05:20:42.338Z" itemprop="datePublished">2019-11-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/10/1_b/">AtCoder 4797 - TAKOYAKI FESTIVAL 2019</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>It’s now the season of TAKOYAKI FESTIVAL!</p>
+<p>This year, N takoyaki (a ball-shaped food with a piece of octopus inside) will be served. The deliciousness of the i-th takoyaki is di.</p>
+<p>As is commonly known, when you eat two takoyaki of deliciousness x and y together, you restore x×y health points.</p>
+<p>There are  N×(N−1)    2  ways to choose two from the N takoyaki served in the festival. For each of these choices, find the health points restored from eating the two takoyaki, then compute the sum of these  N×(N−1)    2  values.</p>
+<p>All values in input are integers.<br>2≤N≤50<br>0≤di≤100</p>
+<hr>
+<p><strong>思路</strong></p>
+<p>遍历每一个元素，计算每一个元素与其之后所有元素之和的乘积，再将所有乘积相加即是答案，复杂度O(n)</p>
+<hr>
+<p><strong>AC代码</strong><br>语言：c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">0</span>, i = <span class="number">0</span>, sum = <span class="number">0</span>, result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> *p = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    p = (<span class="keyword">int</span> *)<span class="built_in">calloc</span>(n, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;p[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sum += p[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sum -= p[i];</span><br><span class="line">        result += p[i] * sum;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>, result);</span><br><span class="line">    <span class="built_in">free</span>(p);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/10/1_b/" data-id="ck2ycmiqg00017h54uxdwlb3x" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-1_c" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/10/1_c/" class="article-date">
+  <time datetime="2019-11-10T05:20:29.892Z" itemprop="datePublished">2019-11-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/10/1_c/">AtCoder 5219 - Slimes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong><br>There are N slimes lining up from left to right. The colors of these slimes will be given as a string S of length N consisting of lowercase English letters. The i-th slime from the left has the color that corresponds to the i-th character of S.</p>
+<p>Adjacent slimes with the same color will fuse into one larger slime without changing the color. If there were a slime adjacent to this group of slimes before fusion, that slime is now adjacent to the new larger slime.</p>
+<p>Ultimately, how many slimes will be there?</p>
+<p>1≤N≤105<br>|S|=N<br>S consists of lowercase English letters.</p>
+<hr>
+<p><strong>思路</strong><br>遍历字符串，当一个元素与其后一个元素不同时count+1，count即是答案，复杂度O（n）</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<p>语言:c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">0</span>, count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> *p = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    p = (<span class="keyword">char</span> *)<span class="built_in">calloc</span>(n+<span class="number">1</span>, <span class="keyword">sizeof</span>(<span class="keyword">char</span>));</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>, p);</span><br><span class="line">    <span class="keyword">while</span> (*p != <span class="string">'\0'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (*p != *(p+<span class="number">1</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        p++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>, count);</span><br><span class="line">    <span class="built_in">free</span>(p);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/10/1_c/" data-id="ck2ycmiqi00027h54f3c8phl1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-彩虹社熟肉整理" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/09/14/彩虹社熟肉整理/" class="article-date">
   <time datetime="2019-09-14T06:00:00.000Z" itemprop="datePublished">2019-09-14</time>
@@ -79,8 +171,8 @@
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      彩虹社熟肉整理
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/14/彩虹社熟肉整理/">彩虹社熟肉整理</a>
     </h1>
   
 
@@ -235,23 +327,16 @@
     </footer>
   </div>
   
-    
-<nav id="article-nav">
-  
-    <a href="/2019/11/10/1_c/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          AtCoder 5219 - Slimes
-        
-      </div>
-    </a>
-  
-  
-</nav>
+</article>
+
 
   
-</article>
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+  </nav>
 
 </section>
         
