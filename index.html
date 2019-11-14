@@ -65,7 +65,7 @@
     <article id="post-3_kl" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/14/3_kl/" class="article-date">
-  <time datetime="2019-11-14T06:44:55.944Z" itemprop="datePublished">2019-11-14</time>
+  <time datetime="2019-11-14T06:46:31.044Z" itemprop="datePublished">2019-11-14</time>
 </a>
     
   </div>
@@ -95,13 +95,13 @@
 <p>输入数据竟然不是升序排列的</p>
 <hr>
 <p><strong>AC代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> q;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; q;</span><br><span class="line">    <span class="keyword">while</span>(q--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> n, m;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> num = n / m;</span><br><span class="line">        m %= <span class="number">10</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">10</span>; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            sum += m*i%<span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        result += num/<span class="number">10</span>*sum;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= num%<span class="number">10</span>; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            result += m*i%<span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; result &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">200001</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; counter[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> k, n;</span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; con;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; k;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> x;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; x;</span><br><span class="line">        <span class="keyword">int</span> step = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            counter[x].push_back(step);</span><br><span class="line">            <span class="keyword">if</span>(counter[x].size() &gt;= k) con.insert(x);</span><br><span class="line">            step++;</span><br><span class="line">            <span class="keyword">if</span>(!x) <span class="keyword">break</span>;</span><br><span class="line">            x /= <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> mi = <span class="number">1e18</span>;</span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt;::iterator ptr = con.begin();</span><br><span class="line">    <span class="keyword">while</span>(ptr != con.end())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line">        sort(counter[*ptr].begin(), counter[*ptr].end());</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            sum += counter[*ptr][i];</span><br><span class="line">        &#125;</span><br><span class="line">        mi = min(mi, sum);</span><br><span class="line">        ptr++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; mi &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/14/3_kl/" data-id="ck2ycmirr000s7h54jsxwjiyo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/14/3_kl/" data-id="ck2ycokx2000v9854rkumlvf0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -148,7 +148,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/14/3_j/" data-id="ck2ycmirp000q7h54iz6jk96l" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/14/3_j/" data-id="ck2ycokx1000u9854lroabgwg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -196,7 +196,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/14/3_i/" data-id="ck2ycmirq000r7h54jgpucrg3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/14/3_i/" data-id="ck2ycokx0000t98541bouemje" class="article-share-link">Share</a>
       
       
     </footer>
@@ -245,7 +245,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/13/3_h/" data-id="ck2ycmirv000w7h549inq4zwn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/13/3_h/" data-id="ck2ycokwz000s9854c25s6nr2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -292,7 +292,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/13/3_g/" data-id="ck2ycmirt000u7h5443r0q5hu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/13/3_g/" data-id="ck2ycokwy000q985458hgosuw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -339,7 +339,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/13/3_f/" data-id="ck2ycmirs000t7h54yz54sb2l" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/13/3_f/" data-id="ck2ycokwz000r9854ocxh899d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -388,7 +388,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/13/3_e/" data-id="ck2ycmirj000n7h542whz1g4q" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/13/3_e/" data-id="ck2ycokww000p9854e1cgyr2e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -436,7 +436,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/13/3_d/" data-id="ck2ycmirm000p7h54mqryzjh2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/13/3_d/" data-id="ck2ycokwv000o9854euajcgdz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -482,7 +482,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/13/3_a/" data-id="ck2ycmirf000k7h54yqi1cwyc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/13/3_a/" data-id="ck2ycokws000l9854vnz3s22b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -532,7 +532,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/13/3_c/" data-id="ck2ycmirk000o7h54vf1tqsga" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/13/3_c/" data-id="ck2ycokwu000n9854eynyo4t5" class="article-share-link">Share</a>
       
       
     </footer>
