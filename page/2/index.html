@@ -62,6 +62,150 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-3_f" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/3_f/" class="article-date">
+  <time datetime="2019-11-20T05:33:55.642Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/3_f/">CodeForces 1216B - Shooting</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>Recently Vasya decided to improve his pistol shooting skills. Today his coach offered him the following exercise. He placed n cans in a row on a table. Cans are numbered from left to right from 1 to n. Vasya has to knock down each can exactly once to finish the exercise. He is allowed to choose the order in which he will knock the cans down.</p>
+<p>Vasya knows that the durability of the i-th can is ai. It means that if Vasya has already knocked x cans down and is now about to start shooting the i-th one, he will need (ai⋅x+1) shots to knock it down. You can assume that if Vasya starts shooting the i-th can, he will be shooting it until he knocks it down.</p>
+<p>Your task is to choose such an order of shooting so that the number of shots required to knock each of the n given cans down exactly once is minimum possible.</p>
+<hr>
+<p><strong>思路</strong></p>
+<p>用优先队列给结构体排序再按序输出</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> value;</span><br><span class="line">    <span class="keyword">int</span> prefix;</span><br><span class="line">&#125;Ele;</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> Ele&amp; A, <span class="keyword">const</span> Ele&amp; B)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> A.value &lt; B.value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    priority_queue&lt;Ele&gt; p;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> k;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; k;</span><br><span class="line">        Ele num;</span><br><span class="line">        num.value = k;</span><br><span class="line">        num.prefix = i;</span><br><span class="line">        p.push(num);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> num[n];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n ; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sum += p.top().value*i + <span class="number">1</span>;</span><br><span class="line">        num[i] = p.top().prefix;</span><br><span class="line">        p.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; num[i] &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/3_f/" data-id="ck37bb4nj000qte54aaigkjur" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-3_e" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/3_e/" class="article-date">
+  <time datetime="2019-11-20T05:33:42.121Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/3_e/">CodeForces 1216A - Prefixes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>Nikolay got a string s of even length n, which consists only of lowercase Latin letters ‘a’ and ‘b’. Its positions are numbered from 1 to n.</p>
+<p>He wants to modify his string so that every its prefix of even length has an equal amount of letters ‘a’ and ‘b’. To achieve that, Nikolay can perform the following operation arbitrary number of times (possibly, zero): choose some position in his string and replace the letter on this position with the other letter (i.e. replace ‘a’ with ‘b’ or replace ‘b’ with ‘a’). Nikolay can use no letters except ‘a’ and ‘b’.</p>
+<p>The prefix of string s of length l (1≤l≤n) is a string s[1..l].</p>
+<p>For example, for the string s=”abba” there are two prefixes of the even length. The first is s[1…2]=”ab” and the second s[1…4]=”abba”. Both of them have the same number of ‘a’ and ‘b’.</p>
+<p>Your task is to calculate the minimum number of operations Nikolay has to perform with the string s to modify it so that every its prefix of even length has an equal amount of letters ‘a’ and ‘b’.</p>
+<hr>
+<p><strong>思路</strong></p>
+<p>没看懂题，但是a了，保证a和b成对</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">char</span> p[n];</span><br><span class="line">    <span class="keyword">char</span> pre;</span><br><span class="line">    <span class="keyword">int</span> cou = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">char</span> k;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; k;</span><br><span class="line">        <span class="keyword">if</span>(i % <span class="number">2</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(pre == <span class="string">'a'</span> &amp;&amp; k == <span class="string">'a'</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                k = <span class="string">'b'</span>;</span><br><span class="line">                cou++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(pre == <span class="string">'b'</span> &amp;&amp; k == <span class="string">'b'</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                k = <span class="string">'a'</span>;</span><br><span class="line">                cou++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> pre = k;</span><br><span class="line">        p[i] = k;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; cou &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; p[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/3_e/" data-id="ck37bb4ni000pte54gupphbmp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-3_d" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/3_d/" class="article-date">
+  <time datetime="2019-11-20T05:33:25.401Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/3_d/">CodeForces 1256D - Binary String Minimizing</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>You are given a binary string of length n (i. e. a string consisting of n characters ‘0’ and ‘1’).</p>
+<p>In one move you can swap two adjacent characters of the string. What is the lexicographically minimum possible string you can obtain from the given one if you can perform no more than k moves? It is possible that you do not perform any moves at all.</p>
+<p>Note that you can swap the same pair of adjacent characters with indices i and i+1 arbitrary (possibly, zero) number of times. Each such swap is considered a separate move.</p>
+<p>You have to answer q independent test cases.</p>
+<hr>
+<p><strong>思路</strong></p>
+<p>从前往后遍历，把所有0尽可能往前放</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> q;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; q;</span><br><span class="line">    <span class="keyword">while</span>(q--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> n;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> k;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; k;</span><br><span class="line">        <span class="built_in">string</span> p;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; p;</span><br><span class="line">        <span class="keyword">int</span> step = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(p[i] == <span class="string">'0'</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(i &gt; step)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(k &gt;= i-step)</span><br><span class="line">                    &#123;</span><br><span class="line">                        p[step] = <span class="string">'0'</span>;</span><br><span class="line">                        p[i] = <span class="string">'1'</span>;</span><br><span class="line">                        k -= i-step;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                    &#123;</span><br><span class="line">                        p[i-k] = <span class="string">'0'</span>;</span><br><span class="line">                        p[i] = <span class="string">'1'</span>;</span><br><span class="line">                        k = <span class="number">0</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span>(k == <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                step++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; p &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/3_d/" data-id="ck37bb4nh000ote549ovk7nt9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-3_c" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/20/3_c/" class="article-date">
@@ -102,7 +246,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_c/" data-id="ck372jvkg000ny054occ1zf1t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/3_c/" data-id="ck37bb4nf000mte54m004f9ut" class="article-share-link">Share</a>
       
       
     </footer>
@@ -153,7 +297,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_b/" data-id="ck372jvke000my054cj363n7y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/3_b/" data-id="ck37bb4ng000nte5493rrzfqn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -199,7 +343,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_a/" data-id="ck372jvkd000ly0541spzx18o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/3_a/" data-id="ck37bb4ne000lte54mdkpc2zs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -247,7 +391,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_l/" data-id="ck372jvkb000jy0545ajce7sc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_l/" data-id="ck37bb4nc000kte54rwzgnyx3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -300,7 +444,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_jk/" data-id="ck372jvkc000ky054ych1l6wj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_jk/" data-id="ck37bb4nb000jte549wi0dxyf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -351,7 +495,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_hi/" data-id="ck372jvka000iy054dxxbu4ht" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_hi/" data-id="ck37bb4n9000hte54simylzal" class="article-share-link">Share</a>
       
       
     </footer>
@@ -398,153 +542,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_g/" data-id="ck372jvk8000gy054amduezwh" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2_f" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/12/2_f/" class="article-date">
-  <time datetime="2019-11-12T10:19:03.294Z" itemprop="datePublished">2019-11-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/12/2_f/">CodeForces 1234E - Special Permutations</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong></p>
-<p>Let’s define pi(n) as the following permutation: [i,1,2,…,i−1,i+1,…,n]. This means that the i-th permutation is almost identity (i.e. which maps every element to itself) permutation but the element i is on the first position. Examples:</p>
-<p>p1(4)=[1,2,3,4];<br>p2(4)=[2,1,3,4];<br>p3(4)=[3,1,2,4];<br>p4(4)=[4,1,2,3].<br>You are given an array x1,x2,…,xm (1≤xi≤n).</p>
-<p>Let pos(p,val) be the position of the element val in p. So, pos(p1(4),3)=3,pos(p2(4),2)=1,pos(p4(4),4)=1.</p>
-<p>Let’s define a function f(p)=∑i=1m−1|pos(p,xi)−pos(p,xi+1)|, where |val| is the absolute value of val. This function means the sum of distances between adjacent elements of x in p.</p>
-<p>Your task is to calculate f(p1(n)),f(p2(n)),…,f(pn(n)).</p>
-<hr>
-<p><strong>思路</strong></p>
-<p>数列p(n)中两个数x，y位置的变换与在给定的数列中使x，y = y，x等价。注意差值之和爆int</p>
-<hr>
-<p><strong>AC代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> q, n;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; q &gt;&gt; n;</span><br><span class="line">    <span class="keyword">int</span> p[n];</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; con[q+<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> k;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; k;</span><br><span class="line">        con[k].push_back(i);</span><br><span class="line">        p[i] = k;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n<span class="number">-1</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sum += <span class="built_in">abs</span>(p[i] - p[i+<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">    <span class="keyword">int</span> bf, af, temp;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; q; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; con[i].size(); j++)</span><br><span class="line">        &#123;</span><br><span class="line">            temp = con[i][j];</span><br><span class="line">            <span class="keyword">if</span>(temp != <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum -= <span class="built_in">abs</span>(p[temp<span class="number">-1</span>] - p[temp]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(temp != n<span class="number">-1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum -= <span class="built_in">abs</span>(p[temp] - p[temp+<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            p[con[i][j]] = i+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(temp != <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum += <span class="built_in">abs</span>(p[temp<span class="number">-1</span>] - p[temp]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(temp != n<span class="number">-1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum += <span class="built_in">abs</span>(p[temp] - p[temp+<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; con[i+<span class="number">1</span>].size(); j++)</span><br><span class="line">        &#123;</span><br><span class="line">            temp = con[i+<span class="number">1</span>][j];</span><br><span class="line">            <span class="keyword">if</span>(temp != <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum -= <span class="built_in">abs</span>(p[temp<span class="number">-1</span>] - p[temp]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(temp != n<span class="number">-1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum -= <span class="built_in">abs</span>(p[temp] - p[temp+<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            p[con[i+<span class="number">1</span>][j]] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(temp != <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum += <span class="built_in">abs</span>(p[temp<span class="number">-1</span>] - p[temp]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(temp != n<span class="number">-1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum += <span class="built_in">abs</span>(p[temp] - p[temp+<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_f/" data-id="ck372jvk4000dy054bjamkkgv" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2_e" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/12/2_e/" class="article-date">
-  <time datetime="2019-11-12T10:18:39.790Z" itemprop="datePublished">2019-11-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/12/2_e/">CodeForces 1234D - Distinct Characters Queries</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong></p>
-<p>You are given a string s consisting of lowercase Latin letters and q queries for this string.</p>
-<p>Recall that the substring s[l;r] of the string s is the string slsl+1…sr. For example, the substrings of “codeforces” are “code”, “force”, “f”, “for”, but not “coder” and “top”.</p>
-<p>There are two types of queries:</p>
-<p>1 pos c (1≤pos≤|s|, c is lowercase Latin letter): replace spos with c (set spos:=c);<br>2 l r (1≤l≤r≤|s|): calculate the number of distinct characters in the substring s[l;r].</p>
-<hr>
-<p><strong>思路</strong><br>用set存下标，最后对每个字母遍历是否有在范围内的下表</p>
-<hr>
-<p><strong>AC代码</strong></p>
-<p>语言:c++</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> word[<span class="number">100000</span>];</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>, word);</span><br><span class="line">    <span class="keyword">int</span> q = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;q);</span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; st[<span class="number">26</span>];</span><br><span class="line">    <span class="keyword">int</span> length = <span class="built_in">strlen</span>(word);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        st[word[i]-<span class="string">'a'</span>].insert(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(q &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        q--;</span><br><span class="line">        <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;k);</span><br><span class="line">        <span class="keyword">if</span>(k == <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> n = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">char</span> s = <span class="number">0</span>;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d %c"</span>, &amp;n, &amp;s);</span><br><span class="line">            st[word[n<span class="number">-1</span>]-<span class="string">'a'</span>].erase(n<span class="number">-1</span>);</span><br><span class="line">            st[s-<span class="string">'a'</span>].insert(n<span class="number">-1</span>);</span><br><span class="line">            word[n<span class="number">-1</span>] = s;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>, sum = <span class="number">0</span>;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;i, &amp;j);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; <span class="number">26</span>; k++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt;::iterator p = st[k].lower_bound(i<span class="number">-1</span>);</span><br><span class="line">                <span class="keyword">if</span>(p != st[k].end() &amp;&amp; *p &lt;= j<span class="number">-1</span>) sum++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sum);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_e/" data-id="ck372jvk7000fy0543s0gussw" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2_d" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/12/2_d/" class="article-date">
-  <time datetime="2019-11-12T10:18:23.530Z" itemprop="datePublished">2019-11-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/12/2_d/">CodeForces 1234C - Pipes</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong></p>
-<p>You are given a system of pipes. It consists of two rows, each row consists of n pipes. The top left pipe has the coordinates (1,1) and the bottom right — (2,n).</p>
-<p>There are six types of pipes: two types of straight pipes and four types of curved pipes. Here are the examples of all six types:<br>![Types of pipes]<a href="https://vj.z180.cn/8013a29865dfd84f943080c025bb1d7b?v=1572731637" target="_blank" rel="noopener">1</a><br>You can turn each of the given pipes 90 degrees clockwise or counterclockwise arbitrary (possibly, zero) number of times (so the types 1 and 2 can become each other and types 3,4,5,6 can become each other).</p>
-<p>You want to turn some pipes in a way that the water flow can start at (1,0) (to the left of the top left pipe), move to the pipe at (1,1), flow somehow by connected pipes to the pipe at (2,n) and flow right to (2,n+1).</p>
-<p>Pipes are connected if they are adjacent in the system and their ends are connected. Here are examples of connected pipes:<br>![Examples of connected pipes]<a href="https://vj.z180.cn/3d3f37b8e6c60e6601a4edc78fbbf205?v=1572731637" target="_blank" rel="noopener">2</a><br>Let’s describe the problem using some example:<br>![The first example input]<a href="https://vj.z180.cn/ea8dba156764f5a4fd1b09a2f5120d25?v=1572731637" target="_blank" rel="noopener">3</a><br>And its solution is below:<br>![The first example answer]<a href="https://vj.z180.cn/965a92240411f85bfbdf8a5aeecab2c6?v=1572731637" target="_blank" rel="noopener">4</a><br>As you can see, the water flow is the poorly drawn blue line. To obtain the answer, we need to turn the pipe at (1,2) 90 degrees clockwise, the pipe at (2,3) 90 degrees, the pipe at (1,6) 90 degrees, the pipe at (1,7) 180 degrees and the pipe at (2,7) 180 degrees. Then the flow of water can reach (2,n+1) from (1,0).</p>
-<p>You have to answer q independent queries.</p>
-<hr>
-<p><strong>思路</strong><br>由k个直管道连接n个上下都为弯曲的管道（简称此组合为w），当左方有奇数个w时直管道必在下方，反之必在上方，且最终n为偶数时成立</p>
-<hr>
-<p><strong>AC代码</strong></p>
-<p>语言：c++</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> q = <span class="number">0</span>, x = <span class="number">0</span>, y = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">string</span> k1, k2;</span><br><span class="line">    <span class="keyword">long</span> n = <span class="number">0</span>, cou = <span class="number">0</span>, i = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; q;</span><br><span class="line">    <span class="keyword">while</span>(q &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        q--;</span><br><span class="line">        cou = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; k1;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; k2;</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(k1[i] == <span class="string">'1'</span> || k1[i] == <span class="string">'2'</span>) k1[i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> k1[i] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span>(k2[i] == <span class="string">'1'</span> || k2[i] == <span class="string">'2'</span>) k2[i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> k2[i] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span>(!k1[i] &amp;&amp; !k2[i])</span><br><span class="line">            &#123;</span><br><span class="line">                cou++;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(k1[i] &amp;&amp; (!(cou%<span class="number">2</span>))) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span>(k2[i] &amp;&amp; (cou%<span class="number">2</span>)) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>((i==n) &amp;&amp; (cou%<span class="number">2</span>)) <span class="built_in">cout</span> &lt;&lt; <span class="string">"YES"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; <span class="string">"NO"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_d/" data-id="ck372jvk3000cy054qbg6prnq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_g/" data-id="ck37bb4n8000gte548070p87g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -590,23 +588,23 @@
       <ul>
         
           <li>
+            <a href="/2019/11/20/4_e/">萌新acm(4) E - Odd Sum Segments</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/4_d/">acm(4) D - Boxers</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/20/4_c/">萌新acm(4) C - Remove the Substring</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/20/4_b/">萌新acm(4) B - Common Divisors</a>
           </li>
         
           <li>
             <a href="/2019/11/20/4_a/">萌新acm(4) A - Equal Rectangles</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/20/3_kl/">CodeForces 1213D - Equalizing by Division</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/20/3_j/">CodeForces 1213C - Book Reading</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/20/3_i/">CodeForces 1213B - Bad Prices</a>
           </li>
         
       </ul>
