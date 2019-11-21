@@ -62,6 +62,101 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-3_j" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/3_j/" class="article-date">
+  <time datetime="2019-11-20T05:35:04.610Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/3_j/">CodeForces 1213C - Book Reading</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>Polycarp is reading a book consisting of n pages numbered from 1 to n. Every time he finishes the page with the number divisible by m, he writes down the last digit of this page number. For example, if n=15 and m=5, pages divisible by m are 5,10,15. Their last digits are 5,0,5 correspondingly, their sum is 10.</p>
+<p>Your task is to calculate the sum of all digits Polycarp has written down.</p>
+<p>You have to answer q independent queries.</p>
+<hr>
+<p><strong>思路</strong></p>
+<p>个位数以10或10的因数为周期循环</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> q;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; q;</span><br><span class="line">    <span class="keyword">while</span>(q--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> n, m;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> num = n / m;</span><br><span class="line">        m %= <span class="number">10</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">10</span>; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            sum += m*i%<span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        result += num/<span class="number">10</span>*sum;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= num%<span class="number">10</span>; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            result += m*i%<span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; result &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/3_j/" data-id="ck38w130x000ue154rqvnmlwc" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-3_i" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/3_i/" class="article-date">
+  <time datetime="2019-11-20T05:34:49.195Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/3_i/">CodeForces 1213B - Bad Prices</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>Polycarp analyzes the prices of the new berPhone. At his disposal are the prices for n last days: a1,a2,…,an, where ai is the price of berPhone on the day i.</p>
+<p>Polycarp considers the price on the day i to be bad if later (that is, a day with a greater number) berPhone was sold at a lower price. For example, if n=6 and a=[3,9,4,6,7,5], then the number of days with a bad price is 3 — these are days 2 (a2=9), 4 (a4=6) and 5 (a5=7).</p>
+<p>Print the number of days with a bad price.</p>
+<p>You have to answer t independent data sets.</p>
+<hr>
+<p><strong>思路</strong></p>
+<p>逆序遍历，记录最小值，若怕当前元素比最小值小则sum++</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span>(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> n;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">        <span class="keyword">int</span> p[n];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; p[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> mi = <span class="number">1e6</span>+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = n<span class="number">-1</span>; i &gt;=<span class="number">0</span> ; i--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(p[i] &gt; mi) sum++;</span><br><span class="line">            <span class="keyword">else</span> mi = p[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/3_i/" data-id="ck38w130w000te154ruzs2zhq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-3_h" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/20/3_h/" class="article-date">
@@ -101,7 +196,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_h/" data-id="ck38cpber000qln54x995qlof" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/3_h/" data-id="ck38w130v000se154to8gr6qg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -148,7 +243,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_g/" data-id="ck38cpbep000pln546fzkxfne" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/3_g/" data-id="ck38w130t000qe154t4yebrf8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -195,7 +290,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_f/" data-id="ck38cpbeo000oln5422mounav" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/3_f/" data-id="ck38w130s000pe1543l9t89ul" class="article-share-link">Share</a>
       
       
     </footer>
@@ -244,7 +339,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_e/" data-id="ck38cpben000nln54smnm67ey" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/3_e/" data-id="ck38w130u000re154ftz1d133" class="article-share-link">Share</a>
       
       
     </footer>
@@ -292,7 +387,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_d/" data-id="ck38cpbej000lln5485l1jpdu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/3_d/" data-id="ck38w130r000oe154hdbq28eh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -342,7 +437,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_c/" data-id="ck38cpbeg000jln54t3073lzy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/3_c/" data-id="ck38w130o000me154oue1axcy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -393,7 +488,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_b/" data-id="ck38cpbf30012ln5480a0r0n8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/3_b/" data-id="ck38w130n000le154cktwxb14" class="article-share-link">Share</a>
       
       
     </footer>
@@ -439,108 +534,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_a/" data-id="ck38cpbet000tln54s1crhpyc" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2_l" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/12/2_l/" class="article-date">
-  <time datetime="2019-11-12T10:20:17.009Z" itemprop="datePublished">2019-11-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/12/2_l/">CodeForces 1249D - Too Many Segments</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong></p>
-<p>The only difference between easy and hard versions is constraints.</p>
-<p>You are given n segments on the coordinate axis OX. Segments can intersect, lie inside each other and even coincide. The i-th segment is [li;ri] (li≤ri) and it covers all integer points j such that li≤j≤ri.</p>
-<p>The integer point is called bad if it is covered by strictly more than k segments.</p>
-<p>Your task is to remove the minimum number of segments so that there are no bad points at all.</p>
-<hr>
-<p><strong>思路</strong></p>
-<p>按右端点排序，按序遍历，保证没有bad point，未加入的segment就是要除去的</p>
-<hr>
-<p><strong>AC代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">seg</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> l;</span><br><span class="line">    <span class="keyword">int</span> r;</span><br><span class="line">    <span class="keyword">int</span> id;</span><br><span class="line">&#125;seg;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(seg x, seg y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x.r != y.r) <span class="keyword">return</span> x.r &lt; y.r;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> x.l &lt; y.l;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> q, n;</span><br><span class="line">    <span class="keyword">int</span> mi = <span class="number">0</span>, ma = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; q &gt;&gt; n;</span><br><span class="line">    seg p[q];</span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; con;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; q; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; p[i].l &gt;&gt; p[i].r;</span><br><span class="line">        mi = min(mi, p[i].l);</span><br><span class="line">        ma = max(ma, p[i].r);</span><br><span class="line">        p[i].id = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> num[ma-mi+<span class="number">1</span>];</span><br><span class="line">    <span class="built_in">memset</span>(num, <span class="number">0</span>, (ma-mi+<span class="number">1</span>)*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    sort(p, p+q, cmp);</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; q; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = p[i].l; j &lt;= p[i].r; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            num[j-mi]++;</span><br><span class="line">            <span class="keyword">if</span>(num[j] &gt; n)</span><br><span class="line">            &#123;</span><br><span class="line">                con.insert(p[i].id);</span><br><span class="line">                sum++;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt;::iterator ptr = con.begin();</span><br><span class="line">    <span class="keyword">while</span>(ptr != con.end())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; *ptr+<span class="number">1</span> &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">        ptr++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_l/" data-id="ck38cpbel000mln548x1n72b8" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2_jk" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/12/2_jk/" class="article-date">
-  <time datetime="2019-11-12T10:19:57.379Z" itemprop="datePublished">2019-11-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/12/2_jk/">CodeForces 1249C - Good Numbers</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong></p>
-<p>The only difference between easy and hard versions is the maximum value of n.</p>
-<p>You are given a positive integer number n. You really love good numbers so you want to find the smallest good number greater than or equal to n.</p>
-<p>The positive integer is called good if it can be represented as a sum of distinct powers of 3 (i.e. no duplicates of powers of 3 are allowed).</p>
-<p>For example:</p>
-<p>30 is a good number: 30=33+31,<br>1 is a good number: 1=30,<br>12 is a good number: 12=32+31,<br>but 2 is not a good number: you can’t represent it as a sum of distinct powers of 3 (2=30+30),<br>19 is not a good number: you can’t represent it as a sum of distinct powers of 3 (for example, the representations 19=32+32+30=32+31+31+31+30 are invalid),<br>20 is also not a good number: you can’t represent it as a sum of distinct powers of 3 (for example, the representation 20=32+32+30+30 is invalid).<br>Note, that there exist other representations of 19 and 20 as sums of powers of 3 but none of them consists of distinct powers of 3.</p>
-<p>For the given positive integer n find such smallest m (n≤m) that m is a good number.</p>
-<p>You have to answer q independent queries.</p>
-<p>Input<br>The first line of the input contains one integer q (1≤q≤500) — the number of queries. Then q queries follow.</p>
-<p>The only line of the query contains one integer n (1≤n≤1018).</p>
-<hr>
-<p><strong>思路</strong></p>
-<p>对于一个数n，若(3^k-1)/2 &lt; n &lt; 3^k，则大于这个数的最小good number即为3^k,将n置零;若n &lt; (3^k - 1)/2, 则将n减去3^(k-1)，继续对n求good number直到n等于0，将所有减去的数累加即为要求的good number</p>
-<hr>
-<p><strong>AC代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt; p;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; <span class="number">39</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        p.insert(<span class="built_in">pow</span>(<span class="number">3</span>, i));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> q;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> n;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; q;</span><br><span class="line">    <span class="keyword">while</span>(q &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        q--;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">        <span class="built_in">set</span>&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt;::iterator ptr = p.lower_bound(n);</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(n &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(n &gt; (*ptr<span class="number">-1</span>)/<span class="number">2</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum += *ptr;</span><br><span class="line">                n = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                n -= *ptr/<span class="number">3</span>;</span><br><span class="line">                sum += *ptr/<span class="number">3</span>;</span><br><span class="line">                ptr = p.lower_bound(n);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_jk/" data-id="ck38cpbei000kln54uayulwch" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/3_a/" data-id="ck38w130l000je154mmwmaoej" class="article-share-link">Share</a>
       
       
     </footer>
@@ -554,7 +548,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -586,6 +580,14 @@
       <ul>
         
           <li>
+            <a href="/2019/11/21/4_j/">萌新acm(4) J - Computer Game</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/21/4_i/">萌新acm(4) I - Equalize Prices</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/21/4_f/">萌新acm(4) F - Robot Breakout</a>
           </li>
         
@@ -595,14 +597,6 @@
         
           <li>
             <a href="/2019/11/20/4_e/">萌新acm(4) E - Odd Sum Segments</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/20/4_d/">acm(4) D - Boxers</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/20/4_c/">萌新acm(4) C - Remove the Substring</a>
           </li>
         
       </ul>
