@@ -62,6 +62,108 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-1_i" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/10/1_i/" class="article-date">
+  <time datetime="2019-11-10T05:22:38.884Z" itemprop="datePublished">2019-11-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/10/1_i/">AtCoder 5223 - Weather Prediction</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>The weather in Takahashi’s town changes day by day, in the following cycle: Sunny, Cloudy, Rainy, Sunny, Cloudy, Rainy, …</p>
+<p>Given is a string S representing the weather in the town today. Predict the weather tomorrow.</p>
+<p>S is Sunny, Cloudy, or Rainy.</p>
+<hr>
+<p><strong>思路</strong></p>
+<p>有手就行</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<p>语言:c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> p[<span class="number">7</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>, p);</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">strcmp</span>(p, <span class="string">"Sunny"</span>) == <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">"Cloudy"</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">strcmp</span>(p, <span class="string">"Cloudy"</span>) == <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">"Rainy"</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"Sunny"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/10/1_i/" data-id="ck38cpbdm0008ln54eheyybtz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-1_h" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/10/1_h/" class="article-date">
+  <time datetime="2019-11-10T05:22:22.268Z" itemprop="datePublished">2019-11-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/10/1_h/">AtCoder 4875 - Disjoint Set of Common Divisors</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>Given are positive integers A and B.</p>
+<p>Let us choose some number of positive common divisors of A and B.</p>
+<p>Here, any two of the chosen divisors must be coprime.</p>
+<p>At most, how many divisors can we choose?</p>
+<p>Definition of common divisor<br>An integer d is said to be a common divisor of integers x and y when d divides both x and y.</p>
+<p>Definition of being coprime<br>Integers x and y are said to be coprime when x and y have no positive common divisors other than 1.</p>
+<p>Definition of dividing<br>An integer x is said to divide another integer y when there exists an integer \alpha such that y = \alpha x.</p>
+<p>All values in input are integers.<br>1 \leq A, B \leq 10^{12}</p>
+<hr>
+<p><strong>思路</strong></p>
+<p>两个数互质的公因数的数量即为两个数的公共质因数的数量,设f(n)为质数列,则任意正整数s可表示为s = f(1)^x1 * f(2)^x2 *…… *f(n)^xn,从n=1开始遍历a与b,若a%f(n)!=0,则用a除以f(n)至xn==0,b同理,当a%f(n)!=0&amp;&amp;b%f(n)!=0时则有一公共质因数，当f(n)大于ab中任意一个时跳出。</p>
+<p>使a小于b，用2和奇数列代替质数列<br>设最大公共质因数为f(k),当f(k)小于根号b时，遍历至f(n)小于等于根号b即可,当f(k)大于根号b时，大于根号b的f(n)仅有f(k)一个，遍历至f(n)小于等于根号b，判断循环结束后是否a等于b并且a大于根号b即可</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<p>语言:c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> *a, <span class="keyword">long</span> <span class="keyword">long</span> *b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    *a = *a ^ *b;</span><br><span class="line">    *b = *a ^ *b;</span><br><span class="line">    *a = *a ^ *b;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> a = <span class="number">0</span>, b = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">long</span> i = <span class="number">0</span>, max = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> flag1 = <span class="number">0</span>, flag2 = <span class="number">0</span>, flag = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld %lld"</span>, &amp;a, &amp;b);</span><br><span class="line">    <span class="keyword">if</span> (a &gt; b) swap(&amp;a, &amp;b);</span><br><span class="line">    max = (<span class="keyword">long</span>)<span class="built_in">sqrt</span>(b);</span><br><span class="line">    <span class="keyword">while</span> (a % <span class="number">2</span> == <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        a /= <span class="number">2</span>;</span><br><span class="line">        flag1 = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (b % <span class="number">2</span> == <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        b /= <span class="number">2</span>;</span><br><span class="line">        flag2 = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (flag1==<span class="number">1</span> &amp;&amp; flag2==<span class="number">1</span>) count++;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">3</span>; i &lt;= max; i += <span class="number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (i&gt;a || i&gt;b) <span class="keyword">break</span>;</span><br><span class="line">        flag1 = <span class="number">0</span>;</span><br><span class="line">        flag2 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (a % i == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            a /= i;</span><br><span class="line">            flag1 = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (b % i == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            b /= i;</span><br><span class="line">            flag2 = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (flag1==<span class="number">1</span> &amp;&amp; flag2==<span class="number">1</span>) count++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (a &gt; max &amp;&amp; a == b) count++;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>, count);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/10/1_h/" data-id="ck38cpbdi0007ln54c12gib41" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-1_g" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/10/1_g/" class="article-date">
@@ -103,7 +205,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_g/" data-id="ck37bb4ms0006te54bvhbog7e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_g/" data-id="ck38cpbbt0006ln5435bj1n62" class="article-share-link">Share</a>
       
       
     </footer>
@@ -152,7 +254,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_f/" data-id="ck37bb4mr0005te54iawkk0hp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_f/" data-id="ck38cpbbq0005ln5495edv9k7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -201,7 +303,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_e/" data-id="ck37bb4mp0004te544siyknkp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_e/" data-id="ck38cpbbo0004ln54dcg7tgn4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -248,7 +350,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_d/" data-id="ck37bb4mn0003te54uqnu2w9t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_d/" data-id="ck38cpbbj0002ln54ee5ifkpu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -293,7 +395,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_a/" data-id="ck37bb4mc0000te54g3tdbata" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_a/" data-id="ck38cpbbc0001ln54j6p0251i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -342,7 +444,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_b/" data-id="ck37bb4ml0002te54tcz0wtqf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_b/" data-id="ck38cpbb50000ln54we6fw706" class="article-share-link">Share</a>
       
       
     </footer>
@@ -389,7 +491,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_c/" data-id="ck37bb4mi0001te54qtgwxfbp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_c/" data-id="ck38cpbbl0003ln54hpxbwimp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -562,7 +664,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/14/彩虹社熟肉整理/" data-id="ck37bb4nv0011te5460cejiyd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/14/彩虹社熟肉整理/" data-id="ck38cpbf10010ln54c79ckq92" class="article-share-link">Share</a>
       
       
     </footer>
@@ -608,6 +710,14 @@
       <ul>
         
           <li>
+            <a href="/2019/11/21/4_f/">萌新acm(4) F - Robot Breakout</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/21/4_gh/">萌新acm(4) G&amp;H - RGB Substring</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/20/4_e/">萌新acm(4) E - Odd Sum Segments</a>
           </li>
         
@@ -617,14 +727,6 @@
         
           <li>
             <a href="/2019/11/20/4_c/">萌新acm(4) C - Remove the Substring</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/20/4_b/">萌新acm(4) B - Common Divisors</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/20/4_a/">萌新acm(4) A - Equal Rectangles</a>
           </li>
         
       </ul>
