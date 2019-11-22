@@ -62,6 +62,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-3_kl" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/3_kl/" class="article-date">
+  <time datetime="2019-11-20T05:35:22.919Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/3_kl/">CodeForces 1213D - Equalizing by Division</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>You are given an array a consisting of n integers. In one move you can choose any ai and divide it by 2 rounding down (in other words, in one move you can set ai:=⌊ai2⌋).</p>
+<p>You can perform such an operation any (possibly, zero) number of times with any ai.</p>
+<p>Your task is to calculate the minimum possible number of operations required to obtain at least k equal numbers in the array.</p>
+<p>Don’t forget that it is possible to have ai=0 after some operations, thus the answer always exists.</p>
+<hr>
+<p><strong>思路</strong></p>
+<p>对于数n，对于n除于k个2产生的数x，都将k存入vector ax中，排序后前三个元素即是对于x的最小操作数，遍历找出最小值</p>
+<p>输入数据竟然不是升序排列的</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">200001</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; counter[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> k, n;</span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; con;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; k;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> x;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; x;</span><br><span class="line">        <span class="keyword">int</span> step = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            counter[x].push_back(step);</span><br><span class="line">            <span class="keyword">if</span>(counter[x].size() &gt;= k) con.insert(x);</span><br><span class="line">            step++;</span><br><span class="line">            <span class="keyword">if</span>(!x) <span class="keyword">break</span>;</span><br><span class="line">            x /= <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> mi = <span class="number">1e18</span>;</span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt;::iterator ptr = con.begin();</span><br><span class="line">    <span class="keyword">while</span>(ptr != con.end())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line">        sort(counter[*ptr].begin(), counter[*ptr].end());</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            sum += counter[*ptr][i];</span><br><span class="line">        &#125;</span><br><span class="line">        mi = min(mi, sum);</span><br><span class="line">        ptr++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; mi &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/3_kl/" data-id="ck39ns5dy000u7054q8v23yzz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-3_j" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/20/3_j/" class="article-date">
@@ -99,7 +148,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_j/" data-id="ck38w130x000ue154rqvnmlwc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/3_j/" data-id="ck39ns5e0000w7054k27twdea" class="article-share-link">Share</a>
       
       
     </footer>
@@ -147,7 +196,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_i/" data-id="ck38w130w000te154ruzs2zhq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/3_i/" data-id="ck39ns5dw000r7054w82jkr0c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -196,7 +245,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_h/" data-id="ck38w130v000se154to8gr6qg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/3_h/" data-id="ck39ns5dv000q7054js838grw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -243,7 +292,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_g/" data-id="ck38w130t000qe154t4yebrf8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/3_g/" data-id="ck39ns5dx000t7054rnevjacm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -290,7 +339,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_f/" data-id="ck38w130s000pe1543l9t89ul" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/3_f/" data-id="ck39ns5dt000p7054bp3drmf9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -339,7 +388,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_e/" data-id="ck38w130u000re154ftz1d133" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/3_e/" data-id="ck39ns5dx000s7054val8o9gk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -387,7 +436,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_d/" data-id="ck38w130r000oe154hdbq28eh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/3_d/" data-id="ck39ns5ds000o7054kmqqc8d7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -437,7 +486,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_c/" data-id="ck38w130o000me154oue1axcy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/3_c/" data-id="ck39ns5dr000n70549kh8xzu5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -488,53 +537,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_b/" data-id="ck38w130n000le154cktwxb14" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-3_a" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/20/3_a/" class="article-date">
-  <time datetime="2019-11-20T05:32:38.493Z" itemprop="datePublished">2019-11-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/20/3_a/">CodeForces 1256A - Payment Without Change</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong></p>
-<p>You have a coins of value n and b coins of value 1. You always pay in exact change, so you want to know if there exist such x and y that if you take x (0≤x≤a) coins of value n and y (0≤y≤b) coins of value 1, then the total value of taken coins will be S.</p>
-<p>You have to answer q independent test cases.</p>
-<hr>
-<p><strong>思路</strong></p>
-<p>无</p>
-<hr>
-<p><strong>AC代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> q;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; q;</span><br><span class="line">    <span class="keyword">while</span>(q &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        q--;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> s, a, b, n;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b &gt;&gt; n &gt;&gt; s;</span><br><span class="line">        <span class="keyword">if</span>(s &gt; n*a + b) <span class="built_in">cout</span> &lt;&lt; <span class="string">"NO"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(s % n &lt;= b) <span class="built_in">cout</span> &lt;&lt; <span class="string">"YES"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; <span class="string">"NO"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_a/" data-id="ck38w130l000je154mmwmaoej" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/3_b/" data-id="ck39ns5dp000l7054719kw74q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -580,6 +583,10 @@
       <ul>
         
           <li>
+            <a href="/2019/11/22/4_k/">萌新acm(4) K - Candy Box (easy version)</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/21/4_j/">萌新acm(4) J - Computer Game</a>
           </li>
         
@@ -593,10 +600,6 @@
         
           <li>
             <a href="/2019/11/21/4_gh/">萌新acm(4) G&amp;H - RGB Substring</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/20/4_e/">萌新acm(4) E - Odd Sum Segments</a>
           </li>
         
       </ul>

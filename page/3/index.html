@@ -62,6 +62,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-3_a" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/3_a/" class="article-date">
+  <time datetime="2019-11-20T05:32:38.493Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/3_a/">CodeForces 1256A - Payment Without Change</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>You have a coins of value n and b coins of value 1. You always pay in exact change, so you want to know if there exist such x and y that if you take x (0≤x≤a) coins of value n and y (0≤y≤b) coins of value 1, then the total value of taken coins will be S.</p>
+<p>You have to answer q independent test cases.</p>
+<hr>
+<p><strong>思路</strong></p>
+<p>无</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> q;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; q;</span><br><span class="line">    <span class="keyword">while</span>(q &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        q--;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> s, a, b, n;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b &gt;&gt; n &gt;&gt; s;</span><br><span class="line">        <span class="keyword">if</span>(s &gt; n*a + b) <span class="built_in">cout</span> &lt;&lt; <span class="string">"NO"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(s % n &lt;= b) <span class="built_in">cout</span> &lt;&lt; <span class="string">"YES"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; <span class="string">"NO"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/3_a/" data-id="ck39ns5do000k70541x1tfltg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2_l" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/12/2_l/" class="article-date">
@@ -100,7 +146,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_l/" data-id="ck38w130j000ie154l6hdzha2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_l/" data-id="ck39ns5dn000j7054qh2lol9r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -153,7 +199,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_jk/" data-id="ck38w130p000ne1547qvisuq7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_jk/" data-id="ck39ns5dq000m7054lh8w4h54" class="article-share-link">Share</a>
       
       
     </footer>
@@ -204,7 +250,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_hi/" data-id="ck38w130i000he154bgedw9qo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_hi/" data-id="ck39ns5dm000i7054fc6wm3q7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -251,7 +297,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_g/" data-id="ck38w130g000fe154ke50xml8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_g/" data-id="ck39ns5dl000h7054y08oqz4j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -300,7 +346,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_f/" data-id="ck38w130h000ge154blypwi8g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_f/" data-id="ck39ns5dk000g7054c54dxdfr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -348,7 +394,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_e/" data-id="ck38w130d000de154bjc4qzzg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_e/" data-id="ck39ns5dj000f7054ei8qyo78" class="article-share-link">Share</a>
       
       
     </footer>
@@ -397,7 +443,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_d/" data-id="ck38w130c000ce154p0rq54vp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_d/" data-id="ck39ns5di000e7054qp6uwo90" class="article-share-link">Share</a>
       
       
     </footer>
@@ -449,7 +495,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_bc/" data-id="ck38w130f000ee154gmxu38gv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_bc/" data-id="ck39ns5df000d70541gwvytal" class="article-share-link">Share</a>
       
       
     </footer>
@@ -500,58 +546,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_a/" data-id="ck38w130b000be154fq1ovxvi" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-1_l" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/10/1_l/" class="article-date">
-  <time datetime="2019-11-10T05:23:30.302Z" itemprop="datePublished">2019-11-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/10/1_l/">AtCoder 4864 - Powerful Discount Tickets</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong></p>
-<p>Takahashi is going to buy N items one by one.</p>
-<p>The price of the i-th item he buys is Ai yen (the currency of Japan).</p>
-<p>He has M discount tickets, and he can use any number of them when buying an item.</p>
-<p>If Y tickets are used when buying an item priced X yen, he can get the item for  X    2Y  (rounded down to the nearest integer) yen.</p>
-<p>What is the minimum amount of money required to buy all the items?</p>
-<p>All values in input are integers.<br>1≤N,M≤105<br>1≤Ai≤109</p>
-<hr>
-<p><strong>思路</strong></p>
-<p>优先数列，c语言给我写吐了，现学c++</p>
-<hr>
-<p><strong>AC代码</strong></p>
-<p>语言:c++</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	priority_queue&lt;<span class="keyword">int</span>&gt;q;</span><br><span class="line">	<span class="keyword">int</span> n = <span class="number">0</span>, m = <span class="number">0</span>, i = <span class="number">0</span>, a = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;n, &amp;m);</span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a);</span><br><span class="line">		q.push(a);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">1</span>;i &lt;= m; i++)&#123;</span><br><span class="line">		a = q.top();</span><br><span class="line">		q.pop();</span><br><span class="line">		a /= <span class="number">2</span>;</span><br><span class="line">		q.push(a);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(!q.empty())</span><br><span class="line">    &#123;</span><br><span class="line">		a=q.top();</span><br><span class="line">		q.pop();</span><br><span class="line">		sum += a;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, sum);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_l/" data-id="ck38w13060009e154sx7m5vlp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_a/" data-id="ck39ns5de000c70545whxmzt4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -597,6 +592,10 @@
       <ul>
         
           <li>
+            <a href="/2019/11/22/4_k/">萌新acm(4) K - Candy Box (easy version)</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/21/4_j/">萌新acm(4) J - Computer Game</a>
           </li>
         
@@ -610,10 +609,6 @@
         
           <li>
             <a href="/2019/11/21/4_gh/">萌新acm(4) G&amp;H - RGB Substring</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/20/4_e/">萌新acm(4) E - Odd Sum Segments</a>
           </li>
         
       </ul>
