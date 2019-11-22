@@ -62,6 +62,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-4_l" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/22/4_l/" class="article-date">
+  <time datetime="2019-11-22T12:05:52.628Z" itemprop="datePublished">2019-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/22/4_l/">萌新acm(4) L - Subsequences (easy version)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>The only difference between the easy and the hard versions is constraints.</p>
+<p>A subsequence is a string that can be derived from another string by deleting some or no symbols without changing the order of the remaining symbols. Characters to be deleted are not required to go successively, there can be any gaps between them. For example, for the string “abaca” the following strings are subsequences: “abaca”, “aba”, “aaa”, “a” and “” (empty string). But the following strings are not subsequences: “aabaca”, “cb” and “bcaa”.</p>
+<p>You are given a string s consisting of n lowercase Latin letters.</p>
+<p>In one move you can take any subsequence t of the given string and add it to the set S. The set S can’t contain duplicates. This move costs n−|t|, where |t| is the length of the added subsequence (i.e. the price equals to the number of the deleted characters).</p>
+<p>Your task is to find out the minimum possible total cost to obtain a set S of size k or report that it is impossible to do so.</p>
+<hr>
+<p><strong>思路</strong></p>
+<p>bfs穷举</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span>&lt;<span class="built_in">string</span>&gt; s;</span><br><span class="line"><span class="built_in">queue</span>&lt;<span class="built_in">string</span>&gt; q;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">string</span> str;</span><br><span class="line">    <span class="keyword">int</span> n, k, sum = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; k;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; str;</span><br><span class="line">    q.push(str);</span><br><span class="line">    k--;</span><br><span class="line">    <span class="keyword">if</span>(k)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(!q.empty())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">string</span> x = q.front();</span><br><span class="line">            q.pop();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; x.length(); i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">string</span> temp = x;</span><br><span class="line">                temp.erase(i,<span class="number">1</span>);</span><br><span class="line">                <span class="keyword">if</span>(!s.count(temp))</span><br><span class="line">                &#123;</span><br><span class="line">                    s.insert(temp);</span><br><span class="line">                    k--;</span><br><span class="line">                    sum += n - temp.length();</span><br><span class="line">                    <span class="keyword">if</span>(!k)</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">                        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    q.push(temp);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="number">0</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="number">-1</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/22/4_l/" data-id="ck3a3m4lz0015dv54kjskybo7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-4_k" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/22/4_k/" class="article-date">
@@ -102,7 +151,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/22/4_k/" data-id="ck39ns5e800157054n8a7jzo8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/22/4_k/" data-id="ck3a3m4lw0014dv54xueswi9w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -152,7 +201,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/21/4_j/" data-id="ck39ns5e600137054ghl69aae" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/21/4_j/" data-id="ck3a3m4m10016dv54uxq4arej" class="article-share-link">Share</a>
       
       
     </footer>
@@ -202,7 +251,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/21/4_i/" data-id="ck39ns5e5001270541d027wlw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/21/4_i/" data-id="ck3a3m4lu0013dv54u9e51umt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -285,7 +334,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/21/4_f/" data-id="ck39ns5e400117054p0jijlai" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/21/4_f/" data-id="ck3a3m4lo0011dv540itc7bek" class="article-share-link">Share</a>
       
       
     </footer>
@@ -334,7 +383,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/21/4_gh/" data-id="ck39ns5e700147054mkcw6dwn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/21/4_gh/" data-id="ck3a3m4lr0012dv544qa7k1wx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -382,7 +431,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/4_e/" data-id="ck39ns5e300107054e1x2ilro" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/4_e/" data-id="ck3a3m4ll0010dv54i5wqgns9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -430,7 +479,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/4_d/" data-id="ck39ns5e1000x7054omksgxgd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/4_d/" data-id="ck3a3m4li000zdv54o4vzqslu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -480,7 +529,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/4_c/" data-id="ck39ns5e2000y705428bxndmx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/4_c/" data-id="ck3a3m4lf000ydv54165gtoss" class="article-share-link">Share</a>
       
       
     </footer>
@@ -527,55 +576,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/4_b/" data-id="ck39ns5e2000z7054bm3ol3ou" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-4_a" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/20/4_a/" class="article-date">
-  <time datetime="2019-11-20T08:28:47.755Z" itemprop="datePublished">2019-11-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/20/4_a/">萌新acm(4) A - Equal Rectangles</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong></p>
-<p>You are given 4n sticks, the length of the i-th stick is ai.</p>
-<p>You have to create n rectangles, each rectangle will consist of exactly 4 sticks from the given set. The rectangle consists of four sides, opposite sides should have equal length and all angles in it should be right. Note that each stick can be used in only one rectangle. Each stick should be used as a side, you cannot break the stick or use it not to the full length.</p>
-<p>You want to all rectangles to have equal area. The area of the rectangle with sides a and b is a⋅b.</p>
-<p>Your task is to say if it is possible to create exactly n rectangles of equal area or not.</p>
-<p>You have to answer q independent queries.</p>
-<hr>
-<p><strong>思路</strong><br>最长的和最短的相乘就是矩形面积，注意每种长度的木棒数量都是偶数</p>
-<hr>
-<p><strong>AC代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> q;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; q;</span><br><span class="line">    <span class="keyword">while</span>(q--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> n, i;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">        <span class="keyword">int</span> p[<span class="number">4</span>*n];</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">4</span>*n ; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; p[i];</span><br><span class="line">        &#125;</span><br><span class="line">        sort(p, p+<span class="number">4</span>*n);</span><br><span class="line">        <span class="keyword">int</span> sum = p[<span class="number">0</span>] * p[<span class="number">4</span>*n<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">2</span>*n; i+=<span class="number">2</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(p[i] * p[<span class="number">4</span>*n<span class="number">-1</span>-i] != sum || p[i] != p[i+<span class="number">1</span>] || p[<span class="number">4</span>*n<span class="number">-1</span>-i] != p[<span class="number">4</span>*n<span class="number">-2</span>-i]) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i == <span class="number">2</span>*n) <span class="built_in">cout</span> &lt;&lt; <span class="string">"YES"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; <span class="string">"NO"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/4_a/" data-id="ck39ns5dz000v7054f35ww6sq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/4_b/" data-id="ck3a3m4lc000xdv54jm369w1k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -621,6 +622,10 @@
       <ul>
         
           <li>
+            <a href="/2019/11/22/4_l/">萌新acm(4) L - Subsequences (easy version)</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/22/4_k/">萌新acm(4) K - Candy Box (easy version)</a>
           </li>
         
@@ -634,10 +639,6 @@
         
           <li>
             <a href="/2019/11/21/4_f/">萌新acm(4) F - Robot Breakout</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/21/4_gh/">萌新acm(4) G&amp;H - RGB Substring</a>
           </li>
         
       </ul>
