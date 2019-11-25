@@ -62,6 +62,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-cqupt1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/25/cqupt1/" class="article-date">
+  <time datetime="2019-11-25T02:45:56.592Z" itemprop="datePublished">2019-11-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/25/cqupt1/">cqupt校内选拔网赛 F - 不会还真有人不会后缀自动机吧</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>给两个字符串S和K和一个查询次数T，每次查询给出L和R，表示询问在S的[L,R]区间中是否存在一个后缀P，使得K的任何一个前缀的字典序都大于P，如果存在输出YES，不存在输出NO。 </p>
+<hr>
+<p><strong>思路</strong></p>
+<p>如果在S的[L,R]区间中存在一个字母的字典序小于K的第一个字母的字典序，那么一定在这个区间里面存在一个后缀P小于K的任何一个前缀的字典序。</p>
+<p>因为需要回答每次询问，所以可以用前缀和来将这些结果提前保存起来，询问就只用查询该区间前缀和是否大于0即可。</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> sum[N];</span><br><span class="line"><span class="keyword">char</span> s[N],ss[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>,s);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>,ss);    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.size();i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(s[i]&lt;ss[<span class="number">0</span>])</span><br><span class="line">        &#123;</span><br><span class="line">            sum[i+<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=s.size();i++)</span><br><span class="line">        sum[i]+=sum[i<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,t);</span><br><span class="line">    <span class="keyword">while</span>(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> l,r;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;l,&amp;r);</span><br><span class="line">        <span class="keyword">if</span>(sum[r]-sum[l<span class="number">-1</span>]&gt;<span class="number">0</span>)</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">"YES"</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">"NO"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/25/cqupt1/" data-id="ck3dtxj4200196c54496ddcwo" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-cqupt3" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/25/cqupt3/" class="article-date">
@@ -97,7 +143,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/25/cqupt3/" data-id="ck3dsthfy0016yy544eqljv3i" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/25/cqupt3/" data-id="ck3dtxj4200186c548oj3hmnk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -147,53 +193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/25/cqupt2/" data-id="ck3dsthfx0015yy54mznuwgol" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-cqupt1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/25/cqupt1/" class="article-date">
-  <time datetime="2019-11-25T02:11:01.516Z" itemprop="datePublished">2019-11-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/25/cqupt1/">cqupt校内选拔网赛 F - 不会还真有人不会后缀自动机吧</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong></p>
-<p>给两个字符串S和K和一个查询次数T，每次查询给出L和R，表示询问在S的[L,R]区间中是否存在一个后缀P，使得K的任何一个前缀的字典序都大于P，如果存在输出YES，不存在输出NO。 </p>
-<hr>
-<p><strong>思路</strong></p>
-<p>如果在S的[L,R]区间中存在一个字母的字典序小于K的第一个字母的字典序，那么一定在这个区间里面存在一个后缀P小于K的任何一个前缀的字典序。</p>
-<p>因为需要回答每次询问，所以可以用前缀和来将这些结果提前保存起来，询问就只用查询该区间前缀和是否大于0即可。</p>
-<hr>
-<p><strong>AC代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> sum[N];</span><br><span class="line"><span class="keyword">char</span> s[N],ss[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>,s);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>,ss);    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.size();i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(s[i]&lt;tt[<span class="number">0</span>])</span><br><span class="line">        &#123;</span><br><span class="line">            sum[i+<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=s.size();i++)</span><br><span class="line">        sum[i]+=sum[i<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,t);</span><br><span class="line">    <span class="keyword">while</span>(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> l,r;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;l,&amp;r);</span><br><span class="line">        <span class="keyword">if</span>(sum[r]-sum[l<span class="number">-1</span>]&gt;<span class="number">0</span>)</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">"YES"</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">"NO"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/25/cqupt1/" data-id="ck3dsthfw0014yy548me1ewky" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/25/cqupt2/" data-id="ck3dtxj4100176c544dm9xhve" class="article-share-link">Share</a>
       
       
     </footer>
@@ -242,7 +242,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/22/4_l/" data-id="ck3dsthgk001ayy5490dqlm01" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/22/4_l/" data-id="ck3dtxj4000166c54u5ffnhvx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -292,7 +292,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/22/4_k/" data-id="ck3dsthg20019yy545uy9iw1t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/22/4_k/" data-id="ck3dtxj3z00156c54m077uwpj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -342,7 +342,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/21/4_j/" data-id="ck3dsthg10018yy5466y2pyoj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/21/4_j/" data-id="ck3dtxj3y00146c542sqj6plm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -392,7 +392,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/21/4_i/" data-id="ck3dsthft0010yy5466xg4mmc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/21/4_i/" data-id="ck3dtxj3x00136c54rs5el7s1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -475,7 +475,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/21/4_f/" data-id="ck3dsthfu0011yy54zo3oycc4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/21/4_f/" data-id="ck3dtxj3v00116c54m0wna1bn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -524,7 +524,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/21/4_gh/" data-id="ck3dsthfu0012yy545y0c3q9a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/21/4_gh/" data-id="ck3dtxj3w00126c54m60sad2u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -572,7 +572,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/4_e/" data-id="ck3dsthfv0013yy54smqg94qv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/4_e/" data-id="ck3dtxj3t000z6c541fbdrktw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -618,15 +618,15 @@
       <ul>
         
           <li>
+            <a href="/2019/11/25/cqupt1/">cqupt校内选拔网赛 F - 不会还真有人不会后缀自动机吧</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/25/cqupt3/">cqupt校内选拔网赛 H - 土块秦太阳</a>
           </li>
         
           <li>
             <a href="/2019/11/25/cqupt2/">cqupt校内选拔网赛 G - 显卡分水果</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/25/cqupt1/">cqupt校内选拔网赛 F - 不会还真有人不会后缀自动机吧</a>
           </li>
         
           <li>
