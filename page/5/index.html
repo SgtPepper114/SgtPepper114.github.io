@@ -62,6 +62,111 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-1_h" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/10/1_h/" class="article-date">
+  <time datetime="2019-11-10T05:22:22.268Z" itemprop="datePublished">2019-11-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/10/1_h/">AtCoder 4875 - Disjoint Set of Common Divisors</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>Given are positive integers A and B.</p>
+<p>Let us choose some number of positive common divisors of A and B.</p>
+<p>Here, any two of the chosen divisors must be coprime.</p>
+<p>At most, how many divisors can we choose?</p>
+<p>Definition of common divisor<br>An integer d is said to be a common divisor of integers x and y when d divides both x and y.</p>
+<p>Definition of being coprime<br>Integers x and y are said to be coprime when x and y have no positive common divisors other than 1.</p>
+<p>Definition of dividing<br>An integer x is said to divide another integer y when there exists an integer \alpha such that y = \alpha x.</p>
+<p>All values in input are integers.<br>1 \leq A, B \leq 10^{12}</p>
+<hr>
+<p><strong>思路</strong></p>
+<p>两个数互质的公因数的数量即为两个数的公共质因数的数量,设f(n)为质数列,则任意正整数s可表示为s = f(1)^x1 * f(2)^x2 *…… *f(n)^xn,从n=1开始遍历a与b,若a%f(n)!=0,则用a除以f(n)至xn==0,b同理,当a%f(n)!=0&amp;&amp;b%f(n)!=0时则有一公共质因数，当f(n)大于ab中任意一个时跳出。</p>
+<p>使a小于b，用2和奇数列代替质数列<br>设最大公共质因数为f(k),当f(k)小于根号b时，遍历至f(n)小于等于根号b即可,当f(k)大于根号b时，大于根号b的f(n)仅有f(k)一个，遍历至f(n)小于等于根号b，判断循环结束后是否a等于b并且a大于根号b即可</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<p>语言:c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> *a, <span class="keyword">long</span> <span class="keyword">long</span> *b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    *a = *a ^ *b;</span><br><span class="line">    *b = *a ^ *b;</span><br><span class="line">    *a = *a ^ *b;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> a = <span class="number">0</span>, b = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">long</span> i = <span class="number">0</span>, max = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> flag1 = <span class="number">0</span>, flag2 = <span class="number">0</span>, flag = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld %lld"</span>, &amp;a, &amp;b);</span><br><span class="line">    <span class="keyword">if</span> (a &gt; b) swap(&amp;a, &amp;b);</span><br><span class="line">    max = (<span class="keyword">long</span>)<span class="built_in">sqrt</span>(b);</span><br><span class="line">    <span class="keyword">while</span> (a % <span class="number">2</span> == <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        a /= <span class="number">2</span>;</span><br><span class="line">        flag1 = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (b % <span class="number">2</span> == <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        b /= <span class="number">2</span>;</span><br><span class="line">        flag2 = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (flag1==<span class="number">1</span> &amp;&amp; flag2==<span class="number">1</span>) count++;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">3</span>; i &lt;= max; i += <span class="number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (i&gt;a || i&gt;b) <span class="keyword">break</span>;</span><br><span class="line">        flag1 = <span class="number">0</span>;</span><br><span class="line">        flag2 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (a % i == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            a /= i;</span><br><span class="line">            flag1 = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (b % i == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            b /= i;</span><br><span class="line">            flag2 = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (flag1==<span class="number">1</span> &amp;&amp; flag2==<span class="number">1</span>) count++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (a &gt; max &amp;&amp; a == b) count++;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>, count);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/10/1_h/" data-id="ck3fxa82w0008xw54niihiyyp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-1_g" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/10/1_g/" class="article-date">
+  <time datetime="2019-11-10T05:22:06.316Z" itemprop="datePublished">2019-11-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/10/1_g/">AtCoder 5224 - Go to School</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>Takahashi is a teacher responsible for a class of N students.</p>
+<p>The students are given distinct student numbers from 1 to N.</p>
+<p>Today, all the students entered the classroom at different times.</p>
+<p>According to Takahashi’s record, there were Ai students in the classroom when student number i entered the classroom (including student number i).</p>
+<p>From these records, reconstruct the order in which the students entered the classroom.</p>
+<p>1[le]N[le]105<br>1[le]Ai[le]N<br>Ai≠Aj (i≠j)<br>All values in input are integers.</p>
+<hr>
+<p><strong>思路</strong></p>
+<p>看懂题就行</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<p>语言:c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">0</span>, i = <span class="number">0</span>, k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> *p = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    p = (<span class="keyword">int</span> *)<span class="built_in">calloc</span>(n, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;k);</span><br><span class="line">        p[k<span class="number">-1</span>] = i+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, p[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(p);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/10/1_g/" data-id="ck3fxa82u0007xw54bvkj7pdt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-1_f" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/10/1_f/" class="article-date">
@@ -101,7 +206,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_f/" data-id="ck3dtxj2s00056c54aiv1vhx6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_f/" data-id="ck3fxa82r0005xw54i90ifb9e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -150,7 +255,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_e/" data-id="ck3dtxj2q00046c54rfxljpwj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_e/" data-id="ck3fxa82p0004xw54xyaanjt6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -197,7 +302,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_d/" data-id="ck3dtxj2o00036c544leod098" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_d/" data-id="ck3fxa82o0003xw54gk1kjett" class="article-share-link">Share</a>
       
       
     </footer>
@@ -242,7 +347,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_a/" data-id="ck3dtxj2d00006c54h9i0fkfl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_a/" data-id="ck3fxa82e0000xw549k8o51eo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -291,7 +396,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_b/" data-id="ck3dtxj2j00016c546ibbp3my" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_b/" data-id="ck3fxa82j0001xw54aon1yik8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -338,7 +443,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_c/" data-id="ck3dtxj2m00026c54bwe51zim" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_c/" data-id="ck3fxa82m0002xw5448s6temg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -511,7 +616,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/14/彩虹社熟肉整理/" data-id="ck3dtxj44001a6c54estt1855" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/14/彩虹社熟肉整理/" data-id="ck3fxa84n001cxw541m7h0m8r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -557,6 +662,14 @@
       <ul>
         
           <li>
+            <a href="/2019/11/26/5_b/">萌新acm(5) B - Lose it!</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/26/5_a/">萌新acm(5) A - Merge it!</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/25/cqupt1/">cqupt校内选拔网赛 F - 不会还真有人不会后缀自动机吧</a>
           </li>
         
@@ -566,14 +679,6 @@
         
           <li>
             <a href="/2019/11/25/cqupt2/">cqupt校内选拔网赛 G - 显卡分水果</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/22/4_l/">萌新acm(4) L - Subsequences (easy version)</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/22/4_k/">萌新acm(4) K - Candy Box (easy version)</a>
           </li>
         
       </ul>
