@@ -62,6 +62,205 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-1_l" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/10/1_l/" class="article-date">
+  <time datetime="2019-11-10T05:23:30.302Z" itemprop="datePublished">2019-11-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/10/1_l/">AtCoder 4864 - Powerful Discount Tickets</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>Takahashi is going to buy N items one by one.</p>
+<p>The price of the i-th item he buys is Ai yen (the currency of Japan).</p>
+<p>He has M discount tickets, and he can use any number of them when buying an item.</p>
+<p>If Y tickets are used when buying an item priced X yen, he can get the item for  X    2Y  (rounded down to the nearest integer) yen.</p>
+<p>What is the minimum amount of money required to buy all the items?</p>
+<p>All values in input are integers.<br>1≤N,M≤105<br>1≤Ai≤109</p>
+<hr>
+<p><strong>思路</strong></p>
+<p>优先数列，c语言给我写吐了，现学c++</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<p>语言:c++</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	priority_queue&lt;<span class="keyword">int</span>&gt;q;</span><br><span class="line">	<span class="keyword">int</span> n = <span class="number">0</span>, m = <span class="number">0</span>, i = <span class="number">0</span>, a = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;n, &amp;m);</span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a);</span><br><span class="line">		q.push(a);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">1</span>;i &lt;= m; i++)&#123;</span><br><span class="line">		a = q.top();</span><br><span class="line">		q.pop();</span><br><span class="line">		a /= <span class="number">2</span>;</span><br><span class="line">		q.push(a);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(!q.empty())</span><br><span class="line">    &#123;</span><br><span class="line">		a=q.top();</span><br><span class="line">		q.pop();</span><br><span class="line">		sum += a;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, sum);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/10/1_l/" data-id="ck3h9oc0l000c9j54gypj52qm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-1_k" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/10/1_k/" class="article-date">
+  <time datetime="2019-11-10T05:23:12.841Z" itemprop="datePublished">2019-11-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/10/1_k/">AtCoder 4870 - Attack Survival</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>Takahashi has decided to hold fastest-finger-fast quiz games. Kizahashi, who is in charge of making the scoreboard, is struggling to write the program that manages the players’ scores in a game, which proceeds as follows.</p>
+<p>A game is played by N players, numbered 1 to N. At the beginning of a game, each player has K points.</p>
+<p>When a player correctly answers a question, each of the other N−1 players receives minus one (−1) point. There is no other factor that affects the players’ scores.</p>
+<p>At the end of a game, the players with 0 points or lower are eliminated, and the remaining players survive.</p>
+<p>In the last game, the players gave a total of Q correct answers, the i-th of which was given by Player Ai. For Kizahashi, write a program that determines whether each of the N players survived this game.</p>
+<p>All values in input are integers.<br>2≤N≤105<br>1≤K≤109<br>1≤Q≤105<br>1≤Ai≤N (1≤i≤Q)</p>
+<hr>
+<p><strong>思路</strong></p>
+<p>一人答出一题其余人扣一分，则只有答出题数大于q-k的选手能够survive,将所有人的初始分设为k-q,答出题则答出者加一分，最后分数大于零这survive</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<p>语言:c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">long</span> n = <span class="number">0</span>, k = <span class="number">0</span>, q = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">long</span> *p = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">long</span> a = <span class="number">0</span>, i = <span class="number">0</span>, min = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%ld %ld %ld"</span>, &amp;n, &amp;k, &amp;q);</span><br><span class="line">    p = (<span class="keyword">long</span> *)<span class="built_in">calloc</span>(n, <span class="keyword">sizeof</span>(<span class="keyword">long</span>));</span><br><span class="line">    min = k - q;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        p[i] = min;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (q &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        q--;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%ld"</span>, &amp;a);</span><br><span class="line">        p[a<span class="number">-1</span>]++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (p[i] &gt; <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">"Yes\n"</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"No\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(p);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/10/1_k/" data-id="ck3h9oc05000a9j54p7iv3xlx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-1_j" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/10/1_j/" class="article-date">
+  <time datetime="2019-11-10T05:22:55.493Z" itemprop="datePublished">2019-11-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/10/1_j/">AtCoder 5246 - Tap Dance</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>Takahashi will do a tap dance. The dance is described by a string S where each character is L, R, U, or D. These characters indicate the positions on which Takahashi should step. He will follow these instructions one by one in order, starting with the first character.</p>
+<p>S is said to be easily playable if and only if it satisfies both of the following conditions:</p>
+<p>Every character in an odd position (1-st, 3-rd, 5-th, \ldots) is R, U, or D.<br>Every character in an even position (2-nd, 4-th, 6-th, \ldots) is L, U, or D.<br>Your task is to print Yes if S is easily playable, and No otherwise.</p>
+<p>S is a string of length between 1 and 100 (inclusive).<br>Each character of S is L, R, U, or D.</p>
+<hr>
+<p><strong>思路</strong></p>
+<p>看懂题就行</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<p>语言:c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> p[<span class="number">101</span>];</span><br><span class="line">    <span class="built_in">memset</span>(p, <span class="string">'\0'</span>, <span class="number">101</span>*<span class="keyword">sizeof</span>(<span class="keyword">char</span>));</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>, flag = <span class="number">1</span>, max = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>, p);</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; p[i] != <span class="number">0</span>; i += <span class="number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (p[i] == <span class="string">'L'</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            flag = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; p[i] != <span class="number">0</span>; i += <span class="number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (p[i] == <span class="string">'R'</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            flag = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (flag) <span class="built_in">printf</span>(<span class="string">"Yes"</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"No"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/10/1_j/" data-id="ck3h9obzu00099j54kbwen5hw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-1_i" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/10/1_i/" class="article-date">
+  <time datetime="2019-11-10T05:22:38.884Z" itemprop="datePublished">2019-11-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/10/1_i/">AtCoder 5223 - Weather Prediction</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>The weather in Takahashi’s town changes day by day, in the following cycle: Sunny, Cloudy, Rainy, Sunny, Cloudy, Rainy, …</p>
+<p>Given is a string S representing the weather in the town today. Predict the weather tomorrow.</p>
+<p>S is Sunny, Cloudy, or Rainy.</p>
+<hr>
+<p><strong>思路</strong></p>
+<p>有手就行</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<p>语言:c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> p[<span class="number">7</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>, p);</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">strcmp</span>(p, <span class="string">"Sunny"</span>) == <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">"Cloudy"</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">strcmp</span>(p, <span class="string">"Cloudy"</span>) == <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">"Rainy"</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"Sunny"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/10/1_i/" data-id="ck3h9obzi00089j54n06ac5da" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-1_h" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/10/1_h/" class="article-date">
@@ -106,7 +305,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_h/" data-id="ck3fxa82w0008xw54niihiyyp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_h/" data-id="ck3h9obyx00069j54pax18t9c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -157,7 +356,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_g/" data-id="ck3fxa82u0007xw54bvkj7pdt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_g/" data-id="ck3h9obz800079j54kq1dpw81" class="article-share-link">Share</a>
       
       
     </footer>
@@ -206,7 +405,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_f/" data-id="ck3fxa82r0005xw54i90ifb9e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_f/" data-id="ck3h9obyl00059j54g3tgu6a7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -255,7 +454,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_e/" data-id="ck3fxa82p0004xw54xyaanjt6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_e/" data-id="ck3h9obxs00039j54k29d37a5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -302,7 +501,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_d/" data-id="ck3fxa82o0003xw54gk1kjett" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_d/" data-id="ck3h9oby500049j54ipol91nr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -347,276 +546,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_a/" data-id="ck3fxa82e0000xw549k8o51eo" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-1_b" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/10/1_b/" class="article-date">
-  <time datetime="2019-11-10T05:20:42.338Z" itemprop="datePublished">2019-11-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/10/1_b/">AtCoder 4797 - TAKOYAKI FESTIVAL 2019</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong></p>
-<p>It’s now the season of TAKOYAKI FESTIVAL!</p>
-<p>This year, N takoyaki (a ball-shaped food with a piece of octopus inside) will be served. The deliciousness of the i-th takoyaki is di.</p>
-<p>As is commonly known, when you eat two takoyaki of deliciousness x and y together, you restore x×y health points.</p>
-<p>There are  N×(N−1)    2  ways to choose two from the N takoyaki served in the festival. For each of these choices, find the health points restored from eating the two takoyaki, then compute the sum of these  N×(N−1)    2  values.</p>
-<p>All values in input are integers.<br>2≤N≤50<br>0≤di≤100</p>
-<hr>
-<p><strong>思路</strong></p>
-<p>遍历每一个元素，计算每一个元素与其之后所有元素之和的乘积，再将所有乘积相加即是答案，复杂度O(n)</p>
-<hr>
-<p><strong>AC代码</strong><br>语言：c</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">0</span>, i = <span class="number">0</span>, sum = <span class="number">0</span>, result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> *p = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    p = (<span class="keyword">int</span> *)<span class="built_in">calloc</span>(n, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;p[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sum += p[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sum -= p[i];</span><br><span class="line">        result += p[i] * sum;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>, result);</span><br><span class="line">    <span class="built_in">free</span>(p);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_b/" data-id="ck3fxa82j0001xw54aon1yik8" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-1_c" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/10/1_c/" class="article-date">
-  <time datetime="2019-11-10T05:20:29.892Z" itemprop="datePublished">2019-11-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/10/1_c/">AtCoder 5219 - Slimes</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong><br>There are N slimes lining up from left to right. The colors of these slimes will be given as a string S of length N consisting of lowercase English letters. The i-th slime from the left has the color that corresponds to the i-th character of S.</p>
-<p>Adjacent slimes with the same color will fuse into one larger slime without changing the color. If there were a slime adjacent to this group of slimes before fusion, that slime is now adjacent to the new larger slime.</p>
-<p>Ultimately, how many slimes will be there?</p>
-<p>1≤N≤105<br>|S|=N<br>S consists of lowercase English letters.</p>
-<hr>
-<p><strong>思路</strong><br>遍历字符串，当一个元素与其后一个元素不同时count+1，count即是答案，复杂度O（n）</p>
-<hr>
-<p><strong>AC代码</strong></p>
-<p>语言:c</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">0</span>, count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> *p = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    p = (<span class="keyword">char</span> *)<span class="built_in">calloc</span>(n+<span class="number">1</span>, <span class="keyword">sizeof</span>(<span class="keyword">char</span>));</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>, p);</span><br><span class="line">    <span class="keyword">while</span> (*p != <span class="string">'\0'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (*p != *(p+<span class="number">1</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        p++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>, count);</span><br><span class="line">    <span class="built_in">free</span>(p);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/10/1_c/" data-id="ck3fxa82m0002xw5448s6temg" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-彩虹社熟肉整理" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/09/14/彩虹社熟肉整理/" class="article-date">
-  <time datetime="2019-09-14T06:00:00.000Z" itemprop="datePublished">2019-09-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/14/彩虹社熟肉整理/">彩虹社熟肉整理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://img-blog.csdnimg.cn/20190914140246536.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NndF9QZXBwZXJfeXVr,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h1 id="彩虹社熟肉整理"><a href="#彩虹社熟肉整理" class="headerlink" title="彩虹社熟肉整理"></a>彩虹社熟肉整理</h1><h2 id="彩虹MC"><a href="#彩虹MC" class="headerlink" title="彩虹MC"></a>彩虹MC</h2><h3 id="海牛大坟墓"><a href="#海牛大坟墓" class="headerlink" title="海牛大坟墓"></a>海牛大坟墓</h3><ul>
-<li><p><a href="http://www.bilibili.com/video/av34624920/" target="_blank" rel="noopener">海牛得到作案工具</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av41568847/" target="_blank" rel="noopener">大福单人游</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av39692192/" target="_blank" rel="noopener">反抗军（大福&amp;柴卡）</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av39176336/" target="_blank" rel="noopener">千寻&amp;静凛</a></p>
-</li>
-<li><p><a href="https://www.bilibili.com/video/av39089476/" target="_blank" rel="noopener">千寻&amp;绿仙</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av41555776/" target="_blank" rel="noopener">阿葵前篇</a><br><a href="http://www.bilibili.com/video/av39034712/" target="_blank" rel="noopener">阿葵本篇</a><br><a href="http://www.bilibili.com/video/av39854968/" target="_blank" rel="noopener">阿葵后篇</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av44586406/" target="_blank" rel="noopener">野人葛叶入城</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av41323375/" target="_blank" rel="noopener">中了岩浆陷阱的莫露露</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av40997954/" target="_blank" rel="noopener">海牛弑神（海牛&amp;龙妈）</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av41530921/" target="_blank" rel="noopener">谁叔前篇</a><br><a href="http://www.bilibili.com/video/av41715915/" target="_blank" rel="noopener">谁叔后篇</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av40718349/" target="_blank" rel="noopener">海牛大坟墓建造篇</a></p>
-</li>
-<li><p><a href="https://www.bilibili.com/video/av53305761/" target="_blank" rel="noopener">月之美兔，陨落于海牛大坟墓（JK组）</a></p>
-</li>
-<li><p><a href="https://www.bilibili.com/video/av62710987/" target="_blank" rel="noopener">从地狱闯入海牛大坟墓的安洁</a></p>
-</li>
-<li><p><a href="https://www.bilibili.com/video/av46476840/" target="_blank" rel="noopener">参观名胜的舞元</a></p>
-<h3 id="龙妈和女儿和MC"><a href="#龙妈和女儿和MC" class="headerlink" title="龙妈和女儿和MC"></a>龙妈和女儿和MC</h3></li>
-<li><p>大块熟肉<br><a href="http://www.bilibili.com/video/av30942850/" target="_blank" rel="noopener">Ｄｏｒａ带带我</a><br><a href="http://www.bilibili.com/video/av38201618/" target="_blank" rel="noopener">探险篇</a><br><a href="http://www.bilibili.com/video/av33384130/" target="_blank" rel="noopener">建筑篇</a><br><a href="http://www.bilibili.com/video/av40200314/" target="_blank" rel="noopener">牧场篇</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av38415640/" target="_blank" rel="noopener">阴阳相隔的母子</a></p>
-<h3 id="RKS的MC"><a href="#RKS的MC" class="headerlink" title="RKS的MC"></a>RKS的MC</h3></li>
-<li><p><a href="http://www.bilibili.com/video/av37725837/" target="_blank" rel="noopener">深夜三杰的MC之旅</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av40849560/" target="_blank" rel="noopener">在叶师眼里不管做什么都很恐怖的千寻</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av41410597/" target="_blank" rel="noopener">千哈糖</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av37087333/" target="_blank" rel="noopener">腹肌猎人参上，反抗军真正的leader究竟是？</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av37786120/" target="_blank" rel="noopener">炫耀冰霜行者的叶</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av41198173/" target="_blank" rel="noopener">在挂机凛面前演戏的叶</a></p>
-</li>
-<li><p><a href="https://www.bilibili.com/video/av47942359/" target="_blank" rel="noopener">叶的世界</a></p>
-</li>
-<li><p><a href="https://www.bilibili.com/video/av66640975/" target="_blank" rel="noopener">对大福施以水刑</a></p>
-</li>
-<li><p><a href="https://www.bilibili.com/video/av66951101/" target="_blank" rel="noopener">叶神父的娱乐</a></p>
-</li>
-<li><p><a href="https://www.bilibili.com/video/av66998116/" target="_blank" rel="noopener">调戏后辈的叶神父</a></p>
-<h3 id="彩虹黑暗面叶师"><a href="#彩虹黑暗面叶师" class="headerlink" title="彩虹黑暗面叶师"></a>彩虹黑暗面叶师</h3></li>
-<li><p><a href="http://www.bilibili.com/video/av39733770/" target="_blank" rel="noopener">记者哈哥揭露黑暗面惨遭毒手</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av39951582/" target="_blank" rel="noopener">漆黑的被捕食者</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av40825086/" target="_blank" rel="noopener">黑暗神父与纯洁修女共建教堂</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av40980436/" target="_blank" rel="noopener">与修女联动时暗中屠杀村民的神父</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av41129140/" target="_blank" rel="noopener">被叶师坑害的大小姐</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av41239739/" target="_blank" rel="noopener">隐身戏弄大小姐的叶</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av37452336/" target="_blank" rel="noopener">和叶师决斗惨遭背刺的大小姐</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av43235198/" target="_blank" rel="noopener">惨剧回避笹木咲</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av43545916/" target="_blank" rel="noopener">惹怒龙妈和阿葵生气的叶师</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av44292948/" target="_blank" rel="noopener">为迷途中的村民修建居所的神父</a></p>
-<h3 id="受迫害的大叔"><a href="#受迫害的大叔" class="headerlink" title="受迫害的大叔"></a>受迫害的大叔</h3></li>
-<li><p><a href="http://www.bilibili.com/video/av40870148/" target="_blank" rel="noopener">金憨憨的累累罪行</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av41143033/" target="_blank" rel="noopener">被熊猫人迫害的谁叔前篇</a><br><a href="http://www.bilibili.com/video/av41272694/" target="_blank" rel="noopener">被熊猫人迫害的谁叔后篇</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av41587980/" target="_blank" rel="noopener">被大福rion迫害的舞元</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av41502857/" target="_blank" rel="noopener">被阿葵迫害的舞元</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av41422053/" target="_blank" rel="noopener">被千寻迫害的舞元</a></p>
-</li>
-<li><p><a href="https://www.bilibili.com/video/av51883495/" target="_blank" rel="noopener">被大福迫害的舞元</a></p>
-</li>
-<li><p><a href="https://www.bilibili.com/video/av56667374/" target="_blank" rel="noopener">不被人当人看的舞元</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av40712728/" target="_blank" rel="noopener">反抗大小姐和德比的舞元</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av30361446/" target="_blank" rel="noopener">被龙妈教训的柴卡</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av41939591" target="_blank" rel="noopener">彩虹村不良二人组</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av41271943/" target="_blank" rel="noopener">贝叔的报恩</a></p>
-<h3 id="海贝联动"><a href="#海贝联动" class="headerlink" title="海贝联动"></a>海贝联动</h3></li>
-<li><p>全熟肉<br><a href="https://www.bilibili.com/video/av42042003/" target="_blank" rel="noopener">第一集</a><br><a href="https://www.bilibili.com/video/av42290184" target="_blank" rel="noopener">第二集</a><br><a href="https://www.bilibili.com/video/av42628847" target="_blank" rel="noopener">第三集</a><br><a href="https://www.bilibili.com/video/av43125111" target="_blank" rel="noopener">第四集</a><br><a href="https://www.bilibili.com/video/av43555881" target="_blank" rel="noopener">第五集</a><br><a href="https://www.bilibili.com/video/av44465150" target="_blank" rel="noopener">第六集</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av42618620/" target="_blank" rel="noopener">贝叔与巴迪</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av42609155/" target="_blank" rel="noopener">地底王的15分钟</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av41881995/" target="_blank" rel="noopener">捉弄谁叔的海牛</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av42583734/" target="_blank" rel="noopener">给海牛布置作业的谁叔</a></p>
-</li>
-<li><p><a href="http://www.bilibili.com/video/av42777290/" target="_blank" rel="noopener">海贝拯救莫露露</a></p>
-<h3 id="洛克萨斯之死"><a href="#洛克萨斯之死" class="headerlink" title="洛克萨斯之死"></a>洛克萨斯之死</h3></li>
-<li><p><a href="https://www.bilibili.com/video/av56817588/" target="_blank" rel="noopener">杀死爱宠的熊猫人和嗤笑的大福</a></p>
-</li>
-<li><p><a href="https://www.bilibili.com/video/av57515133/" target="_blank" rel="noopener">与洛克萨斯重逢的熊猫人</a></p>
-</li>
-<li><p><a href="https://www.bilibili.com/video/av56897236/" target="_blank" rel="noopener">把洛克萨斯送给roa的熊猫人</a></p>
-</li>
-<li><p><a href="https://www.bilibili.com/video/av56910794/" target="_blank" rel="noopener">收到洛克萨斯的roa</a></p>
-</li>
-</ul>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
-<li><a href="https://www.bilibili.com/video/av59171147" target="_blank" rel="noopener">向皇女展示召唤术的熊猫人</a></li>
-<li><a href="https://www.bilibili.com/video/av54925813" target="_blank" rel="noopener">明那和爱美的第一次彩虹服联动</a></li>
-<li><a href="https://www.bilibili.com/video/av43919073" target="_blank" rel="noopener">社筑柴卡的龙妈召唤仪式</a></li>
-<li><a href="https://www.bilibili.com/video/av49554034/" target="_blank" rel="noopener">失手射死心爱的鸟后悲痛欲绝的熊猫人</a></li>
-<li><a href="https://www.bilibili.com/video/av67472130" target="_blank" rel="noopener">欺负安洁的熊猫人</a></li>
-<li><a href="https://www.bilibili.com/video/av63316572/" target="_blank" rel="noopener">抓不到熊猫开始屠杀动物的熊猫人</a></li>
-<li><a href="https://www.bilibili.com/video/av50103420/" target="_blank" rel="noopener">失去一切无能怒吼的熊猫人</a></li>
-<li><a href="https://www.bilibili.com/video/av49458281/" target="_blank" rel="noopener">中了两个月前谁叔和大福设的陷阱的熊猫人</a></li>
-<li><a href="https://www.bilibili.com/video/av65955161/" target="_blank" rel="noopener">和安洁进行对一对单挑的熊猫人</a></li>
-<li><a href="https://www.bilibili.com/video/av66652171/" target="_blank" rel="noopener">旋转木马梦破灭的熊猫人</a></li>
-<li><a href="https://www.bilibili.com/video/av67237575/" target="_blank" rel="noopener">熊猫人相遇熊猫</a></li>
-<li><a href="https://www.bilibili.com/video/av56358461/" target="_blank" rel="noopener">被大福诓骗炸掉JK屋的gibara</a></li>
-<li><a href="https://www.bilibili.com/video/av56100996/" target="_blank" rel="noopener">中了柴卡陷阱的大福和gibara</a></li>
-<li><a href="https://www.bilibili.com/video/av65570421" target="_blank" rel="noopener">和ars卡组对战的熊猫人</a></li>
-<li><a href="https://www.bilibili.com/video/av63767639" target="_blank" rel="noopener">和岩浆竞速的谁叔</a></li>
-<li><a href="https://www.bilibili.com/video/av64212853/" target="_blank" rel="noopener">彩虹服大残事</a></li>
-<li><a href="https://www.bilibili.com/video/av46481257" target="_blank" rel="noopener">三气绿仙</a></li>
-<li><a href="https://www.bilibili.com/video/av52712108" target="_blank" rel="noopener">连锁暴击卡组狙击柴卡</a><h2 id="雪山人狼（未施工）"><a href="#雪山人狼（未施工）" class="headerlink" title="雪山人狼（未施工）"></a>雪山人狼（未施工）</h2></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/14/彩虹社熟肉整理/" data-id="ck3fxa84n001cxw541m7h0m8r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/10/1_a/" data-id="ck3h9obxk00019j54z3oj4e30" class="article-share-link">Share</a>
       
       
     </footer>
@@ -630,7 +560,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -662,23 +592,23 @@
       <ul>
         
           <li>
+            <a href="/2019/11/27/5_f/">萌新acm(5) F - Good String</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/27/5_e/">萌新acm(5) E - Polycarp Training</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/27/5_d/">萌新acm(5) D - Cover it!</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/27/5_c/">萌新acm(5) C - Recover it!</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/26/5_b/">萌新acm(5) B - Lose it!</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/26/5_a/">萌新acm(5) A - Merge it!</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/25/cqupt1/">cqupt校内选拔网赛 F - 不会还真有人不会后缀自动机吧</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/25/cqupt3/">cqupt校内选拔网赛 H - 土块秦太阳</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/25/cqupt2/">cqupt校内选拔网赛 G - 显卡分水果</a>
           </li>
         
       </ul>
