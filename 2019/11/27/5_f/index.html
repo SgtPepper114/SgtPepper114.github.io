@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="题面 Let’s call (yet again) a string good if its length is even, and every character in odd position of this string is different from the next character (the first character is different from the second">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-27T12:29:53.745Z">
+<meta property="og:updated_time" content="2019-11-27T13:00:07.858Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="萌新acm(5) F - Good String">
 <meta name="twitter:description" content="题面 Let’s call (yet again) a string good if its length is even, and every character in odd position of this string is different from the next character (the first character is different from the second">
@@ -67,7 +67,7 @@
         <section id="main"><article id="post-5_f" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/27/5_f/" class="article-date">
-  <time datetime="2019-11-27T12:29:53.745Z" itemprop="datePublished">2019-11-27</time>
+  <time datetime="2019-11-27T13:00:07.870Z" itemprop="datePublished">2019-11-27</time>
 </a>
     
   </div>
@@ -91,7 +91,7 @@
 <p>You are given a string s, you have to delete minimum number of characters from this string so that it becomes good.</p>
 <hr>
 <p><strong>思路</strong></p>
-<p>从前往后遍历，保持l与r分别指向答案字符串中的奇数项与偶数项，因为往答案字符串p中放入元素都是成对的，所以不用p中的元素个数总为偶数</p>
+<p>从前往后遍历，保持l与r分别指向答案字符串中的奇数项与偶数项，因为往答案字符串p中放入元素都是成对的，所以p中的元素个数总为偶数</p>
 <hr>
 <p><strong>AC代码</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> n, k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> l = <span class="number">0</span>, r = <span class="number">1</span>, point = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> p[<span class="number">200001</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="built_in">string</span> s;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; s;</span><br><span class="line">    <span class="keyword">int</span> len = s.length();</span><br><span class="line">    <span class="keyword">while</span>(l &lt; n &amp;&amp; r &lt; n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(s[l] != s[r])</span><br><span class="line">        &#123;</span><br><span class="line">            p[point] = s[l];</span><br><span class="line">            p[point+<span class="number">1</span>] = s[r];</span><br><span class="line">            point += <span class="number">2</span>;</span><br><span class="line">            l = r+<span class="number">1</span>;</span><br><span class="line">            r += <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            r++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    p[point] = <span class="string">'\0'</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; n-point &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -100,7 +100,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/27/5_f/" data-id="ck3h9oc2g001a9j54gavgbwx2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/27/5_f/" data-id="ck3har4rp001cdv54ctvj3cle" class="article-share-link">Share</a>
       
       
     </footer>
