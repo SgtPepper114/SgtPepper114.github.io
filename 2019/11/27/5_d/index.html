@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="题面 You are given an undirected unweighted connected graph consisting of n vertices and m edges. It is guaranteed that there are no self-loops or multiple edges in the given graph. Your task is to choo">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-27T10:25:09.265Z">
+<meta property="og:updated_time" content="2019-11-27T13:02:02.474Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="萌新acm(5) D - Cover it!">
 <meta name="twitter:description" content="题面 You are given an undirected unweighted connected graph consisting of n vertices and m edges. It is guaranteed that there are no self-loops or multiple edges in the given graph. Your task is to choo">
@@ -67,7 +67,7 @@
         <section id="main"><article id="post-5_d" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/27/5_d/" class="article-date">
-  <time datetime="2019-11-27T10:25:09.265Z" itemprop="datePublished">2019-11-27</time>
+  <time datetime="2019-11-27T13:02:02.474Z" itemprop="datePublished">2019-11-27</time>
 </a>
     
   </div>
@@ -93,7 +93,7 @@
 <p>You will be given multiple independent queries to answer.</p>
 <hr>
 <p><strong>思路</strong></p>
-<p>bfs遍历，隔层涂色，输出总数少</p>
+<p>bfs遍历，隔层涂色，输出总数少的</p>
 <hr>
 <p><strong>AC代码</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">200001</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; p[MAXN];</span><br><span class="line"><span class="keyword">int</span> re[MAXN] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> result[MAXN] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line"><span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bfs</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!q.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> n = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        <span class="keyword">int</span> len = p[n].size();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> nnode = p[n][i];</span><br><span class="line">            <span class="keyword">if</span>(!re[nnode])</span><br><span class="line">            &#123;</span><br><span class="line">                q.push(nnode);</span><br><span class="line">                re[nnode] = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(result[n]) result[nnode] = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    result[nnode] = <span class="number">1</span>;</span><br><span class="line">                    sum++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        bfs();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span>(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> n, m;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">        <span class="keyword">while</span>(m--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> a, b;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b;</span><br><span class="line">            p[a].push_back(b);</span><br><span class="line">            p[b].push_back(a);</span><br><span class="line">        &#125;</span><br><span class="line">        q.push(<span class="number">1</span>);</span><br><span class="line">        re[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        bfs();</span><br><span class="line">        <span class="keyword">if</span>(sum &lt;= n/<span class="number">2</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(result[i]) <span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; n-sum &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(!result[i]) <span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            p[i].clear();</span><br><span class="line">            re[i] = <span class="number">0</span>;</span><br><span class="line">            result[i] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        sum = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -102,7 +102,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/27/5_d/" data-id="ck3har4rm001adv54ok7c37af" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/27/5_d/" data-id="ck3hatkik001bi0545msa2pvj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -111,19 +111,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/11/27/5_e/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          萌新acm(5) E - Polycarp Training
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/11/27/5_c/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/11/27/5_f/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">萌新acm(5) C - Recover it!</div>
+      <div class="article-nav-title">萌新acm(5) F - Good String</div>
     </a>
   
 </nav>
@@ -160,15 +151,15 @@
       <ul>
         
           <li>
+            <a href="/2019/11/27/5_d/">萌新acm(5) D - Cover it!</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/27/5_f/">萌新acm(5) F - Good String</a>
           </li>
         
           <li>
             <a href="/2019/11/27/5_e/">萌新acm(5) E - Polycarp Training</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/27/5_d/">萌新acm(5) D - Cover it!</a>
           </li>
         
           <li>
