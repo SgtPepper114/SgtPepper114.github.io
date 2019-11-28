@@ -62,6 +62,101 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-4_b" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/4_b/" class="article-date">
+  <time datetime="2019-11-20T09:12:49.247Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/4_b/">萌新acm(4) B - Common Divisors</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>You are given an array a consisting of n integers.</p>
+<p>Your task is to say the number of such positive integers x such that x divides each number from the array. In other words, you have to find the number of common divisors of all elements in the array.</p>
+<p>For example, if the array a will be [2,4,6,2,10], then 1 and 2 divide each number from the array (so the answer for this test is 2).</p>
+<hr>
+<p><strong>思路</strong></p>
+<p>用集合维护最小数的所有因数，然后对所有数遍历这些因数，不符合则删去</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt; p;</span><br><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt; sub;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">while</span>(n--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> k;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; k;</span><br><span class="line">        p.insert(k);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt;::iterator ptr = p.begin();</span><br><span class="line">    <span class="keyword">if</span>(*ptr != <span class="number">1</span>) sub.insert(*ptr);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= <span class="built_in">sqrt</span>(*ptr); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(!(*ptr % i))</span><br><span class="line">        &#123;</span><br><span class="line">            sub.insert(i);</span><br><span class="line">            sub.insert(*ptr / i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ptr++;</span><br><span class="line">    <span class="keyword">while</span>(ptr != p.end() &amp;&amp; sub.size())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">set</span>&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt;::iterator point = sub.begin();</span><br><span class="line">        <span class="keyword">while</span>(point != sub.end())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(*ptr % *point) sub.erase(point++);</span><br><span class="line">            <span class="keyword">else</span> point++;</span><br><span class="line">        &#125;</span><br><span class="line">        ptr++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; sub.size()+<span class="number">1</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/4_b/" data-id="ck3i9gzan000yyp54vw4ogejq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-4_a" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/4_a/" class="article-date">
+  <time datetime="2019-11-20T08:28:47.755Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/4_a/">萌新acm(4) A - Equal Rectangles</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>You are given 4n sticks, the length of the i-th stick is ai.</p>
+<p>You have to create n rectangles, each rectangle will consist of exactly 4 sticks from the given set. The rectangle consists of four sides, opposite sides should have equal length and all angles in it should be right. Note that each stick can be used in only one rectangle. Each stick should be used as a side, you cannot break the stick or use it not to the full length.</p>
+<p>You want to all rectangles to have equal area. The area of the rectangle with sides a and b is a⋅b.</p>
+<p>Your task is to say if it is possible to create exactly n rectangles of equal area or not.</p>
+<p>You have to answer q independent queries.</p>
+<hr>
+<p><strong>思路</strong><br>最长的和最短的相乘就是矩形面积，注意每种长度的木棒数量都是偶数</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> q;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; q;</span><br><span class="line">    <span class="keyword">while</span>(q--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> n, i;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">        <span class="keyword">int</span> p[<span class="number">4</span>*n];</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">4</span>*n ; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; p[i];</span><br><span class="line">        &#125;</span><br><span class="line">        sort(p, p+<span class="number">4</span>*n);</span><br><span class="line">        <span class="keyword">int</span> sum = p[<span class="number">0</span>] * p[<span class="number">4</span>*n<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">2</span>*n; i+=<span class="number">2</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(p[i] * p[<span class="number">4</span>*n<span class="number">-1</span>-i] != sum || p[i] != p[i+<span class="number">1</span>] || p[<span class="number">4</span>*n<span class="number">-1</span>-i] != p[<span class="number">4</span>*n<span class="number">-2</span>-i]) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i == <span class="number">2</span>*n) <span class="built_in">cout</span> &lt;&lt; <span class="string">"YES"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; <span class="string">"NO"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/4_a/" data-id="ck3i9gzal000wyp54lvmybifx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-3_kl" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/20/3_kl/" class="article-date">
@@ -101,7 +196,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_kl/" data-id="ck3hatki2000vi054g4fucryj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/3_kl/" data-id="ck3i9gzak000vyp54yqe280es" class="article-share-link">Share</a>
       
       
     </footer>
@@ -148,7 +243,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_j/" data-id="ck3hatki1000ui054osix6rer" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/3_j/" data-id="ck3i9gzai000typ54w3iwhdqi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -196,7 +291,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_i/" data-id="ck3hatki0000ti054e3upfvap" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/3_i/" data-id="ck3i9gzaj000uyp54q28wilpk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -245,7 +340,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_h/" data-id="ck3hatkhy000ri054s0xrzpnm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/3_h/" data-id="ck3i9gzaf000qyp54g45gchah" class="article-share-link">Share</a>
       
       
     </footer>
@@ -292,7 +387,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_g/" data-id="ck3hatkhz000si054q32xs7c8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/3_g/" data-id="ck3i9gzag000ryp54thk22cvt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -339,7 +434,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_f/" data-id="ck3hatkhx000qi054otddn94e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/3_f/" data-id="ck3i9gzah000syp543wtwixwp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -388,7 +483,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_e/" data-id="ck3hatkhs000mi0546hxsg2hj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/3_e/" data-id="ck3i9gzae000pyp54jzhampb1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -436,108 +531,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_d/" data-id="ck3hatkhw000pi054hdv3qo9h" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-3_c" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/20/3_c/" class="article-date">
-  <time datetime="2019-11-20T05:33:13.819Z" itemprop="datePublished">2019-11-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/20/3_c/">CodeForces 1256C - Platforms Jumping</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong></p>
-<p>There is a river of width n. The left bank of the river is cell 0 and the right bank is cell n+1 (more formally, the river can be represented as a sequence of n+2 cells numbered from 0 to n+1). There are also m wooden platforms on a river, the i-th platform has length ci (so the i-th platform takes ci consecutive cells of the river). It is guaranteed that the sum of lengths of platforms does not exceed n.</p>
-<p>You are standing at 0 and want to reach n+1 somehow. If you are standing at the position x, you can jump to any position in the range [x+1;x+d]. However you don’t really like the water so you can jump only to such cells that belong to some wooden platform. For example, if d=1, you can jump only to the next position (if it belongs to the wooden platform). You can assume that cells 0 and n+1 belong to wooden platforms.</p>
-<p>You want to know if it is possible to reach n+1 from 0 if you can move any platform to the left or to the right arbitrary number of times (possibly, zero) as long as they do not intersect each other (but two platforms can touch each other). It also means that you cannot change the relative order of platforms.</p>
-<p>Note that you should move platforms until you start jumping (in other words, you first move the platforms and then start jumping).</p>
-<p>For example, if n=7, m=3, d=2 and c=[1,2,1], the answer is [0,1,0,2,2,0,3]. The sequence of jumps you perform is 0→2→4→5→7→8.</p>
-<p>Input<br>7 3 2<br>1 2 1<br>Output<br>YES<br>0 1 0 2 2 0 3<br>Input<br>10 1 11<br>1<br>Output<br>YES<br>0 0 0 0 0 0 0 0 0 1<br>Input<br>10 1 5<br>2<br>Output<br>YES<br>0 0 0 0 1 1 0 0 0 0 </p>
-<hr>
-<p><strong>思路</strong></p>
-<p>先确定0的数量，从左向右遍历，保证每块木板左侧0尽可能多</p>
-<hr>
-<p><strong>AC代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> n, m, sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> d;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m &gt;&gt; d;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> p[m];</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> num[n] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> *ptr = num;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">long</span> <span class="keyword">long</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> k;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; k;</span><br><span class="line">        sum += k;</span><br><span class="line">        p[i] = k;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>((d<span class="number">-1</span>)*(m+<span class="number">1</span>) + sum &lt; n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"NO"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> space = n - sum;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">long</span> <span class="keyword">long</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(space &gt;= d<span class="number">-1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                space -= d<span class="number">-1</span>;</span><br><span class="line">                ptr += d<span class="number">-1</span>;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">long</span> <span class="keyword">long</span> j = <span class="number">0</span>; j &lt; p[i]; j++)</span><br><span class="line">                &#123;</span><br><span class="line">                    *ptr = i+<span class="number">1</span>;</span><br><span class="line">                    ptr++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                ptr += space;</span><br><span class="line">                space = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">long</span> <span class="keyword">long</span> j = <span class="number">0</span>; j &lt; p[i]; j++)</span><br><span class="line">                &#123;</span><br><span class="line">                    *ptr = i+<span class="number">1</span>;</span><br><span class="line">                    ptr++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"YES"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">long</span> <span class="keyword">long</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; num[i] &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_c/" data-id="ck3hatkhv000oi054ul66q1qf" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-3_b" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/20/3_b/" class="article-date">
-  <time datetime="2019-11-20T05:32:58.615Z" itemprop="datePublished">2019-11-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/20/3_b/">CodeForces 1256B - Minimize the Permutation</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong></p>
-<p>You are given a permutation of length n. Recall that the permutation is an array consisting of n distinct integers from 1 to n in arbitrary order. For example, [2,3,1,5,4] is a permutation, but [1,2,2] is not a permutation (2 appears twice in the array) and [1,3,4] is also not a permutation (n=3 but there is 4 in the array).</p>
-<p>You can perform at most n−1 operations with the given permutation (it is possible that you don’t perform any operations at all). The i-th operation allows you to swap elements of the given permutation on positions i and i+1. Each operation can be performed at most once. The operations can be performed in arbitrary order.</p>
-<p>Your task is to find the lexicographically minimum possible permutation obtained by performing some of the given operations in some order.</p>
-<p>You can see the definition of the lexicographical order in the notes section.</p>
-<p>You have to answer q independent test cases.</p>
-<p>For example, let’s consider the permutation [5,4,1,3,2]. The minimum possible permutation we can obtain is [1,5,2,4,3] and we can do it in the following way:</p>
-<p>perform the second operation (swap the second and the third elements) and obtain the permutation [5,1,4,3,2];<br>perform the fourth operation (swap the fourth and the fifth elements) and obtain the permutation [5,1,4,2,3];<br>perform the third operation (swap the third and the fourth elements) and obtain the permutation [5,1,2,4,3].<br>perform the first operation (swap the first and the second elements) and obtain the permutation [1,5,2,4,3];<br>Another example is [1,2,4,3]. The minimum possible permutation we can obtain is [1,2,3,4] by performing the third operation (swap the third and the fourth elements).</p>
-<hr>
-<p><strong>思路</strong></p>
-<p>从后往前有条件的冒泡排序</p>
-<hr>
-<p><strong>AC代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> q;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; q;</span><br><span class="line">    <span class="keyword">while</span>(q--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> n;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">        <span class="keyword">int</span> p[n];</span><br><span class="line">        <span class="keyword">int</span> str[n] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; p[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> step = n<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(step)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">bool</span> flag = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = n<span class="number">-2</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(str[i]) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span>(p[i] &gt; p[i+<span class="number">1</span>])</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">int</span> temp = p[i];</span><br><span class="line">                    p[i] = p[i+<span class="number">1</span>];</span><br><span class="line">                    p[i+<span class="number">1</span>] = temp;</span><br><span class="line">                    str[i] = <span class="number">1</span>;</span><br><span class="line">                    step--;</span><br><span class="line">                    flag = <span class="literal">false</span>;</span><br><span class="line">                    <span class="keyword">if</span>(!step) <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(flag) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; p[i] &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_b/" data-id="ck3hatkhu000ni0541lzf7f8u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/3_d/" data-id="ck3i9gzad000oyp540gk5cvmd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -583,6 +577,14 @@
       <ul>
         
           <li>
+            <a href="/2019/11/28/5_i/">萌新acm(5) I - Long Number</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/28/5_h/">萌新acm(5) H - Two Arrays and Sum of Functions</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/27/5_d/">萌新acm(5) D - Cover it!</a>
           </li>
         
@@ -592,14 +594,6 @@
         
           <li>
             <a href="/2019/11/27/5_e/">萌新acm(5) E - Polycarp Training</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/27/5_c/">萌新acm(5) C - Recover it!</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/26/5_b/">萌新acm(5) B - Lose it!</a>
           </li>
         
       </ul>
