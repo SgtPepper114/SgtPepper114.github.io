@@ -62,6 +62,145 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-5_a" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/26/5_a/" class="article-date">
+  <time datetime="2019-11-26T13:00:42.556Z" itemprop="datePublished">2019-11-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/26/5_a/">萌新acm(5) A - Merge it!</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>You are given an array a consisting of n integers a1,a2,…,an.</p>
+<p>In one operation you can choose two elements of the array and replace them with the element equal to their sum (it does not matter where you insert the new element). For example, from the array [2,1,4] you can obtain the following arrays: [3,4], [1,6] and [2,5].</p>
+<p>Your task is to find the maximum possible number of elements divisible by 3 that are in the array after performing this operation an arbitrary (possibly, zero) number of times.</p>
+<p>You have to answer t independent queries.</p>
+<hr>
+<p><strong>思路</strong></p>
+<p>每个数模3只有三种情况0，1，2，<br>答案为0+min(1,2)+(max(1,2)-min(1,2))/3</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span>(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> n;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">        <span class="keyword">int</span> p[<span class="number">3</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">while</span>(n--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> k;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; k;</span><br><span class="line">            k %= <span class="number">3</span>;</span><br><span class="line">            p[k]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> mi = min(p[<span class="number">1</span>], p[<span class="number">2</span>]);</span><br><span class="line">        <span class="keyword">int</span> ma = max(p[<span class="number">1</span>], p[<span class="number">2</span>]);</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; p[<span class="number">0</span>]+mi+(ma-mi)/<span class="number">3</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/26/5_a/" data-id="ck3itc6v50016wu54kdublrsm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-cqupt1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/25/cqupt1/" class="article-date">
+  <time datetime="2019-11-25T02:45:56.592Z" itemprop="datePublished">2019-11-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/25/cqupt1/">cqupt校内选拔网赛 F - 不会还真有人不会后缀自动机吧</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>给两个字符串S和K和一个查询次数T，每次查询给出L和R，表示询问在S的[L,R]区间中是否存在一个后缀P，使得K的任何一个前缀的字典序都大于P，如果存在输出YES，不存在输出NO。 </p>
+<hr>
+<p><strong>思路</strong></p>
+<p>如果在S的[L,R]区间中存在一个字母的字典序小于K的第一个字母的字典序，那么一定在这个区间里面存在一个后缀P小于K的任何一个前缀的字典序。</p>
+<p>因为需要回答每次询问，所以可以用前缀和来将这些结果提前保存起来，询问就只用查询该区间前缀和是否大于0即可。</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> sum[N];</span><br><span class="line"><span class="keyword">char</span> s[N],ss[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>,s);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>,ss);    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.size();i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(s[i]&lt;ss[<span class="number">0</span>])</span><br><span class="line">        &#123;</span><br><span class="line">            sum[i+<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=s.size();i++)</span><br><span class="line">        sum[i]+=sum[i<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,t);</span><br><span class="line">    <span class="keyword">while</span>(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> l,r;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;l,&amp;r);</span><br><span class="line">        <span class="keyword">if</span>(sum[r]-sum[l<span class="number">-1</span>]&gt;<span class="number">0</span>)</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">"YES"</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">"NO"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/25/cqupt1/" data-id="ck3itc6vg001jwu54izaydbm4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-cqupt3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/25/cqupt3/" class="article-date">
+  <time datetime="2019-11-25T02:14:44.256Z" itemprop="datePublished">2019-11-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/25/cqupt3/">cqupt校内选拔网赛 H - 土块秦太阳</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>秦太阳非常崇拜某斗地主主播，但是这位主播在某次直播的时候失手了。<br>“单走一个6？”<br>“给阿姨倒一杯卡布奇诺！”<br> ……<br> 于是秦太阳从此开始非常讨厌6这个数字，像4567这样的数字就会被秦太阳厌恶。<br> 现在给你一个区间[1, r], 他想知道在这个区间里不含6的数字有多少个。<br> 由于数字太多，需要对1000000007取模输出</p>
+<hr>
+<p> <strong>思路</strong></p>
+<p> 没有数字6，相当于十进制变成了九进制，原来的7、8、9变成了6、7、8。<br>例如17变成了$16_{(9)}=1^9+6=15$<br>所以说按照字符串读入数据，把比6大的数字都减一，然后进行进制转换就可以了。<br>但是有个问题：要是原来给出的数字里就有6怎么办呢？<br>观察到类似于16、1623此类含6的数字是不应该存在的，也就是说16其实等价于15，16xxx等价于15999。所以只需要把最高位的6改为5，低位全部改成5再进行进制转换就可以了。</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e7</span> + <span class="number">233</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function">ll <span class="title">solve</span><span class="params">(<span class="built_in">string</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(k.find(<span class="string">'6'</span>) != k.npos) flag = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(flag)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k.size(); i++)</span><br><span class="line">            <span class="keyword">if</span>(k[i] == <span class="string">'6'</span>)</span><br><span class="line">                <span class="keyword">for</span>(k[i] = <span class="string">'5'</span>, i++; i &lt; k.size(); i++)</span><br><span class="line">                    k[i] = <span class="string">'9'</span>;</span><br><span class="line">    ll ret = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k.size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> p = k[i] - <span class="string">'0'</span>;</span><br><span class="line">        <span class="keyword">if</span>(p &gt;= <span class="number">6</span>) p = p - <span class="number">1</span>;</span><br><span class="line">        ret = ret * <span class="number">9</span> + p;;</span><br><span class="line">        ret %= mod;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">char</span> s[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> r;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>, s);</span><br><span class="line">    r = s;</span><br><span class="line">    ll res = solve(r);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/25/cqupt3/" data-id="ck3itc6vh001kwu54wz7it4f7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-cqupt2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/25/cqupt2/" class="article-date">
@@ -102,7 +241,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/25/cqupt2/" data-id="ck3i9gzb3001fyp540ouszwml" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/25/cqupt2/" data-id="ck3itc6ve001hwu54nfpq854a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -151,7 +290,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/22/4_l/" data-id="ck3i9gzau0015yp54968zj059" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/22/4_l/" data-id="ck3itc6v40015wu54iaaclbl2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -201,7 +340,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/22/4_k/" data-id="ck3i9gzav0016yp54sc7kt7pi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/22/4_k/" data-id="ck3itc6v30014wu54ycjw8flz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -251,7 +390,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/21/4_j/" data-id="ck3i9gzas0013yp54ivgmsse4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/21/4_j/" data-id="ck3itc6v00013wu543aigcyi6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -301,7 +440,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/21/4_i/" data-id="ck3i9gzat0014yp546m20xidg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/21/4_i/" data-id="ck3itc6v8001awu54yhy9hjol" class="article-share-link">Share</a>
       
       
     </footer>
@@ -384,7 +523,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/21/4_f/" data-id="ck3i9gzap0010yp54ws6sp0qh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/21/4_f/" data-id="ck3itc6ux0010wu54tw2t0tv0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -433,153 +572,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/21/4_gh/" data-id="ck3i9gzap0011yp54ief9mr8l" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-4_e" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/20/4_e/" class="article-date">
-  <time datetime="2019-11-20T13:13:52.256Z" itemprop="datePublished">2019-11-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/20/4_e/">萌新acm(4) E - Odd Sum Segments</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong></p>
-<p>You are given an array a consisting of n integers a1,a2,…,an. You want to split it into exactly k non-empty non-intersecting subsegments such that each subsegment has odd sum (i. e. for each subsegment, the sum of all elements that belong to this subsegment is odd). It is impossible to rearrange (shuffle) the elements of a given array. Each of the n elements of the array a must belong to exactly one of the k subsegments.</p>
-<p>Let’s see some examples of dividing the array of length 5 into 3 subsegments (not necessarily with odd sums): [1,2,3,4,5] is the initial array, then all possible ways to divide it into 3 non-empty non-intersecting subsegments are described below:</p>
-<p>[1],[2],[3,4,5];<br>[1],[2,3],[4,5];<br>[1],[2,3,4],[5];<br>[1,2],[3],[4,5];<br>[1,2],[3,4],[5];<br>[1,2,3],[4],[5].<br>Of course, it can be impossible to divide the initial array into exactly k subsegments in such a way that each of them will have odd sum of elements. In this case print “NO”. Otherwise, print “YES” and any possible division of the array. See the output format for the detailed explanation.</p>
-<p>You have to answer q independent queries.</p>
-<hr>
-<p><strong>思路</strong></p>
-<p>奇数数量小于k或奇数数量与k之差为奇数时不存在</p>
-<hr>
-<p><strong>AC代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> q;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; q;</span><br><span class="line">    <span class="keyword">while</span>(q--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> n, k, sum = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; k;</span><br><span class="line">        <span class="keyword">int</span> p[n];</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; odd;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> x;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; x;</span><br><span class="line">            <span class="keyword">if</span>(x%<span class="number">2</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                odd.push_back(i+<span class="number">1</span>);</span><br><span class="line">                sum++;</span><br><span class="line">            &#125;</span><br><span class="line">            p[i] = x;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(sum &lt; k || (sum - k)%<span class="number">2</span>) <span class="built_in">cout</span> &lt;&lt; <span class="string">"NO"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="string">"YES"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k<span class="number">-1</span>; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; odd[i] &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; n &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/4_e/" data-id="ck3i9gzaq0012yp54nh2vxyba" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-4_d" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/20/4_d/" class="article-date">
-  <time datetime="2019-11-20T12:43:24.815Z" itemprop="datePublished">2019-11-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/20/4_d/">acm(4) D - Boxers</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong></p>
-<p>There are n boxers, the weight of the i-th boxer is ai. Each of them can change the weight by no more than 1 before the competition (the weight cannot become equal to zero, that is, it must remain positive). Weight is always an integer number.</p>
-<p>It is necessary to choose the largest boxing team in terms of the number of people, that all the boxers’ weights in the team are different (i.e. unique).</p>
-<p>Write a program that for given current values ​ai will find the maximum possible number of boxers in a team.</p>
-<p>It is possible that after some change the weight of some boxer is 150001 (but no more).</p>
-<hr>
-<p><strong>思路</strong></p>
-<p>排序后从下到大遍历每个元素，对于元素i按序检测i-1，i，i+1是否存在</p>
-<hr>
-<p><strong>AC代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">int</span> p[n];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; p[i];;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(p, p+n);</span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; sum;</span><br><span class="line">    sum.insert(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(sum.count(p[i]<span class="number">-1</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(sum.count(p[i]))</span><br><span class="line">            &#123;</span><br><span class="line">                sum.insert(p[i]+<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> sum.insert(p[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> sum.insert(p[i]<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; sum.size()<span class="number">-1</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/4_d/" data-id="ck3i9gzam000xyp54jko74x5x" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-4_c" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/20/4_c/" class="article-date">
-  <time datetime="2019-11-20T11:41:57.311Z" itemprop="datePublished">2019-11-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/20/4_c/">萌新acm(4) C - Remove the Substring</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong></p>
-<p>The only difference between easy and hard versions is the length of the string.</p>
-<p>You are given a string s and a string t, both consisting only of lowercase Latin letters. It is guaranteed that t can be obtained from s by removing some (possibly, zero) number of characters (not necessary contiguous) from s without changing order of remaining characters (in other words, it is guaranteed that t is a subsequence of s).</p>
-<p>For example, the strings “test”, “tst”, “tt”, “et” and “” are subsequences of the string “test”. But the strings “tset”, “se”, “contest” are not subsequences of the string “test”.</p>
-<p>You want to remove some substring (contiguous subsequence) from s of maximum possible length such that after removing this substring t will remain a subsequence of s.</p>
-<p>If you want to remove the substring s[l;r] then the string s will be transformed to s1s2…sl−1sr+1sr+2…s|s|−1s|s| (where |s| is the length of s).</p>
-<p>Your task is to find the maximum possible length of the substring you can remove so that t is still a subsequence of s.</p>
-<hr>
-<p><strong>思路</strong></p>
-<p>用数组left[t_len]和right[t_len]分别维护最左边和最右边第一个t中每个字母在s中的位置，则答案就是<br>right[1]-left[0]-1，right[2]-left[1]-1 … right[t_len-1]-left[t_len-2]-1和s_len-left[t_len-1]与right[0]中的最大值</p>
-<hr>
-<p><strong>AC代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> s;</span><br><span class="line"><span class="built_in">string</span> t;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; s &gt;&gt; t;</span><br><span class="line">    <span class="keyword">int</span> s_len = s.length();</span><br><span class="line">    <span class="keyword">int</span> t_len = t.length();</span><br><span class="line">    <span class="keyword">int</span> left[t_len];</span><br><span class="line">    <span class="keyword">int</span> right[t_len];</span><br><span class="line">    <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s_len; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(s[i] == t[num])</span><br><span class="line">        &#123;</span><br><span class="line">            left[num++] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(num == t_len) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    num--;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = s_len; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(s[i] == t[num])</span><br><span class="line">        &#123;</span><br><span class="line">            right[num--] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(num &lt; <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; sum;</span><br><span class="line">    sum.insert(s_len<span class="number">-1</span>-left[t_len<span class="number">-1</span>]);</span><br><span class="line">    sum.insert(right[<span class="number">0</span>]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; t_len<span class="number">-1</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sum.insert(right[i+<span class="number">1</span>] - left[i] - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *(--sum.end()) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/4_c/" data-id="ck3i9gzao000zyp548wjuqebj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/21/4_gh/" data-id="ck3itc6uz0012wu54k6hh1so2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -625,23 +618,23 @@
       <ul>
         
           <li>
+            <a href="/2019/11/28/5_l/">萌新acm(5) L - Minimum Array</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/28/5_k/">萌新acm(5) K - N Problems During K Days</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/28/5_j/">萌新acm(5) J - Increasing Subsequence (hard version)</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/28/5_i/">萌新acm(5) I - Long Number</a>
           </li>
         
           <li>
             <a href="/2019/11/28/5_h/">萌新acm(5) H - Two Arrays and Sum of Functions</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/27/5_d/">萌新acm(5) D - Cover it!</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/27/5_f/">萌新acm(5) F - Good String</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/27/5_e/">萌新acm(5) E - Polycarp Training</a>
           </li>
         
       </ul>
