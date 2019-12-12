@@ -62,6 +62,153 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-3_e" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/3_e/" class="article-date">
+  <time datetime="2019-11-20T05:33:42.121Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/3_e/">CodeForces 1216A - Prefixes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>Nikolay got a string s of even length n, which consists only of lowercase Latin letters ‘a’ and ‘b’. Its positions are numbered from 1 to n.</p>
+<p>He wants to modify his string so that every its prefix of even length has an equal amount of letters ‘a’ and ‘b’. To achieve that, Nikolay can perform the following operation arbitrary number of times (possibly, zero): choose some position in his string and replace the letter on this position with the other letter (i.e. replace ‘a’ with ‘b’ or replace ‘b’ with ‘a’). Nikolay can use no letters except ‘a’ and ‘b’.</p>
+<p>The prefix of string s of length l (1≤l≤n) is a string s[1..l].</p>
+<p>For example, for the string s=”abba” there are two prefixes of the even length. The first is s[1…2]=”ab” and the second s[1…4]=”abba”. Both of them have the same number of ‘a’ and ‘b’.</p>
+<p>Your task is to calculate the minimum number of operations Nikolay has to perform with the string s to modify it so that every its prefix of even length has an equal amount of letters ‘a’ and ‘b’.</p>
+<hr>
+<p><strong>思路</strong></p>
+<p>没看懂题，但是a了，保证a和b成对</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">char</span> p[n];</span><br><span class="line">    <span class="keyword">char</span> pre;</span><br><span class="line">    <span class="keyword">int</span> cou = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">char</span> k;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; k;</span><br><span class="line">        <span class="keyword">if</span>(i % <span class="number">2</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(pre == <span class="string">'a'</span> &amp;&amp; k == <span class="string">'a'</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                k = <span class="string">'b'</span>;</span><br><span class="line">                cou++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(pre == <span class="string">'b'</span> &amp;&amp; k == <span class="string">'b'</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                k = <span class="string">'a'</span>;</span><br><span class="line">                cou++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> pre = k;</span><br><span class="line">        p[i] = k;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; cou &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; p[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/3_e/" data-id="ck42c6e3d000pys540kocuehc" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-3_d" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/3_d/" class="article-date">
+  <time datetime="2019-11-20T05:33:25.401Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/3_d/">CodeForces 1256D - Binary String Minimizing</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>You are given a binary string of length n (i. e. a string consisting of n characters ‘0’ and ‘1’).</p>
+<p>In one move you can swap two adjacent characters of the string. What is the lexicographically minimum possible string you can obtain from the given one if you can perform no more than k moves? It is possible that you do not perform any moves at all.</p>
+<p>Note that you can swap the same pair of adjacent characters with indices i and i+1 arbitrary (possibly, zero) number of times. Each such swap is considered a separate move.</p>
+<p>You have to answer q independent test cases.</p>
+<hr>
+<p><strong>思路</strong></p>
+<p>从前往后遍历，把所有0尽可能往前放</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> q;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; q;</span><br><span class="line">    <span class="keyword">while</span>(q--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> n;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> k;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; k;</span><br><span class="line">        <span class="built_in">string</span> p;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; p;</span><br><span class="line">        <span class="keyword">int</span> step = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(p[i] == <span class="string">'0'</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(i &gt; step)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(k &gt;= i-step)</span><br><span class="line">                    &#123;</span><br><span class="line">                        p[step] = <span class="string">'0'</span>;</span><br><span class="line">                        p[i] = <span class="string">'1'</span>;</span><br><span class="line">                        k -= i-step;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                    &#123;</span><br><span class="line">                        p[i-k] = <span class="string">'0'</span>;</span><br><span class="line">                        p[i] = <span class="string">'1'</span>;</span><br><span class="line">                        k = <span class="number">0</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span>(k == <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                step++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; p &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/3_d/" data-id="ck42c6e3c000oys54ek7q0096" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-3_c" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/20/3_c/" class="article-date">
+  <time datetime="2019-11-20T05:33:13.819Z" itemprop="datePublished">2019-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/20/3_c/">CodeForces 1256C - Platforms Jumping</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>There is a river of width n. The left bank of the river is cell 0 and the right bank is cell n+1 (more formally, the river can be represented as a sequence of n+2 cells numbered from 0 to n+1). There are also m wooden platforms on a river, the i-th platform has length ci (so the i-th platform takes ci consecutive cells of the river). It is guaranteed that the sum of lengths of platforms does not exceed n.</p>
+<p>You are standing at 0 and want to reach n+1 somehow. If you are standing at the position x, you can jump to any position in the range [x+1;x+d]. However you don’t really like the water so you can jump only to such cells that belong to some wooden platform. For example, if d=1, you can jump only to the next position (if it belongs to the wooden platform). You can assume that cells 0 and n+1 belong to wooden platforms.</p>
+<p>You want to know if it is possible to reach n+1 from 0 if you can move any platform to the left or to the right arbitrary number of times (possibly, zero) as long as they do not intersect each other (but two platforms can touch each other). It also means that you cannot change the relative order of platforms.</p>
+<p>Note that you should move platforms until you start jumping (in other words, you first move the platforms and then start jumping).</p>
+<p>For example, if n=7, m=3, d=2 and c=[1,2,1], the answer is [0,1,0,2,2,0,3]. The sequence of jumps you perform is 0→2→4→5→7→8.</p>
+<p>Input<br>7 3 2<br>1 2 1<br>Output<br>YES<br>0 1 0 2 2 0 3<br>Input<br>10 1 11<br>1<br>Output<br>YES<br>0 0 0 0 0 0 0 0 0 1<br>Input<br>10 1 5<br>2<br>Output<br>YES<br>0 0 0 0 1 1 0 0 0 0 </p>
+<hr>
+<p><strong>思路</strong></p>
+<p>先确定0的数量，从左向右遍历，保证每块木板左侧0尽可能多</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> n, m, sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> d;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m &gt;&gt; d;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> p[m];</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> num[n] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> *ptr = num;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">long</span> <span class="keyword">long</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> k;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; k;</span><br><span class="line">        sum += k;</span><br><span class="line">        p[i] = k;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>((d<span class="number">-1</span>)*(m+<span class="number">1</span>) + sum &lt; n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"NO"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> space = n - sum;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">long</span> <span class="keyword">long</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(space &gt;= d<span class="number">-1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                space -= d<span class="number">-1</span>;</span><br><span class="line">                ptr += d<span class="number">-1</span>;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">long</span> <span class="keyword">long</span> j = <span class="number">0</span>; j &lt; p[i]; j++)</span><br><span class="line">                &#123;</span><br><span class="line">                    *ptr = i+<span class="number">1</span>;</span><br><span class="line">                    ptr++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                ptr += space;</span><br><span class="line">                space = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">long</span> <span class="keyword">long</span> j = <span class="number">0</span>; j &lt; p[i]; j++)</span><br><span class="line">                &#123;</span><br><span class="line">                    *ptr = i+<span class="number">1</span>;</span><br><span class="line">                    ptr++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"YES"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">long</span> <span class="keyword">long</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; num[i] &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/20/3_c/" data-id="ck42c6e3b000nys5424hnhgwx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-3_b" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/20/3_b/" class="article-date">
@@ -103,7 +250,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_b/" data-id="ck42bqbpx000loe54vzaq21m3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/3_b/" data-id="ck42c6e39000lys548t2p6vii" class="article-share-link">Share</a>
       
       
     </footer>
@@ -149,7 +296,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/20/3_a/" data-id="ck42bqbpv000joe54dsvx45pk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/20/3_a/" data-id="ck42c6e3a000mys54t4lc2yfa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -197,7 +344,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_l/" data-id="ck42bqbpt000ioe54d3ituyid" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_l/" data-id="ck42c6e37000kys54rdp5n3fy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -250,7 +397,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_jk/" data-id="ck42bqbpr000goe54acm5eafr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_jk/" data-id="ck42c6e35000iys5426pafvbm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -301,7 +448,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_hi/" data-id="ck42bqbps000hoe54k8s0htv2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_hi/" data-id="ck42c6e36000jys5491oycc2p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -348,7 +495,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_g/" data-id="ck42bqbpp000foe548hnm3s3h" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_g/" data-id="ck42c6e34000hys54ndn9c8rl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -397,156 +544,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_f/" data-id="ck42bqbpo000eoe54wa1t9fm5" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2_e" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/12/2_e/" class="article-date">
-  <time datetime="2019-11-12T10:18:39.790Z" itemprop="datePublished">2019-11-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/12/2_e/">CodeForces 1234D - Distinct Characters Queries</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong></p>
-<p>You are given a string s consisting of lowercase Latin letters and q queries for this string.</p>
-<p>Recall that the substring s[l;r] of the string s is the string slsl+1…sr. For example, the substrings of “codeforces” are “code”, “force”, “f”, “for”, but not “coder” and “top”.</p>
-<p>There are two types of queries:</p>
-<p>1 pos c (1≤pos≤|s|, c is lowercase Latin letter): replace spos with c (set spos:=c);<br>2 l r (1≤l≤r≤|s|): calculate the number of distinct characters in the substring s[l;r].</p>
-<hr>
-<p><strong>思路</strong><br>用set存下标，最后对每个字母遍历是否有在范围内的下表</p>
-<hr>
-<p><strong>AC代码</strong></p>
-<p>语言:c++</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> word[<span class="number">100000</span>];</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>, word);</span><br><span class="line">    <span class="keyword">int</span> q = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;q);</span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; st[<span class="number">26</span>];</span><br><span class="line">    <span class="keyword">int</span> length = <span class="built_in">strlen</span>(word);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        st[word[i]-<span class="string">'a'</span>].insert(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(q &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        q--;</span><br><span class="line">        <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;k);</span><br><span class="line">        <span class="keyword">if</span>(k == <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> n = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">char</span> s = <span class="number">0</span>;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d %c"</span>, &amp;n, &amp;s);</span><br><span class="line">            st[word[n<span class="number">-1</span>]-<span class="string">'a'</span>].erase(n<span class="number">-1</span>);</span><br><span class="line">            st[s-<span class="string">'a'</span>].insert(n<span class="number">-1</span>);</span><br><span class="line">            word[n<span class="number">-1</span>] = s;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>, sum = <span class="number">0</span>;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;i, &amp;j);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; <span class="number">26</span>; k++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt;::iterator p = st[k].lower_bound(i<span class="number">-1</span>);</span><br><span class="line">                <span class="keyword">if</span>(p != st[k].end() &amp;&amp; *p &lt;= j<span class="number">-1</span>) sum++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sum);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_e/" data-id="ck42bqbpk000coe54lu1f67br" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2_d" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/12/2_d/" class="article-date">
-  <time datetime="2019-11-12T10:18:23.530Z" itemprop="datePublished">2019-11-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/12/2_d/">CodeForces 1234C - Pipes</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong></p>
-<p>You are given a system of pipes. It consists of two rows, each row consists of n pipes. The top left pipe has the coordinates (1,1) and the bottom right — (2,n).</p>
-<p>There are six types of pipes: two types of straight pipes and four types of curved pipes. Here are the examples of all six types:<br>![Types of pipes]<a href="https://vj.z180.cn/8013a29865dfd84f943080c025bb1d7b?v=1572731637" target="_blank" rel="noopener">1</a><br>You can turn each of the given pipes 90 degrees clockwise or counterclockwise arbitrary (possibly, zero) number of times (so the types 1 and 2 can become each other and types 3,4,5,6 can become each other).</p>
-<p>You want to turn some pipes in a way that the water flow can start at (1,0) (to the left of the top left pipe), move to the pipe at (1,1), flow somehow by connected pipes to the pipe at (2,n) and flow right to (2,n+1).</p>
-<p>Pipes are connected if they are adjacent in the system and their ends are connected. Here are examples of connected pipes:<br>![Examples of connected pipes]<a href="https://vj.z180.cn/3d3f37b8e6c60e6601a4edc78fbbf205?v=1572731637" target="_blank" rel="noopener">2</a><br>Let’s describe the problem using some example:<br>![The first example input]<a href="https://vj.z180.cn/ea8dba156764f5a4fd1b09a2f5120d25?v=1572731637" target="_blank" rel="noopener">3</a><br>And its solution is below:<br>![The first example answer]<a href="https://vj.z180.cn/965a92240411f85bfbdf8a5aeecab2c6?v=1572731637" target="_blank" rel="noopener">4</a><br>As you can see, the water flow is the poorly drawn blue line. To obtain the answer, we need to turn the pipe at (1,2) 90 degrees clockwise, the pipe at (2,3) 90 degrees, the pipe at (1,6) 90 degrees, the pipe at (1,7) 180 degrees and the pipe at (2,7) 180 degrees. Then the flow of water can reach (2,n+1) from (1,0).</p>
-<p>You have to answer q independent queries.</p>
-<hr>
-<p><strong>思路</strong><br>由k个直管道连接n个上下都为弯曲的管道（简称此组合为w），当左方有奇数个w时直管道必在下方，反之必在上方，且最终n为偶数时成立</p>
-<hr>
-<p><strong>AC代码</strong></p>
-<p>语言：c++</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> q = <span class="number">0</span>, x = <span class="number">0</span>, y = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">string</span> k1, k2;</span><br><span class="line">    <span class="keyword">long</span> n = <span class="number">0</span>, cou = <span class="number">0</span>, i = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; q;</span><br><span class="line">    <span class="keyword">while</span>(q &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        q--;</span><br><span class="line">        cou = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; k1;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; k2;</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(k1[i] == <span class="string">'1'</span> || k1[i] == <span class="string">'2'</span>) k1[i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> k1[i] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span>(k2[i] == <span class="string">'1'</span> || k2[i] == <span class="string">'2'</span>) k2[i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> k2[i] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span>(!k1[i] &amp;&amp; !k2[i])</span><br><span class="line">            &#123;</span><br><span class="line">                cou++;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(k1[i] &amp;&amp; (!(cou%<span class="number">2</span>))) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span>(k2[i] &amp;&amp; (cou%<span class="number">2</span>)) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>((i==n) &amp;&amp; (cou%<span class="number">2</span>)) <span class="built_in">cout</span> &lt;&lt; <span class="string">"YES"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; <span class="string">"NO"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_d/" data-id="ck42bqbpl000doe54nuq4ggfb" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2_bc" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/12/2_bc/" class="article-date">
-  <time datetime="2019-11-12T10:18:03.024Z" itemprop="datePublished">2019-11-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/12/2_bc/">CodeForces 1234B - Social Network</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong></p>
-<p>The only difference between easy and hard versions are constraints on n and k.</p>
-<p>You are messaging in one of the popular social networks via your smartphone. Your smartphone can show at most k most recent conversations with your friends. Initially, the screen is empty (i.e. the number of displayed conversations equals 0).</p>
-<p>Each conversation is between you and some of your friends. There is at most one conversation with any of your friends. So each conversation is uniquely defined by your friend.</p>
-<p>You (suddenly!) have the ability to see the future. You know that during the day you will receive n messages, the i-th message will be received from the friend with ID idi (1≤idi≤109).</p>
-<p>If you receive a message from idi in the conversation which is currently displayed on the smartphone then nothing happens: the conversations of the screen do not change and do not change their order, you read the message and continue waiting for new messages.</p>
-<p>Otherwise (i.e. if there is no conversation with idi on the screen):</p>
-<p>Firstly, if the number of conversations displayed on the screen is k, the last conversation (which has the position k) is removed from the screen.<br>Now the number of conversations on the screen is guaranteed to be less than k and the conversation with the friend idi is not displayed on the screen.<br>The conversation with the friend idi appears on the first (the topmost) position on the screen and all the other displayed conversations are shifted one position down.<br>Your task is to find the list of conversations (in the order they are displayed on the screen) after processing all n messages.</p>
-<hr>
-<p><strong>思路</strong></p>
-<p>用队列储存数据,用布尔型向量的第i个元素表示数i是否在队列中</p>
-<hr>
-<p><strong>AC代码</strong></p>
-<p>语言:c++</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> n = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">long</span> k = <span class="number">0</span>, i = <span class="number">0</span>, s = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">long</span> temp = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld %ld"</span>, &amp;n, &amp;k);</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; p(<span class="number">1e+9</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">long</span>&gt; q0(k, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">long</span>&gt; q;</span><br><span class="line">    <span class="keyword">while</span>(n &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        n--;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%ld"</span>, &amp;temp);</span><br><span class="line">        <span class="keyword">if</span>(p[temp]) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">if</span> (q.size() == k)</span><br><span class="line">        &#123;</span><br><span class="line">            p[q.front()] = <span class="literal">false</span>;</span><br><span class="line">            q.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        p[temp] = <span class="literal">true</span>;</span><br><span class="line">        q.push(temp);</span><br><span class="line">    &#125;</span><br><span class="line">    s = q.size();</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; s &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">for</span>(i = s<span class="number">-1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        q0[i] = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; s; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%ld "</span>, q0[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/2_bc/" data-id="ck42bqbpf000aoe54mbv1cyj7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/2_f/" data-id="ck42c6e33000gys54s107h6oc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -592,23 +590,23 @@
       <ul>
         
           <li>
+            <a href="/2019/12/12/7_f/">萌新acm(7) F - Tanya and Candies</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/12/7_h/">萌新acm(7) H - Coffee and Coursework (Easy version)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/12/7_d/">萌新acm(7) D - Zero Quantity Maximization</a>
+          </li>
+        
+          <li>
             <a href="/2019/12/12/6_l/">萌新acm(6) CodeForces 1141D - Colored Boots</a>
           </li>
         
           <li>
             <a href="/2019/12/12/6_k/">萌新acm(6）CodeForces 1141C - Polycarp Restores Permutation</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/12/6_h/">萌新acm(6) CodeForces 1144D - Equalize Them All</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/12/6_d/">萌新acm(6) CodeForces 1154D - Walking Robot</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/12/6_b/">萌新acm(6) CodeForces 1154B - Make Them Equal</a>
           </li>
         
       </ul>
