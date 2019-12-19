@@ -62,59 +62,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-7_f" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/12/12/7_f/" class="article-date">
-  <time datetime="2019-12-12T06:22:33.263Z" itemprop="datePublished">2019-12-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/12/7_f/">萌新acm(7) F - Tanya and Candies</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>题面</strong></p>
-<p>Tanya has n candies numbered from 1 to n. The i-th candy has the weight ai.</p>
-<p>She plans to eat exactly n−1 candies and give the remaining candy to her dad. Tanya eats candies in order of increasing their numbers, exactly one candy per day.</p>
-<p>Your task is to find the number of such candies i (let’s call these candies good) that if dad gets the i-th candy then the sum of weights of candies Tanya eats in even days will be equal to the sum of weights of candies Tanya eats in odd days. Note that at first, she will give the candy, after it she will eat the remaining candies one by one.</p>
-<p>For example, n=4 and weights are [1,4,3,3]. Consider all possible cases to give a candy to dad:</p>
-<p>Tanya gives the 1-st candy to dad (a1=1), the remaining candies are [4,3,3]. She will eat a2=4 in the first day, a3=3 in the second day, a4=3 in the third day. So in odd days she will eat 4+3=7 and in even days she will eat 3. Since 7≠3 this case shouldn’t be counted to the answer (this candy isn’t good).<br>Tanya gives the 2-nd candy to dad (a2=4), the remaining candies are [1,3,3]. She will eat a1=1 in the first day, a3=3 in the second day, a4=3 in the third day. So in odd days she will eat 1+3=4 and in even days she will eat 3. Since 4≠3 this case shouldn’t be counted to the answer (this candy isn’t good).<br>Tanya gives the 3-rd candy to dad (a3=3), the remaining candies are [1,4,3]. She will eat a1=1 in the first day, a2=4 in the second day, a4=3 in the third day. So in odd days she will eat 1+3=4 and in even days she will eat 4. Since 4=4 this case should be counted to the answer (this candy is good).<br>Tanya gives the 4-th candy to dad (a4=3), the remaining candies are [1,4,3]. She will eat a1=1 in the first day, a2=4 in the second day, a3=3 in the third day. So in odd days she will eat 1+3=4 and in even days she will eat 4. Since 4=4 this case should be counted to the answer (this candy is good).<br>In total there 2 cases which should counted (these candies are good), so the answer is 2.</p>
-<hr>
-<p><strong>思路</strong></p>
-<p>对奇偶项分别求后缀和（前缀和要考虑越界），即可在线性时间内找出答案</p>
-<hr>
-<p><strong>AC代码</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">200010</span>;</span><br><span class="line"><span class="keyword">int</span> p[MAXN] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; p[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = n<span class="number">-3</span>; i&gt;=<span class="number">0</span>; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        p[i] += p[i+<span class="number">2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(p[i%<span class="number">2</span>]-p[i]+p[i+<span class="number">1</span>] == p[!(i%<span class="number">2</span>)]-p[i+<span class="number">1</span>]+p[i+<span class="number">2</span>])</span><br><span class="line">        &#123;</span><br><span class="line">            sum++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; sum;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/12/7_f/" data-id="ck42c6e4c001mys54y1vufplh" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-7_h" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/12/12/7_h/" class="article-date">
-  <time datetime="2019-12-12T06:22:19.901Z" itemprop="datePublished">2019-12-12</time>
+    <a href="/2019/12/19/7_h/" class="article-date">
+  <time datetime="2019-12-19T10:11:56.517Z" itemprop="datePublished">2019-12-19</time>
 </a>
     
   </div>
@@ -125,7 +76,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/12/7_h/">萌新acm(7) H - Coffee and Coursework (Easy version)</a>
+      <a class="article-title" href="/2019/12/19/7_h/">萌新acm(7) CodeForces 1118D1 - Coffee and Coursework (Easy version)</a>
     </h1>
   
 
@@ -152,7 +103,56 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/12/7_h/" data-id="ck42c6e4f001oys54ndf50dqc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/12/19/7_h/" data-id="ck4ckflr1001mva54vv6fp8e2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-7_f" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/12/19/7_f/" class="article-date">
+  <time datetime="2019-12-19T10:11:39.701Z" itemprop="datePublished">2019-12-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/19/7_f/">萌新acm(7) CodeForces 1118B - Tanya and Candies</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>题面</strong></p>
+<p>Tanya has n candies numbered from 1 to n. The i-th candy has the weight ai.</p>
+<p>She plans to eat exactly n−1 candies and give the remaining candy to her dad. Tanya eats candies in order of increasing their numbers, exactly one candy per day.</p>
+<p>Your task is to find the number of such candies i (let’s call these candies good) that if dad gets the i-th candy then the sum of weights of candies Tanya eats in even days will be equal to the sum of weights of candies Tanya eats in odd days. Note that at first, she will give the candy, after it she will eat the remaining candies one by one.</p>
+<p>For example, n=4 and weights are [1,4,3,3]. Consider all possible cases to give a candy to dad:</p>
+<p>Tanya gives the 1-st candy to dad (a1=1), the remaining candies are [4,3,3]. She will eat a2=4 in the first day, a3=3 in the second day, a4=3 in the third day. So in odd days she will eat 4+3=7 and in even days she will eat 3. Since 7≠3 this case shouldn’t be counted to the answer (this candy isn’t good).<br>Tanya gives the 2-nd candy to dad (a2=4), the remaining candies are [1,3,3]. She will eat a1=1 in the first day, a3=3 in the second day, a4=3 in the third day. So in odd days she will eat 1+3=4 and in even days she will eat 3. Since 4≠3 this case shouldn’t be counted to the answer (this candy isn’t good).<br>Tanya gives the 3-rd candy to dad (a3=3), the remaining candies are [1,4,3]. She will eat a1=1 in the first day, a2=4 in the second day, a4=3 in the third day. So in odd days she will eat 1+3=4 and in even days she will eat 4. Since 4=4 this case should be counted to the answer (this candy is good).<br>Tanya gives the 4-th candy to dad (a4=3), the remaining candies are [1,4,3]. She will eat a1=1 in the first day, a2=4 in the second day, a3=3 in the third day. So in odd days she will eat 1+3=4 and in even days she will eat 4. Since 4=4 this case should be counted to the answer (this candy is good).<br>In total there 2 cases which should counted (these candies are good), so the answer is 2.</p>
+<hr>
+<p><strong>思路</strong></p>
+<p>对奇偶项分别求后缀和（前缀和要考虑越界），即可在线性时间内找出答案</p>
+<hr>
+<p><strong>AC代码</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">200010</span>;</span><br><span class="line"><span class="keyword">int</span> p[MAXN] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; p[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = n<span class="number">-3</span>; i&gt;=<span class="number">0</span>; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        p[i] += p[i+<span class="number">2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(p[i%<span class="number">2</span>]-p[i]+p[i+<span class="number">1</span>] == p[!(i%<span class="number">2</span>)]-p[i+<span class="number">1</span>]+p[i+<span class="number">2</span>])</span><br><span class="line">        &#123;</span><br><span class="line">            sum++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; sum;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/12/19/7_f/" data-id="ck4ckflr2001ova54axcnpup1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -164,8 +164,8 @@
   
     <article id="post-7_d" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/12/12/7_d/" class="article-date">
-  <time datetime="2019-12-12T06:14:15.244Z" itemprop="datePublished">2019-12-12</time>
+    <a href="/2019/12/19/7_d/" class="article-date">
+  <time datetime="2019-12-19T10:11:21.946Z" itemprop="datePublished">2019-12-19</time>
 </a>
     
   </div>
@@ -176,7 +176,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/12/7_d/">萌新acm(7) D - Zero Quantity Maximization</a>
+      <a class="article-title" href="/2019/12/19/7_d/">萌新acm(7) CodeForces 1133D - Quantity Maximization</a>
     </h1>
   
 
@@ -199,7 +199,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/12/7_d/" data-id="ck42c6e4b001lys54jd6zl6jt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/12/19/7_d/" data-id="ck4ckflr3001pva54157uojbe" class="article-share-link">Share</a>
       
       
     </footer>
@@ -248,7 +248,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/12/6_l/" data-id="ck42c6e4g001pys54zf05xfrj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/12/12/6_l/" data-id="ck4ckflr1001nva547qpkbh3j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -295,7 +295,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/12/6_k/" data-id="ck42c6e4h001qys54sseofskq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/12/12/6_k/" data-id="ck4ckflqz001lva54yo1keuju" class="article-share-link">Share</a>
       
       
     </footer>
@@ -344,7 +344,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/12/6_h/" data-id="ck42c6e4a001kys543re32ncb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/12/12/6_h/" data-id="ck4ckflqy001kva543q000g7c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -394,7 +394,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/12/6_d/" data-id="ck42c6e4d001nys54je833gee" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/12/12/6_d/" data-id="ck4ckflqv001hva54y09vu9sb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -444,7 +444,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/12/6_b/" data-id="ck42c6e49001jys54aqv6a9t5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/12/12/6_b/" data-id="ck4ckflqw001iva54pan1injb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -492,7 +492,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/03/5_l/" data-id="ck42c6e48001iys54epu4s8ra" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/12/03/5_l/" data-id="ck4ckflqu001gva541fj8cleu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -540,7 +540,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/03/5_k/" data-id="ck42c6e46001gys54rtjxxudx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/12/03/5_k/" data-id="ck4ckflqr001eva54l2ulap1y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -586,15 +586,15 @@
       <ul>
         
           <li>
-            <a href="/2019/12/12/7_f/">萌新acm(7) F - Tanya and Candies</a>
+            <a href="/2019/12/19/7_h/">萌新acm(7) CodeForces 1118D1 - Coffee and Coursework (Easy version)</a>
           </li>
         
           <li>
-            <a href="/2019/12/12/7_h/">萌新acm(7) H - Coffee and Coursework (Easy version)</a>
+            <a href="/2019/12/19/7_f/">萌新acm(7) CodeForces 1118B - Tanya and Candies</a>
           </li>
         
           <li>
-            <a href="/2019/12/12/7_d/">萌新acm(7) D - Zero Quantity Maximization</a>
+            <a href="/2019/12/19/7_d/">萌新acm(7) CodeForces 1133D - Quantity Maximization</a>
           </li>
         
           <li>
